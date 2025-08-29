@@ -10,6 +10,8 @@ export type TabParamList = {
   Finance: undefined;
   Budget: undefined;
   Settings: undefined;
+  History: undefined;
+  TransactionDetail: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<

@@ -7,6 +7,8 @@ import { FinancePage } from '../../pages/finance';
 import { BudgetPage } from '../../pages/budget';
 import { SettingsPage } from '../../pages/settings/';
 import type { TabParamList } from '../../shared/types/navigation';
+import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
+import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -23,7 +25,7 @@ export function TabNavigator() {
             iconName = focused ? 'stats-chart' : 'stats-chart-outline';
           } else if (route.name === 'Budget') {
             iconName = focused ? 'wallet' : 'wallet-outline';
-          } else if (route.name === 'Settings') {
+          } else if (route.name === 'History') {
             iconName = focused ? 'settings' : 'settings-outline';
           } else {
             iconName = 'ellipse-outline';
@@ -45,6 +47,7 @@ export function TabNavigator() {
       <Tab.Screen name="Finance" component={FinancePage} options={{ title: 'Финансы' }} />
       <Tab.Screen name="Budget" component={BudgetPage} options={{ title: 'Бюджет' }} />
       <Tab.Screen name="Settings" component={SettingsPage} options={{ title: 'Настройки' }} />
+      <Tab.Screen name="History" component={TransactionHistoryScreen} />
     </Tab.Navigator>
   );
 }
