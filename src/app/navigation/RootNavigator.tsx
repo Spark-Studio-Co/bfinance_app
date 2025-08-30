@@ -1,14 +1,14 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TabNavigator } from './TabNavigator';
-import type { RootStackParamList } from '../../shared/types/navigation';
+import { StatusBar } from 'react-native';
+import { MainStack } from './MainStack';
+import { AuthStack } from './AuthStack';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+export const RootNavigator = () => {
+  const isAuth = false;
 
-export function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Main" component={TabNavigator} />
-    </Stack.Navigator>
+    <>
+      <StatusBar backgroundColor="#000000" />
+      {isAuth ? <MainStack /> : <AuthStack />}
+    </>
   );
-}
+};

@@ -1,42 +1,67 @@
 import React from 'react';
-import { TouchableOpacity, Text, TouchableOpacityProps } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Text } from '.';
 
-interface ButtonProps extends TouchableOpacityProps {
-  title: string;
-  variant?: 'primary' | 'secondary';
+type Variant = 'light' | 'dark' | 'ghost';
+
+export type FontWeight =
+  | 'ultralight'
+  | 'light'
+  | 'regular'
+  | 'medium'
+  | 'semibold'
+  | 'bold'
+  | 'black';
+
+export interface ButtonProps {
+  label: string;
+  onPress?: (event: import('react-native').GestureResponderEvent) => void;
+  disabled?: boolean;
+  loading?: boolean;
+  icon?: React.ReactNode; // Иконка слева
+  className?: string; // Кастомные размеры/отступы
+  labelClassName?: string; // Кастомный текст
+  variant?: Variant; // filled | outline | ghost
+  theme?: {
+    bg?: string;
+    text?: string;
+    border?: string;
+    hover?: string;
+  };
+  weight?: FontWeight;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  title,
-  variant = 'primary',
+  label,
+  onPress,
+  disabled,
+  loading,
+  icon,
   className = '',
-  ...props
+  labelClassName = '',
+  variant = 'light',
+  theme,
+  weight,
 }) => {
-  const getVariantClasses = () => {
-    switch (variant) {
-      case 'primary':
-        return 'bg-white rounded-full py-4 px-6';
-      case 'secondary':
-        return 'bg-gray-800 rounded-full py-4 px-6 border border-gray-700';
-      default:
-        return 'bg-white rounded-full py-4 px-6';
-    }
-  };
+  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px]';
 
-  const getTextClasses = () => {
-    switch (variant) {
-      case 'primary':
-        return 'text-black font-semibold text-center';
-      case 'secondary':
-        return 'text-white font-semibold text-center';
-      default:
-        return 'text-black font-semibold text-center';
-    }
-  };
+  const variantCls =
+    variant === 'light'
+      ? `bg-white`
+      : variant === 'dark'
+        ? `bg-[#000000] border-[1px] border-[#454545]`
+        : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;
 
   return (
-    <TouchableOpacity className={`${getVariantClasses()} ${className}`} {...props}>
-      <Text className={getTextClasses()}>{title}</Text>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      disabled={disabled || loading}
+      className={`${base} ${variantCls} ${className}`}>
+      {icon && <>{icon}</>}
+      <Text weight={weight} className={`${labelClassName}`}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };

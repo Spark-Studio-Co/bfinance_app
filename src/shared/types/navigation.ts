@@ -3,6 +3,15 @@ import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 export type RootStackParamList = {
   Main: undefined;
+  Auth: undefined;
+};
+
+export type AuthStackParamList = {
+  Start: undefined;
+  EmailConfirmation: { email: string }; // пример, если нужно передавать email
+  ResetPassword: { token?: string };
+  SignIn: undefined;
+  SignUp: undefined;
 };
 
 export type TabParamList = {
@@ -16,6 +25,11 @@ export type TabParamList = {
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
+  T
+>;
+
+export type AuthStackScreenProps<T extends keyof AuthStackParamList> = NativeStackScreenProps<
+  AuthStackParamList,
   T
 >;
 
