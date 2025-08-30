@@ -8,10 +8,10 @@ export type RootStackParamList = {
 
 export type AuthStackParamList = {
   Start: undefined;
-  EmailConfirmation: { email: string }; // пример, если нужно передавать email
+  EmailConfirmation: { email: string };
   ResetPassword: { token?: string };
-  SignIn: undefined;
   SignUp: undefined;
+  IdentityVerification: undefined;
 };
 
 export type TabParamList = {

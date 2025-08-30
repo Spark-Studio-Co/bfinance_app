@@ -7,17 +7,19 @@ import { Text } from '~/shared/ui';
 export const AuthLayout = ({
   children,
   isBack,
+  isNoPadding,
   title,
 }: {
   children: React.ReactNode;
   isBack?: boolean;
+  isNoPadding?: boolean;
   title?: string;
 }) => {
   const insets = useSafeAreaInsets();
 
   return (
     <SafeAreaView className="flex-1 bg-[#000000]" edges={['top']}>
-      <View className="flex-1 px-4">
+      <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
         {isBack && (
           <View className="mt-[24px] flex flex-row items-center gap-x-[24px]">
             <BackButton />

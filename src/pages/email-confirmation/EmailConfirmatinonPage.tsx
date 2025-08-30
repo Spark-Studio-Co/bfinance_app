@@ -1,13 +1,13 @@
-import { View } from 'react-native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
-import LogoIcon from '~/shared/icons/LogoIcon';
 import { Text } from '~/shared/ui';
 import { Button } from '~/shared/ui/Button';
-import GoogleIcon from '~/shared/icons/GoogleIcon';
-import AppleIcon from '~/shared/icons/AppleIcon';
 import { Input } from '~/shared/ui/Input';
 
-export const EmailConfirmation = () => {
+import { useNavigation } from '@react-navigation/native';
+
+export const EmailConfirmationPage = () => {
+  const navigation = useNavigation();
+
   return (
     <AuthLayout isBack title="Email Confirmation">
       <Text weight="regular" className="mt-[24px] max-w-[343px] text-[14px] text-white">
@@ -16,6 +16,7 @@ export const EmailConfirmation = () => {
       </Text>
       <Input placeholder="Enter confirmation code" className="mt-[24px] h-[48px]" />
       <Button
+        onPress={() => navigation.navigate('SignUp' as never)}
         label="Confirm"
         className="mt-[12px] h-[42px]"
         weight="semibold"
