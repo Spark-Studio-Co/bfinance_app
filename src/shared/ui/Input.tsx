@@ -9,7 +9,7 @@ export interface InputProps extends Omit<React.ComponentProps<typeof TextInput>,
 }
 
 export const INPUT_VARIANTS: Record<Variant, string> = {
-  dark: 'bg-[#0F0F0F] plcaceholder:text-[#78797E] text-[17px] font-[400] text-white',
+  dark: 'bg-[#0F0F0F] text-[17px] font-[400] text-white',
   outline: 'bg-transparent border border-zinc-300',
   ghost: 'bg-transparent border-0',
 };
@@ -18,7 +18,7 @@ export const Input: React.FC<InputProps> = ({ variant = 'dark', className = '', 
   return (
     <TextInput
       {...props}
-      className={`w-full rounded-[12px] px-4 ${INPUT_VARIANTS[variant]} ${className}`}
+      className={`plcaceholder:text-[#78797E] w-full rounded-[12px] px-4 ${INPUT_VARIANTS[variant]} ${className}`}
     />
   );
 };

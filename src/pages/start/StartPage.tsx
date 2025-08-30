@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
@@ -11,8 +11,11 @@ import { Input } from '~/shared/ui/Input';
 // если используешь декларацию типов .mp4 — можно так:
 import heroVideo from '../../../assets/start_video.mp4';
 
+import { useNavigation } from '@react-navigation/native';
+
 export const StartPage = () => {
   const videoRef = useRef<Video>(null);
+  const navigation = useNavigation();
 
   return (
     <AuthLayout>
@@ -67,6 +70,7 @@ export const StartPage = () => {
           <Input placeholder="Email" className="mt-[12px] h-[48px]" />
 
           <Button
+            onPress={() => navigation.navigate('EmailConfirmation' as never)}
             label="Continue"
             className="mt-[12px] h-[42px]"
             weight="semibold"
