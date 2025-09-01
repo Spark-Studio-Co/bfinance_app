@@ -8,6 +8,7 @@ import { SignUpPage } from '~/pages/sign-up/SignUpPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification/IdentityVerificationPage';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
 import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
+import { ProfileScreen } from '~/pages/profile/ProfilePage';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -20,6 +21,7 @@ export function AuthStack() {
       <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
       <Stack.Screen name="History" component={TransactionHistoryScreen} />
       <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }

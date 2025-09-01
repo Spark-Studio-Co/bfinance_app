@@ -32,7 +32,7 @@ export const IdentityVerificationPage = () => {
           { icon: <GreenCheckmarkIcon />, label: 'Liveness check' },
         ]}
         ctaLabel="Start"
-        onPress={() => navigation.navigate('History' as never)}
+        onPress={() => navigation.navigate('Profile' as never)}
       />
       <IdentityVerificationCard
         className="mt-[24px]"

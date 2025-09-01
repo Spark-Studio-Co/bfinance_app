@@ -14,6 +14,7 @@ export type AuthStackParamList = {
   IdentityVerification: undefined;
   History: undefined;
   TransactionDetails: { transactionId: string };
+  Profile: undefined;
 };
 
 export type TabParamList = {
