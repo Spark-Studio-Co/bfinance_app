@@ -6,6 +6,8 @@ import { StartPage } from '~/pages/start';
 import { EmailConfirmationPage } from '~/pages/email-confirmation/EmailConfirmatinonPage';
 import { SignUpPage } from '~/pages/sign-up/SignUpPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification/IdentityVerificationPage';
+import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
+import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -16,6 +18,8 @@ export function AuthStack() {
       <Stack.Screen name="EmailConfirmation" component={EmailConfirmationPage} />
       <Stack.Screen name="SignUp" component={SignUpPage} />
       <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
+      <Stack.Screen name="History" component={TransactionHistoryScreen} />
+      <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
     </Stack.Navigator>
   );
 }

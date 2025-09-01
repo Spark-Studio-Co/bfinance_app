@@ -2,8 +2,8 @@ import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Typography } from '~/shared/ui/Typography';
 import { Transaction } from '../model/types';
-import { Image } from 'expo-image';
-// import apple from '../../../assets/apple.png';
+
+import AppleIcon from '~/shared/icons/AppleIcon';
 
 interface TransactionCardProps {
   transaction: Transaction;
@@ -21,28 +21,24 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({ transaction, o
 
   return (
     <TouchableOpacity
-      className="mx-4 mb-3 rounded-2xl bg-[#0F0F0F] p-4"
+      className="mx-4 mb-2.5 rounded-2xl bg-[#0F0F0F] p-4"
       onPress={() => onPress?.(transaction)}
       activeOpacity={0.7}>
       <View className="flex-row items-center">
         {/* Apple Icon */}
-        {/* <Image
-          source={require('../../../assets/Icons/HistoryScreen/apple.png')}
-          contentFit="cover"
-          transition={1000}
-        /> */}
+        <View className="mr-3">
+          <AppleIcon />
+        </View>
         {/* Transaction Info */}
         <View className="flex-1">
-          <Typography variant="subheading" className="mb-1">
-            {transaction.merchant}
-          </Typography>
-          <Text className="text-md text-[#AAAAAA]">
+          <Text className="mb-1 text-[17px] text-white">{transaction.merchant}</Text>
+          <Text className="text-[15px] text-[#AAAAAA]">
             {transaction.time} • {formatCardNumber(transaction.cardNumber)}
           </Text>
         </View>
 
         {/* Amount */}
-        <Typography variant="subheading">{formatAmount(transaction.amount)}</Typography>
+        <Text className="mb-1 text-[17px] text-white">{formatAmount(transaction.amount)}</Text>
       </View>
     </TouchableOpacity>
   );

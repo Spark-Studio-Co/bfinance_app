@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { TransactionCard } from './TransactionCard';
-import { TransactionGroup as TransactionGroupType, Transaction } from '../model/types';
+import { TransactionGroup as TransactionGroupType } from '../model/types';
 
 interface TransactionGroupProps {
   group: TransactionGroupType;
-  onTransactionPress?: (transaction: Transaction) => void;
+  onTransactionPress?: (transactionId: string) => void;
 }
 
 export const TransactionGroup: React.FC<TransactionGroupProps> = ({
@@ -13,13 +13,15 @@ export const TransactionGroup: React.FC<TransactionGroupProps> = ({
   onTransactionPress,
 }) => {
   return (
-    <View className="mb-6">
-      <Text className="mb-4 px-4 uppercase tracking-wider text-[#AAAAAA]">{group.date}</Text>
+    <View className="mb-5">
+      <Text className="mb-3 px-4 text-[13px] uppercase tracking-wider text-[#AAAAAA]">
+        {group.date}
+      </Text>
       {group.transactions.map((transaction) => (
         <TransactionCard
           key={transaction.id}
           transaction={transaction}
-          onPress={onTransactionPress}
+          onPress={() => onTransactionPress?.(transaction.id)}
         />
       ))}
     </View>

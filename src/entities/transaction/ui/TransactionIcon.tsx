@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import EmiratesLogo from '~/shared/icons/EmiratesLogo';
 
 interface TransactionIconProps {
   merchant: string;
@@ -25,10 +26,7 @@ export const TransactionIcon: React.FC<TransactionIconProps> = ({ merchant, size
   return (
     <View
       className={`${sizeClasses} ${getBackgroundColor()} items-center justify-center rounded-full`}>
-      <Text
-        className={`${textSize} ${getBackgroundColor() === 'bg-white' ? 'text-black' : 'text-white'}`}>
-        {getIcon()}
-      </Text>
+      <EmiratesLogo />
     </View>
   );
 };

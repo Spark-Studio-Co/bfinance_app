@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Typography } from '~/shared/ui/Typography';
+import { View, Text } from 'react-native';
 
 interface DetailRowProps {
   label: string;
@@ -9,18 +8,20 @@ interface DetailRowProps {
 }
 
 export const DetailRow: React.FC<DetailRowProps> = ({ label, value, variant = 'normal' }) => {
+  if (variant === 'error') {
+    // Специальный layout для decline reason
+    return (
+      <View className="rounded-[16px] bg-[#0F0F0F] px-6 py-6">
+        <Text className="mb-1 text-[17px] font-medium text-white">{label}</Text>
+        <Text className="text-[15px] text-[#878787]">{value}</Text>
+      </View>
+    );
+  }
+
   return (
-    <View className="mb-3 flex-row items-center justify-between rounded-xl bg-gray-900 p-4">
-      <Typography
-        variant="body"
-        className={variant === 'error' ? 'font-semibold text-white' : 'text-white'}>
-        {label}
-      </Typography>
-      <Typography
-        variant="body"
-        className={`${variant === 'error' ? 'text-gray-400' : 'text-gray-400'}`}>
-        {value}
-      </Typography>
+    <View className="flex-row items-center justify-between rounded-[16px] bg-[#0F0F0F] px-6 py-6">
+      <Text className="text-[16px] font-medium text-white">{label}</Text>
+      <Text className="text-[14px] text-[#878787]">{value}</Text>
     </View>
   );
 };

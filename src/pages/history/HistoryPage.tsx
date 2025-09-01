@@ -1,34 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { TransactionHistoryList } from '~/widgets/ui/HistoryList';
-import { TransactionDetailsScreen } from '../transaction-detail/TransactionDetailsPage';
 import { Header } from '~/features/Header/ui/Header';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { AuthStackParamList } from '~/shared/types/navigation';
+
+type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
 export const TransactionHistoryScreen = () => {
-  const [selectedTransactionId, setSelectedTransactionId] = useState<string | null>(null);
+  const navigation = useNavigation<NavigationProp>();
 
-  const handleBackFromDetails = () => {
-    setSelectedTransactionId(null);
+  const handleTransactionPress = (transactionId: string) => {
+    navigation.navigate('TransactionDetails', { transactionId });
   };
-
-  const handleContactSupport = () => {
-    console.log('Contact support pressed');
-  };
-
-  if (selectedTransactionId) {
-    return (
-      <TransactionDetailsScreen
-        transactionId={selectedTransactionId}
-        onBackPress={handleBackFromDetails}
-        onContactSupport={handleContactSupport}
-      />
-    );
-  }
 
   return (
     <View className="flex-1 bg-black">
-      <Header title="History" showBackButton={true} />
-      <TransactionHistoryList />
+      <Header title="History" showTitle={true} />
+      <TransactionHistoryList onTransactionPress={handleTransactionPress} />
     </View>
   );
 };

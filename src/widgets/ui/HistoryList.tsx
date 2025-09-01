@@ -3,8 +3,14 @@ import { ScrollView, ActivityIndicator, View } from 'react-native';
 import { TransactionGroup } from '~/entities/transaction/ui/TransactionGroup';
 import { useTransactionHistory } from '~/entities/transaction/model/hooks';
 
-export const TransactionHistoryList: React.FC = () => {
-  const { transactions, loading, handleTransactionPress } = useTransactionHistory();
+interface TransactionHistoryListProps {
+  onTransactionPress: (transactionId: string) => void;
+}
+
+export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
+  onTransactionPress,
+}) => {
+  const { transactions, loading } = useTransactionHistory();
 
   if (loading) {
     return (
@@ -23,7 +29,7 @@ export const TransactionHistoryList: React.FC = () => {
         <TransactionGroup
           key={`${group.date}-${index}`}
           group={group}
-          onTransactionPress={handleTransactionPress}
+          onTransactionPress={onTransactionPress}
         />
       ))}
     </ScrollView>

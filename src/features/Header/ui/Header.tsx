@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { Typography } from '~/shared/ui/Typography';
+import ChevronLeft from '~/shared/icons/ChevronLeft';
 
 interface HeaderProps {
   title: string;
-  showBackButton?: boolean;
+  showTitle?: boolean;
   onBackPress?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false, onBackPress }) => {
+export const Header: React.FC<HeaderProps> = ({ title, showTitle = false, onBackPress }) => {
   return (
-    <View className="mb-8 flex flex-row items-center px-4 pt-12">
-      {showBackButton && (
-        <TouchableOpacity className="mr-5" onPress={onBackPress}>
-          <Text className="text-4xl text-white">‹</Text>
-        </TouchableOpacity>
-      )}
-      <Typography variant="heading">{title}</Typography>
-    </View>
+    <TouchableOpacity onPress={onBackPress} className="mb-8 flex flex-row items-center px-4 pt-24">
+      <TouchableOpacity onPress={onBackPress} className="mr-6">
+        <Text className="text-white">
+          <ChevronLeft />
+        </Text>
+      </TouchableOpacity>
+
+      {showTitle && <Text className="text-[20px] font-semibold text-white">{title}</Text>}
+    </TouchableOpacity>
   );
 };
