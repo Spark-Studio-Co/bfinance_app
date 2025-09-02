@@ -43,7 +43,7 @@ export const Button: React.FC<ButtonProps> = ({
   theme,
   weight = 'semibold',
 }) => {
-  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px] py-4';
+  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px] ';
 
   const variantCls =
     variant === 'light'

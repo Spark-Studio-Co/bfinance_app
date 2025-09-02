@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import { Typography } from '~/shared/ui/Typography';
 import { Transaction } from '../model/types';
 
-import AppleIcon from '~/shared/icons/AppleIcon';
+import AppleIcon from '~/shared/icons/ProfileIcons/AppleIcon';
 
 interface TransactionCardProps {
   transaction: Transaction;
