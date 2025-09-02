@@ -1,9 +1,13 @@
+import { Transaction } from './../../entities/transaction/model/types';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 export type RootStackParamList = {
   Main: undefined;
   Auth: undefined;
+  History: undefined;
+  TransactionDetails: undefined;
+  Profile: undefined;
 };
 
 export type AuthStackParamList = {
