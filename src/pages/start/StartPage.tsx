@@ -11,14 +11,46 @@ import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
 import heroVideo from '../../../assets/start_video.mp4';
 import { useResponsive } from '~/shared/hooks/useResponsive';
+import Animated, {
+  useAnimatedKeyboard,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolation,
+  withSpring,
+} from 'react-native-reanimated';
 
 export const StartPage = () => {
   const videoRef = useRef<Video>(null);
   const navigation = useNavigation();
-  const { wp, hp, ms, fs } = useResponsive(); // ← используем
+  const { wp, hp, ms, fs } = useResponsive();
+
+  // Используем hook для отслеживания клавиатуры
+  const keyboard = useAnimatedKeyboard();
+
+  // Анимированный стиль для контейнера
+  const animatedStyle = useAnimatedStyle(() => {
+    const translateY = interpolate(
+      keyboard.height.value,
+      [0, 300], // От 0 до примерной высоты клавиатуры
+      [0, -keyboard.height.value * 0.6], // Плавно поднимаем контент
+      Extrapolation.CLAMP
+    );
+
+    return {
+      transform: [
+        {
+          translateY: withSpring(translateY, {
+            damping: 20,
+            stiffness: 90,
+            mass: 0.8,
+          }),
+        },
+      ],
+    };
+  });
 
   return (
-    <AuthLayout isNoPadding isBottomShown={true}>
+    <AuthLayout isNoPadding isBottomShown={true} enableKeyboardAvoiding={false}>
       <View className="flex-1" style={{ backgroundColor: 'black' }}>
         <Video
           ref={videoRef}
@@ -33,68 +65,71 @@ export const StartPage = () => {
 
         <View style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0,0,0,0.35)' }]} />
 
-        {/* было: className="mt-[70px]" */}
+        {/* Logo */}
         <View className="w-full items-center justify-center" style={{ marginTop: hp(7) }}>
           <LogoIcon />
         </View>
 
-        {/* было: h-[364px] px-[24px] py-[32px] rounded-[24px] */}
-        <View
-          className="mt-auto w-full rounded-tl-[24px] rounded-tr-[24px] border border-b-[1px]
-                     border-[#00000026] bg-[#000000]"
-          style={{
-            height: hp(44), // ~44% высоты экрана вместо фиксированных 364
-            paddingHorizontal: wp(6.4), // 24px от макета → относительное
-            paddingVertical: hp(4), // 32px → относительное
-            borderTopLeftRadius: ms(24),
-            borderTopRightRadius: ms(24),
-          }}>
-          {/* было: text-[24px] */}
-          <Text weight="semibold" className="text-center text-white" style={{ fontSize: fs(24) }}>
-            Welcome!
-          </Text>
+        {/* Content Container */}
+        <Animated.ScrollView
+          style={[{ flex: 1 }, animatedStyle]}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-end' }}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled">
+          <View
+            className="w-full rounded-tl-[24px] rounded-tr-[24px] border border-b-[1px]
+                         border-[#00000026] bg-[#000000]"
+            style={{
+              minHeight: hp(44),
+              paddingHorizontal: wp(6.4),
+              paddingVertical: hp(4),
+              borderTopLeftRadius: ms(24),
+              borderTopRightRadius: ms(24),
+            }}>
+            <Text weight="semibold" className="text-center text-white" style={{ fontSize: fs(24) }}>
+              Welcome!
+            </Text>
 
-          {/* Кнопки: лучше, чтобы ваш <Button> принимал проп style и прокидывал в корневой View */}
-          <Button
-            label="Continue with Google"
-            weight="semibold"
-            icon={<GoogleIcon />}
-            variant="light"
-            className="mt-8" // отступ можно оставить через Tailwind-скейл
-            style={{ height: hp(5.2) }} // было: h-[42px]
-            labelClassName="text-[#000000]"
-          />
+            <Button
+              label="Continue with Google"
+              weight="semibold"
+              icon={<GoogleIcon />}
+              variant="light"
+              className="mt-8"
+              style={{ height: hp(5.2) }}
+              labelClassName="text-[#000000]"
+            />
 
-          <Button
-            label="Continue with Apple"
-            weight="semibold"
-            icon={<AppleIcon />}
-            variant="dark"
-            className="mt-3"
-            style={{ height: hp(5.2) }}
-            labelClassName="text-white"
-          />
+            <Button
+              label="Continue with Apple"
+              weight="semibold"
+              icon={<AppleIcon />}
+              variant="dark"
+              className="mt-3"
+              style={{ height: hp(5.2) }}
+              labelClassName="text-white"
+            />
 
-          <Text
-            weight="semibold"
-            className="mt-3 text-center text-[#FFFFFF99]"
-            style={{ fontSize: fs(13) }} // было: text-[13px]
-          >
-            or
-          </Text>
+            <Text
+              weight="semibold"
+              className="mt-3 text-center text-[#FFFFFF99]"
+              style={{ fontSize: fs(13) }}>
+              or
+            </Text>
 
-          <Input placeholder="Email" style={{ height: hp(5.9), marginTop: hp(1.5) }} />
+            <Input placeholder="Email" style={{ height: hp(5.9), marginTop: hp(1.5) }} />
 
-          <Button
-            onPress={() => navigation.navigate('EmailConfirmation' as never)}
-            label="Continue"
-            weight="semibold"
-            variant="light"
-            className="mt-3"
-            style={{ height: hp(5.2) }}
-            labelClassName="text-[#000000]"
-          />
-        </View>
+            <Button
+              onPress={() => navigation.navigate('EmailConfirmation' as never)}
+              label="Continue"
+              weight="semibold"
+              variant="light"
+              className="mt-3"
+              style={{ height: hp(5.2) }}
+              labelClassName="text-[#000000]"
+            />
+          </View>
+        </Animated.ScrollView>
       </View>
     </AuthLayout>
   );

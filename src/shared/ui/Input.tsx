@@ -35,6 +35,7 @@ export const Input: React.FC<InputProps> = ({
     <TextInput
       {...props}
       style={combinedStyle}
+      autoCapitalize="none"
       className={`w-full placeholder:text-[#78797E] ${INPUT_VARIANTS[variant]} ${className}`}
     />
   );
