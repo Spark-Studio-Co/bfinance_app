@@ -75,7 +75,9 @@ export const StartPage = () => {
           style={[{ flex: 1 }, animatedStyle]}
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-end' }}
           showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled">
+          keyboardShouldPersistTaps="handled"
+          scrollEnabled={false}
+          bounces={false}>
           <View
             className="w-full rounded-tl-[24px] rounded-tr-[24px] border border-b-[1px]
                          border-[#00000026] bg-[#000000]"
