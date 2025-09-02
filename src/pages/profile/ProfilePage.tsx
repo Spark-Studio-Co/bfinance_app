@@ -10,6 +10,33 @@ export const ProfileScreen = () => {
 
   const handleMenuPress = (itemId: string) => {
     console.log(`Pressed: ${itemId}`);
+
+    switch (itemId) {
+      case 'history':
+        (navigation as any).navigate('History');
+        break;
+      case 'transaction-details':
+        // Передаем существующий ID транзакции из мока
+        (navigation as any).navigate('TransactionDetails', { transactionId: '1' });
+        break;
+      case 'identity':
+        // Добавить навигацию на страницу верификации
+        break;
+      case 'support':
+        // Добавить навигацию на страницу поддержки
+        break;
+      case 'privacy':
+        // Добавить навигацию на политику конфиденциальности
+        break;
+      case 'terms':
+        // Добавить навигацию на условия использования
+        break;
+      case 'aml':
+        // Добавить навигацию на AML политику
+        break;
+      default:
+        console.log(`No navigation defined for: ${itemId}`);
+    }
   };
 
   return (

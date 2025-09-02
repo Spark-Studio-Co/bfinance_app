@@ -13,8 +13,8 @@ export const TransactionGroup: React.FC<TransactionGroupProps> = ({
   onTransactionPress,
 }) => {
   return (
-    <View className="mb-5">
-      <Text className="mb-3 px-4 text-[13px] uppercase tracking-wider text-[#AAAAAA]">
+    <View className="mb-[24px] px-[24px]">
+      <Text className="mb-[8px] text-[13px] uppercase tracking-wider text-[#AAAAAA]">
         {group.date}
       </Text>
       {group.transactions.map((transaction) => (

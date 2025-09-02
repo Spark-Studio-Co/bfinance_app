@@ -11,6 +11,16 @@ export const menuSections = [
         title: 'Identity verification',
         icon: <AvatarIcon />,
       },
+      {
+        id: 'history',
+        title: 'Transaction History',
+        icon: <DocumentIcon />,
+      },
+      {
+        id: 'transaction-details',
+        title: 'Transaction Details',
+        icon: <DocumentIcon />,
+      },
     ],
   },
   {

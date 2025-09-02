@@ -50,12 +50,15 @@ export const useTransactionDetails = (transactionId: string) => {
     const loadTransaction = () => {
       setLoading(true);
 
-      const foundTransaction = mockTransactions.find((t) => t.id === transactionId);
-      setTransaction(foundTransaction || null);
-      setLoading(false);
+      // Имитируем загрузку данных
+      setTimeout(() => {
+        const foundTransaction = mockTransactions.find((t) => t.id === transactionId);
+        setTransaction(foundTransaction || null);
+        setLoading(false);
+      }, 200);
     };
 
-    setTimeout(loadTransaction, 200);
+    loadTransaction();
   }, [transactionId]);
 
   return {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import ChevronLeft from '~/shared/icons/ChevronLeft';
-import LogOut from '~/shared/icons/LogOut';
+import { View } from 'react-native';
+import { BackButton } from '~/shared/ui';
+import { Text } from '~/shared/ui/Text';
 
 interface HeaderProps {
   title: string;
@@ -19,24 +19,11 @@ export const Header: React.FC<HeaderProps> = ({
   onLogoutPress,
 }) => {
   return (
-    <View className="mb-8 flex flex-row items-center justify-between px-4 pt-24">
-      <TouchableOpacity onPress={onBackPress} className="mr-6">
-        <Text className="text-white">
-          <ChevronLeft />
-        </Text>
-      </TouchableOpacity>
-
-      {showTitle && (
-        <Text className="flex-1 text-center text-[20px] font-semibold text-white">{title}</Text>
-      )}
-
-      {showLogout ? (
-        <TouchableOpacity onPress={onLogoutPress}>
-          <LogOut />
-        </TouchableOpacity>
-      ) : (
-        <View className="w-6" />
-      )}
+    <View className="mt-[24px] flex flex-row items-center gap-x-[24px] px-[24px]">
+      <BackButton />
+      <Text weight="semibold" className="text-[20px] text-white">
+        {title}
+      </Text>
     </View>
   );
 };

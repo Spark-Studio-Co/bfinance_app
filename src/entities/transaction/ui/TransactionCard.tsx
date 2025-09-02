@@ -21,7 +21,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({ transaction, o
 
   return (
     <TouchableOpacity
-      className="mx-4 mb-2.5 rounded-2xl bg-[#0F0F0F] p-4"
+      className="mb-2.5 rounded-2xl bg-[#0F0F0F] p-4"
       onPress={() => onPress?.(transaction)}
       activeOpacity={0.7}>
       <View className="flex-row items-center">

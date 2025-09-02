@@ -37,10 +37,10 @@ export const TransactionDetailsScreen: React.FC = () => {
   }
 
   return (
-    <View className="flex-1 bg-[#000000]">
+    <SafeAreaView className="flex-1 bg-[#000000]">
       <Header title="Transaction" showTitle={true} onBackPress={handleBackPress} />
 
-      <View className="flex-1 px-4">
+      <View className="mt-[24px] flex-1 px-4">
         <TransactionAmount
           merchant={transaction.merchant}
           amount={transaction.amount}
@@ -61,6 +61,6 @@ export const TransactionDetailsScreen: React.FC = () => {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };

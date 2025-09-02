@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { TransactionHistoryList } from '~/widgets/ui/HistoryList';
 import { Header } from '~/features/Header/ui/Header';
 import { useNavigation } from '@react-navigation/native';
@@ -16,9 +16,9 @@ export const TransactionHistoryScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-black">
+    <SafeAreaView className="flex-1 bg-[#000000]">
       <Header title="History" showTitle={true} />
       <TransactionHistoryList onTransactionPress={handleTransactionPress} />
-    </View>
+    </SafeAreaView>
   );
 };
