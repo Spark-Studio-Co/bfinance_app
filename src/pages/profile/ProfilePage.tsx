@@ -48,7 +48,7 @@ export const ProfileScreen = () => {
           <View className="mb-4 h-24 w-24 overflow-hidden rounded-full">
             <Image
               source={{
-                uri: '../../../assets/Frame 628067.png',
+                uri: '../../../assets/avatar.png',
               }}
               className="h-full w-full"
             />
