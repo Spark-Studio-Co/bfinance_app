@@ -18,10 +18,10 @@ export interface ButtonProps {
   onPress?: (event: import('react-native').GestureResponderEvent) => void;
   disabled?: boolean;
   loading?: boolean;
-  icon?: React.ReactNode; // Иконка слева
-  className?: string; // Кастомные размеры/отступы
-  labelClassName?: string; // Кастомный текст
-  variant?: Variant; // filled | outline | ghost
+  icon?: React.ReactNode;
+  className?: string;
+  labelClassName?: string;
+  variant?: Variant;
   theme?: {
     bg?: string;
     text?: string;
@@ -38,12 +38,12 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   icon,
   className = '',
-  labelClassName = '',
+  labelClassName = 'text-[16px]',
   variant = 'light',
   theme,
-  weight,
+  weight = 'semibold',
 }) => {
-  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px]';
+  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px] ';
 
   const variantCls =
     variant === 'light'
@@ -59,7 +59,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || loading}
       className={`${base} ${variantCls} ${className}`}>
       {icon && <>{icon}</>}
-      <Text weight={weight} className={`${labelClassName}`}>
+      <Text weight={weight} className={labelClassName}>
         {label}
       </Text>
     </TouchableOpacity>

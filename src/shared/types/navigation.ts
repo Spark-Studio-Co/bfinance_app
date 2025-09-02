@@ -12,6 +12,9 @@ export type AuthStackParamList = {
   ResetPassword: { token?: string };
   SignUp: undefined;
   IdentityVerification: undefined;
+  History: undefined;
+  TransactionDetails: { transactionId: string };
+  Profile: undefined;
 };
 
 export type TabParamList = {

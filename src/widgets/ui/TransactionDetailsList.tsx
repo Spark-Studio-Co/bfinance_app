@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { DetailRow } from '~/features/Transactions/ui/DetailRow';
 import { Transaction } from '~/entities/transaction/model/types';
 
@@ -11,81 +11,42 @@ export const TransactionDetailsList: React.FC<TransactionDetailsListProps> = ({ 
   if (!transaction) return null;
 
   const formatAmount = (amount?: number) =>
-    amount === undefined || amount === null ? '—' : `${amount.toFixed(2)} USD`;
+    amount === undefined || amount === null ? '—' : `${amount} USD`;
 
-  const formatFee = (fee?: number) =>
-    fee === undefined || fee === null ? '—' : `${fee.toFixed(2)} USD`;
+  const formatFee = (fee?: number) => (fee === undefined || fee === null ? '—' : `${fee}$`);
 
-  const formatDate = (ts?: string | number | Date) => {
-    if (!ts) return '—';
-    const d = new Date(ts);
-    // если дата невалидная
-    if (isNaN(d.getTime())) return '—';
-    return d.toLocaleString();
-  };
-
-  const short = (v?: string, left = 6, right = 4) => {
-    if (!v) return '—';
-    const s = String(v);
-    if (s.length <= left + right + 1) return s;
-    return `${s.slice(0, left)}…${s.slice(-right)}`;
-  };
-
-  const statusLabel = (status?: string) => {
-    if (!status) return '—';
-    switch (status.toLowerCase()) {
-      case 'success':
-      case 'succeeded':
-      case 'completed':
-        return 'Completed';
-      case 'pending':
-      case 'processing':
-        return 'Pending';
-      case 'failed':
-      case 'error':
-        return 'Failed';
-      default:
-        return status;
-    }
-  };
-
-  const statusVariant =
-    String(transaction?.status ?? '').toLowerCase() === 'failed' ? 'error' : 'normal';
+  // Показываем decline reason для failed транзакций
+  const showDeclineReason = transaction.status === 'failed' && transaction.declineReason;
 
   return (
-    <View className="gap-2">
-      <DetailRow label="Amount" value={formatAmount((transaction as any)?.amount)} />
-      {'fee' in (transaction as any) && (
-        <DetailRow label="Fee" value={formatFee((transaction as any)?.fee)} />
+    <View className="gap-3">
+      {/* Показываем decline reason только для failed транзакций */}
+      {showDeclineReason && (
+        <DetailRow label="Insufficient funds" value="Decline reason" variant="error" />
       )}
-      {'status' in (transaction as any) && (
-        <DetailRow
-          label="Status"
-          value={statusLabel((transaction as any)?.status)}
-          variant={statusVariant}
-        />
-      )}
-      {'from' in (transaction as any) && (
-        <DetailRow label="From" value={short((transaction as any)?.from)} />
-      )}
-      {'to' in (transaction as any) && (
-        <DetailRow label="To" value={short((transaction as any)?.to)} />
-      )}
-      {('hash' in (transaction as any) || 'txHash' in (transaction as any)) && (
-        <DetailRow
-          label="Tx Hash"
-          value={short(((transaction as any)?.hash ?? (transaction as any)?.txHash) as string)}
-        />
-      )}
-      {'method' in (transaction as any) && (
-        <DetailRow label="Method" value={String((transaction as any)?.method ?? '—')} />
-      )}
-      {('createdAt' in (transaction as any) || 'date' in (transaction as any)) && (
-        <DetailRow
-          label="Date"
-          value={formatDate(((transaction as any)?.createdAt ?? (transaction as any)?.date) as any)}
-        />
-      )}
+
+      {/* Объединенная карточка для Billed amount и Fee */}
+      <View className="rounded-[16px] bg-[#0F0F0F] px-6 py-6">
+        {/* Billed amount */}
+        <View className="flex-row items-center justify-between pb-3">
+          <Text className="pb-0 text-[16px] font-medium text-white">Billed amount</Text>
+          <Text className="text-[14px] text-[#878787]">
+            {formatAmount(transaction.billedAmount)}
+          </Text>
+        </View>
+
+        {/* Separator */}
+        <View className="h-0.5 bg-[#1E1E1E]" />
+
+        {/* Fee */}
+        <View className="flex-row items-center justify-between pt-4">
+          <Text className="text-[16px] font-medium text-white">Fee</Text>
+          <Text className="text-[14px] text-[#878787]">{formatFee(transaction.fee)}</Text>
+        </View>
+      </View>
+
+      {/* Transaction ID - отдельная карточка */}
+      <DetailRow label="Transaction ID" value={transaction.transactionId} />
     </View>
   );
 };

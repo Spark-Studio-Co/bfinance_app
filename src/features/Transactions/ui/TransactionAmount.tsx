@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Typography } from '~/shared/ui/Typography';
 import { TransactionIcon } from '~/entities/transaction/ui/TransactionIcon';
 
@@ -17,13 +17,13 @@ export const TransactionAmount: React.FC<TransactionAmountProps> = ({
   const getAmountColor = () => {
     switch (status) {
       case 'success':
-        return 'text-red-500';
+        return '#EC594E'; // red-500
       case 'failed':
-        return 'text-white';
+        return '#ffffff'; // white
       case 'received':
-        return 'text-green-500';
+        return '#00E675'; // green-500
       default:
-        return 'text-white';
+        return '#ffffff';
     }
   };
 
@@ -45,24 +45,24 @@ export const TransactionAmount: React.FC<TransactionAmountProps> = ({
     }
   };
 
+  const formatAmount = (amount: number) => {
+    return amount.toLocaleString('en-US').replace(/,/g, ' ');
+  };
+
   return (
     <View className="mb-8 items-center">
-      <View className="mb-6">
+      <View className="mb-5">
         <TransactionIcon merchant={merchant} size="large" />
       </View>
 
-      <Typography variant="subheading" className="mb-4">
-        {merchant}
-      </Typography>
+      <Text className="mb-4 text-[16px] text-white">{merchant}</Text>
 
-      <Typography className={`mb-2 text-4xl font-bold ${getAmountColor()}`}>
+      <Text className="mb-2 text-[40px] font-bold" style={{ color: getAmountColor() }}>
         {getAmountPrefix()}
-        {amount} USD
-      </Typography>
+        {formatAmount(amount)} USD
+      </Text>
 
-      <Typography variant="caption" className="text-gray-400">
-        {getStatusText()}
-      </Typography>
+      <Text className="text-[17px] text-[#707579]">{getStatusText()}</Text>
     </View>
   );
 };

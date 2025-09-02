@@ -1,22 +1,42 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { Typography } from '~/shared/ui/Typography';
+import ChevronLeft from '~/shared/icons/ChevronLeft';
+import LogOut from '~/shared/icons/LogOut';
 
 interface HeaderProps {
   title: string;
-  showBackButton?: boolean;
+  showTitle?: boolean;
+  showLogout?: boolean;
   onBackPress?: () => void;
+  onLogoutPress?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false, onBackPress }) => {
+export const Header: React.FC<HeaderProps> = ({
+  title,
+  showTitle = false,
+  showLogout = false,
+  onBackPress,
+  onLogoutPress,
+}) => {
   return (
-    <View className="mb-8 flex flex-row items-center px-4 pt-12">
-      {showBackButton && (
-        <TouchableOpacity className="mr-5" onPress={onBackPress}>
-          <Text className="text-4xl text-white">‹</Text>
-        </TouchableOpacity>
+    <View className="mb-8 flex flex-row items-center justify-between px-4 pt-24">
+      <TouchableOpacity onPress={onBackPress} className="mr-6">
+        <Text className="text-white">
+          <ChevronLeft />
+        </Text>
+      </TouchableOpacity>
+
+      {showTitle && (
+        <Text className="flex-1 text-center text-[20px] font-semibold text-white">{title}</Text>
       )}
-      <Typography variant="heading">{title}</Typography>
+
+      {showLogout ? (
+        <TouchableOpacity onPress={onLogoutPress}>
+          <LogOut />
+        </TouchableOpacity>
+      ) : (
+        <View className="w-6" />
+      )}
     </View>
   );
 };
