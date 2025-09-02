@@ -2,12 +2,11 @@ import { AuthLayout } from '~/app/layouts/AuthLayout';
 import { IdentityVerificationCard } from '~/features/IdentityVerificationCard/IdentityVerificationCard';
 import { Text } from '~/shared/ui';
 import { Button } from '~/shared/ui/Button';
-
 import GreenBookIcon from '~/shared/icons/GreenBookIcon';
 import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
 import GreenPinIcon from '~/shared/icons/GreenPinIcon';
-
 import { useNavigation } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export const IdentityVerificationPage = () => {
@@ -47,7 +46,7 @@ export const IdentityVerificationPage = () => {
           { icon: <GreenCheckmarkIcon />, label: 'Liveness check' },
         ]}
         ctaLabel="Start"
-        onPress={() => navigation.navigate('Profile' as never)}
+        onPress={() => navigation.navigate('Main' as never)}
       />
       <IdentityVerificationCard
         className="mt-6"

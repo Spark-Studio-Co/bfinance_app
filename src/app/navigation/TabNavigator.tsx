@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomePage } from '../../pages/home';
 import { FinancePage } from '../../pages/finance';
 import { BudgetPage } from '../../pages/budget';
-import { SettingsPage } from '../../pages/settings/';
 import type { TabParamList } from '../../shared/types/navigation';
-import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
+import HouseIcon from '~/shared/icons/HouseIcon';
+import PaymentIcon from '~/shared/icons/PaymentIcon';
+import ServiceIcon from '~/shared/icons/ServiceIcon';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -14,12 +15,34 @@ export function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#0F0F0F',
+          borderTopColor: '#2A2A2A',
+          borderTopWidth: 1,
+        },
+        tabBarShowLabel: false,
       }}>
-      <Tab.Screen name="Home" component={HomePage} options={{ title: 'Главная' }} />
-      <Tab.Screen name="Finance" component={FinancePage} options={{ title: 'Финансы' }} />
-      <Tab.Screen name="Budget" component={BudgetPage} options={{ title: 'Бюджет' }} />
-      <Tab.Screen name="Settings" component={SettingsPage} options={{ title: 'Настройки' }} />
-      <Tab.Screen name="History" component={TransactionHistoryScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomePage}
+        options={{
+          tabBarIcon: ({ focused }) => <HouseIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+        }}
+      />
+      <Tab.Screen
+        name="Finance"
+        component={FinancePage}
+        options={{
+          tabBarIcon: ({ focused }) => <PaymentIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+        }}
+      />
+      <Tab.Screen
+        name="Budget"
+        component={BudgetPage}
+        options={{
+          tabBarIcon: ({ focused }) => <ServiceIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+        }}
+      />
     </Tab.Navigator>
   );
 }

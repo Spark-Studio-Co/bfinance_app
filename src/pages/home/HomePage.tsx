@@ -13,7 +13,6 @@ export function HomePage({}: HomePageProps) {
           <Text weight="bold" className="mb-4 text-2xl text-gray-800">
             Добро пожаловать в BFinance
           </Text>
-
           <View className="mb-4 rounded-lg bg-white p-4 shadow-sm">
             <Text weight="medium" className="mb-2 text-lg text-gray-700">
               Сводка
@@ -43,7 +42,6 @@ export function HomePage({}: HomePageProps) {
               </Text>
             </View>
           </View>
-
           <View className="rounded-lg bg-white p-4 shadow-sm">
             <Text weight="medium" className="mb-2 text-lg text-gray-700">
               Последние транзакции

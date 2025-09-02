@@ -19,9 +19,6 @@ export function AuthStack() {
       <Stack.Screen name="EmailConfirmation" component={EmailConfirmationPage} />
       <Stack.Screen name="SignUp" component={SignUpPage} />
       <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
-      <Stack.Screen name="History" component={TransactionHistoryScreen} />
-      <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }
