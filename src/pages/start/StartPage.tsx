@@ -18,7 +18,7 @@ export const StartPage = () => {
   const navigation = useNavigation();
 
   return (
-    <AuthLayout isNoPadding>
+    <AuthLayout isNoPadding isBottomShown={true}>
       {/* Контейнер-слой: видео = background */}
       <View className="flex-1" style={{ backgroundColor: 'black' }}>
         {/* Фоновое видео на заднем плане */}
@@ -36,7 +36,7 @@ export const StartPage = () => {
         <View style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0,0,0,0.35)' }]} />
 
         {/* ДАЛЬШЕ — ВЕСЬ ТВОЙ КОНТЕНТ ПОВЕРХ */}
-        <View className="mt-[20px] w-full items-center justify-center">
+        <View className="mt-[70px] w-full items-center justify-center">
           <LogoIcon />
         </View>
 

@@ -18,7 +18,7 @@ export const Input: React.FC<InputProps> = ({ variant = 'dark', className = '', 
   return (
     <TextInput
       {...props}
-      className={`plcaceholder:text-[#78797E] w-full rounded-[12px] px-4 ${INPUT_VARIANTS[variant]} ${className}`}
+      className={`w-full rounded-[12px] px-4 placeholder:text-[#78797E] ${INPUT_VARIANTS[variant]} ${className}`}
     />
   );
 };
