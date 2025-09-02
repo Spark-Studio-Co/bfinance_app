@@ -4,23 +4,32 @@ import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
 
 import { useNavigation } from '@react-navigation/native';
+import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export const EmailConfirmationPage = () => {
   const navigation = useNavigation();
+  const { s } = useResponsive();
 
   return (
     <AuthLayout isBack title="Email Confirmation">
-      <Text weight="regular" className="mt-[24px] max-w-[343px] text-[14px] text-white">
+      <Text
+        weight="regular"
+        style={{
+          marginTop: s(24),
+          maxWidth: s(343),
+          fontSize: s(14),
+          color: 'white',
+        }}>
         We have just sent a confirmation code to <Text weight="semibold">john@example.com</Text>.
         Enter it in the field below.
       </Text>
-      <Input placeholder="Enter confirmation code" className="mt-[24px] h-[48px]" />
+      <Input placeholder="Enter confirmation code" style={{ marginTop: s(24), height: s(48) }} />
       <Button
         onPress={() => navigation.navigate('SignUp' as never)}
         label="Confirm"
-        className="mt-[12px] h-[42px]"
+        style={{ marginTop: s(12), height: s(42) }}
         weight="semibold"
-        labelClassName="text-[#000000] text-[15px]"
+        labelClassName="text-[#000000]"
         variant="light"
       />
     </AuthLayout>

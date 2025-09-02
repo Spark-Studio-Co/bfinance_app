@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text } from '.';
+import { useResponsive } from '../hooks/useResponsive';
 
 type Variant = 'light' | 'dark' | 'ghost';
 
@@ -14,6 +15,7 @@ export type FontWeight =
   | 'black';
 
 export interface ButtonProps {
+  style?: object;
   label: string;
   onPress?: (event: import('react-native').GestureResponderEvent) => void;
   disabled?: boolean;
@@ -38,12 +40,14 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   icon,
   className = '',
-  labelClassName = 'text-[16px]',
+  labelClassName = '',
   variant = 'light',
-  theme,
   weight = 'semibold',
+  style,
 }) => {
-  const base = 'inline-flex flex-row w-full items-center justify-center gap-2 rounded-[12px] ';
+  const { s } = useResponsive();
+
+  const base = 'inline-flex flex-row w-full items-center justify-center';
 
   const variantCls =
     variant === 'light'
@@ -52,14 +56,25 @@ export const Button: React.FC<ButtonProps> = ({
         ? `bg-[#000000] border-[1px] border-[#454545]`
         : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;
 
+  const combinedStyle = {
+    borderRadius: s(12),
+    gap: s(8),
+    ...style,
+  };
+
+  const labelStyle = {
+    fontSize: s(15),
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
       disabled={disabled || loading}
-      className={`${base} ${variantCls} ${className}`}>
+      className={`${base} ${variantCls} ${className}`}
+      style={combinedStyle}>
       {icon && <>{icon}</>}
-      <Text weight={weight} className={labelClassName}>
+      <Text weight={weight} className={labelClassName} style={labelStyle}>
         {label}
       </Text>
     </TouchableOpacity>

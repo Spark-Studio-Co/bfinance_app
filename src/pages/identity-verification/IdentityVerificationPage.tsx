@@ -8,23 +8,38 @@ import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
 import GreenPinIcon from '~/shared/icons/GreenPinIcon';
 
 import { useNavigation } from '@react-navigation/native';
+import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export const IdentityVerificationPage = () => {
   const navigation = useNavigation();
+  const { s } = useResponsive();
 
   return (
     <AuthLayout>
-      <Text weight="semibold" className="mt-[24px] text-[20px] text-white">
+      <Text
+        weight="semibold"
+        style={{
+          marginTop: s(24),
+          fontSize: s(20),
+          color: 'white',
+        }}>
         Identity Verification
       </Text>
       <Text
         weight="regular"
-        className="mt-[12px] max-w-[290px] text-[14px] leading-[22px] tracking-[-0.43px] text-[#FFFFFFCC]">
-        Due to regulatory restrictions, every client is required to undergo a “know your customer
-        (KYC)” process. It will take a few minutes
+        style={{
+          marginTop: s(12),
+          maxWidth: s(290),
+          fontSize: s(14),
+          lineHeight: s(22),
+          letterSpacing: -0.43,
+          color: '#FFFFFFCC',
+        }}>
+        Due to regulatory restrictions, every client is required to undergo a "know your customer
+        (KYC)" process. It will take a few minutes
       </Text>
       <IdentityVerificationCard
-        className="mt-[24px]"
+        className="mt-6"
         title="Basic"
         subtitle="Full access to the application"
         steps={[
@@ -35,7 +50,7 @@ export const IdentityVerificationPage = () => {
         onPress={() => navigation.navigate('Profile' as never)}
       />
       <IdentityVerificationCard
-        className="mt-[24px]"
+        className="mt-6"
         title="Advanced"
         subtitle="Increased limits"
         steps={[{ icon: <GreenPinIcon />, label: 'Proof of address' }]}
@@ -45,9 +60,9 @@ export const IdentityVerificationPage = () => {
       />
 
       <Button
-        className="mt-auto h-[42px]"
+        style={{ marginTop: 'auto', height: s(42) }}
         weight="semibold"
-        labelClassName="text-[#FFFFFFF2] text-[15px]"
+        labelClassName="text-[#FFFFFFF2]"
         onPress={() => navigation.navigate('Start' as never)}
         variant="dark"
         label="Log out"

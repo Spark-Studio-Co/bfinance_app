@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Text } from '~/shared/ui';
+import { useResponsive } from '~/shared/hooks/useResponsive';
 
 type Step = {
   label: string;
@@ -29,38 +30,80 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   className = '',
   isActive = true,
 }) => {
+  const { s } = useResponsive();
   const inactiveCls = !isActive ? 'opacity-50' : '';
 
+  const cardStyle = {
+    borderRadius: s(16),
+    padding: s(24),
+  };
+
+  const titleStyle = {
+    fontSize: s(20),
+  };
+
+  const subtitleStyle = {
+    marginTop: s(6),
+    fontSize: s(12),
+  };
+
+  const stepsContainerStyle = {
+    marginTop: s(16.5),
+    gap: s(8),
+  };
+
+  const stepIconStyle = {
+    marginRight: s(12),
+  };
+
+  const stepTextStyle = {
+    fontSize: s(13),
+    letterSpacing: 1,
+  };
+
+  const buttonStyle = {
+    marginTop: s(16),
+    height: s(36),
+    borderRadius: s(20),
+  };
+
+  const buttonTextStyle = {
+    fontSize: s(15),
+    letterSpacing: -0.23,
+  };
+
   return (
-    <View className={`w-full rounded-[16px] bg-[#0F0F0F] p-[24px] ${inactiveCls} ${className}`}>
+    <View className={`w-full bg-[#0F0F0F] ${inactiveCls} ${className}`} style={cardStyle}>
       {/* Header */}
       <Text
         weight="semibold"
-        className={`text-[20px] ${isActive ? 'text-white' : 'text-[#9CA3AF]'}`}>
+        className={isActive ? 'text-white' : 'text-[#9CA3AF]'}
+        style={titleStyle}>
         {title}
       </Text>
 
       {!!subtitle && (
         <Text
           weight="regular"
-          className={`mt-[6px] text-[12px] ${isActive ? 'text-[#FFFFFF80]' : 'text-[#6B7280]'}`}>
+          className={isActive ? 'text-[#FFFFFF80]' : 'text-[#6B7280]'}
+          style={subtitleStyle}>
           {subtitle}
         </Text>
       )}
 
       {/* Steps */}
-      <View className="mt-[16.5px] gap-y-[8px]">
+      <View style={stepsContainerStyle}>
         {steps.map((s, i) => (
           <View key={`${s.label}-${i}`} className="flex-row items-center">
-            <View className="mr-3">
+            <View style={stepIconStyle}>
               {s.icon ?? (
-                <View className="h-[20px] w-[20px] rounded-full border border-emerald-500 bg-emerald-500/15" />
+                <View className="h-full w-full rounded-full border border-emerald-500 bg-emerald-500/15" />
               )}
             </View>
             <Text
               weight="regular"
-              className={`text-[13px] ${isActive ? 'text-white' : 'text-[#9CA3AF]'}`}
-              style={{ letterSpacing: 1 }}>
+              className={isActive ? 'text-white' : 'text-[#9CA3AF]'}
+              style={stepTextStyle}>
               {s.label}
             </Text>
           </View>
@@ -72,8 +115,9 @@ export const IdentityVerificationCard: React.FC<Props> = ({
           activeOpacity={0.7}
           onPress={onPress}
           disabled={disabled}
-          className="mt-[16px] h-[36px] items-center justify-center rounded-[20px] bg-[#FFFFFF14]">
-          <Text weight="semibold" className="text-[15px] tracking-[-0.23px] text-[#FFFFFFF2]">
+          className="items-center justify-center bg-[#FFFFFF14]"
+          style={buttonStyle}>
+          <Text weight="semibold" className="text-[#FFFFFFF2]" style={buttonTextStyle}>
             {ctaLabel}
           </Text>
         </TouchableOpacity>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, View } from 'react-native';
 import CheckIcon from '../icons/CheckIcon';
+import { useResponsive } from '../hooks/useResponsive';
 
 interface CheckboxProps {
   checked: boolean;
@@ -15,15 +16,24 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
   className,
 }) => {
+  const { s } = useResponsive();
+
+  const checkboxStyle = {
+    height: s(20),
+    width: s(20),
+    borderRadius: s(4),
+  };
+
   return (
     <Pressable
       onPress={() => !disabled && onChange(!checked)}
-      className={`${className}`}
+      className={className}
       disabled={disabled}>
       <View
-        className={`h-[20px] w-[20px] items-center justify-center rounded
+        className={`items-center justify-center
         ${checked ? 'bg-[#00E675]' : 'bg-white'} 
-        ${disabled ? 'opacity-50' : ''}`}>
+        ${disabled ? 'opacity-50' : ''}`}
+        style={checkboxStyle}>
         {checked && <CheckIcon />}
       </View>
     </Pressable>

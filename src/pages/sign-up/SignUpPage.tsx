@@ -8,37 +8,51 @@ import { AuthLayout } from '~/app/layouts/AuthLayout';
 import { Button } from '~/shared/ui/Button';
 import { Checkbox } from '~/shared/ui/Checkbox';
 import { Input } from '~/shared/ui/Input';
+import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export const SignUpPage = () => {
   const navigation = useNavigation();
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const { s } = useResponsive();
 
   return (
     <AuthLayout isBack title="Sign Up">
-      <Input placeholder="First name" className="mt-[24px] h-[48px]" />
-      <Input placeholder="Last name" className="mt-[12px] h-[48px]" />
+      <Input placeholder="First name" style={{ marginTop: s(24), height: s(48) }} />
+      <Input placeholder="Last name" style={{ marginTop: s(12), height: s(48) }} />
 
-      <View className="mt-[24px] flex max-w-[290px] flex-row items-center gap-x-3">
+      <View
+        style={{
+          marginTop: s(24),
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: s(12),
+          maxWidth: s(290),
+        }}>
         <Checkbox checked={termsAccepted} onChange={setTermsAccepted} />
         <Text
           weight="regular"
-          className="align-middle text-[14px] leading-[20px] tracking-[-0.23px] text-white">
+          style={{
+            fontSize: s(14),
+            lineHeight: s(20),
+            letterSpacing: -0.23,
+            color: 'white',
+          }}>
           I agree to the{' '}
           <Text
-            className="text-[#00E675]"
+            style={{ color: '#00E675' }}
             onPress={() => Linking.openURL('https://cdn.bfinance.app/terms-of-use.pdf')}>
             Terms of Use
           </Text>
           ,
           <Text
-            className="text-[#00E675]"
+            style={{ color: '#00E675' }}
             onPress={() => Linking.openURL('https://cdn.bfinance.app/privacy-policy.pdf')}>
             {' '}
             Privacy Policy
           </Text>
           ,
           <Text
-            className="text-[#00E675]"
+            style={{ color: '#00E675' }}
             onPress={() => Linking.openURL('https://cdn.bfinance.app/aml-policy.pdf')}>
             {' '}
             AML Policy
@@ -50,9 +64,9 @@ export const SignUpPage = () => {
       <Button
         onPress={() => navigation.navigate('IdentityVerification' as never)}
         label="Continue"
-        className="mt-[24px] h-[42px]"
+        style={{ marginTop: s(24), height: s(42) }}
         weight="semibold"
-        labelClassName="text-[#000000] text-[15px]"
+        labelClassName="text-[#000000]"
         variant="light"
       />
     </AuthLayout>
