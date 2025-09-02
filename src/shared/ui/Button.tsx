@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { Text } from '.';
 import { useResponsive } from '../hooks/useResponsive';
 
-type Variant = 'light' | 'dark' | 'ghost' | 'neon';
+type Variant = 'light' | 'dark' | 'ghost' | 'neon' | 'outline';
 
 export type FontWeight =
   | 'ultralight'
@@ -56,7 +56,9 @@ export const Button: React.FC<ButtonProps> = ({
         ? `bg-[#000000] border-[1px] border-[#454545]`
         : variant === 'neon'
           ? `bg-transparent` // add more neon-specific classes here if needed
-          : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;
+          : variant === 'outline'
+            ? `bg-transparent border-[1px] border-[#484848]`
+            : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;
 
   const combinedStyle = {
     borderRadius: variant === 'neon' ? s(10) : s(12),
