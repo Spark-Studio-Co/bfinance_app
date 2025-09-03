@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useResponsive } from '../hooks';
 import Text from './Text';
 import ClockIcon from '../icons/ClockIcon';
@@ -11,6 +12,11 @@ interface ProfileAvatarProps {
 
 export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) => {
   const { s } = useResponsive();
+  const navigation = useNavigation();
+
+  const handleHistoryPress = () => {
+    navigation.navigate('History' as never);
+  };
 
   const imageStyle = {
     width: s(40),
@@ -43,7 +49,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
           Timur
         </Text>
       </View>
-      <TouchableOpacity style={buttonStyle}>
+      <TouchableOpacity style={buttonStyle} onPress={handleHistoryPress}>
         <ClockIcon />
       </TouchableOpacity>
     </View>
