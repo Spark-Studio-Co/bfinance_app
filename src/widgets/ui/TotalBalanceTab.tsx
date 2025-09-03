@@ -32,7 +32,7 @@ export const TotalBalanceTab = () => {
   const balance = 1348;
 
   return (
-    <View className="flex  w-full flex-col ">
+    <View className="mt-[16px]  flex w-full flex-col">
       <Text weight="medium" style={totalBalanceStyle} className="font-[510] text-[#484848]">
         Total balance
       </Text>

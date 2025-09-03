@@ -33,18 +33,65 @@ const cryptoItems = [
   {
     id: '3',
     isFiat: false,
-    icon: 'https://cryptologos.cc/logos/bitcoin-btc-logo.png',
+    icon: require('../../../assets/bitcoin.png'),
     name: 'Bitcoin',
-    value: '0.5 BTC',
+    cryptoAmount: '0.5 BTC',
+    value: '$10,000',
     title: 'Bitcoin',
   },
   {
     id: '4',
     isFiat: false,
-    icon: 'https://cryptologos.cc/logos/ethereum-eth-logo.png',
+    icon: require('../../../assets/bitcoin.png'), // временно используем bitcoin для всех
     name: 'Ethereum',
-    value: '10.2 ETH',
+    cryptoAmount: '10.2 ETH',
+    value: '$10,000',
     title: 'Ethereum',
+  },
+  {
+    id: '5',
+    isFiat: false,
+    icon: require('../../../assets/bitcoin.png'),
+    name: 'Cardano',
+    cryptoAmount: '1,500 ADA',
+    value: '$10,000',
+    title: 'Cardano',
+  },
+  {
+    id: '6',
+    isFiat: false,
+    icon: require('../../../assets/bitcoin.png'),
+    name: 'Solana',
+    cryptoAmount: '25.8 SOL',
+    value: '$10,000',
+    title: 'Solana',
+  },
+  {
+    id: '7',
+    isFiat: false,
+    icon: require('../../../assets/bitcoin.png'),
+    name: 'Polygon',
+    cryptoAmount: '800 MATIC',
+    value: '$10,000',
+    title: 'Polygon',
+  },
+  {
+    id: '8',
+    isFiat: false,
+    icon: require('../../../assets/bitcoin.png'),
+    name: 'Chainlink',
+    cryptoAmount: '45.2 LINK',
+    value: '$10,000',
+    title: 'Chainlink',
+  },
+  {
+    id: '9',
+    isFiat: false,
+    icon: require('../../../assets/bitcoin.png'),
+    name: 'Polkadot',
+    cryptoAmount: '120.5 DOT',
+    value: '$10,000',
+    title: 'Polkadot',
   },
 ];
 
@@ -84,7 +131,9 @@ export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto })
             icon={'icon' in item ? item.icon : undefined}
             name={item.name}
             value={item.value}
+            cryptoAmount={'cryptoAmount' in item ? item.cryptoAmount : undefined}
             title={item.title}
+            isCrypto={isCrypto}
           />
         </View>
       ))}

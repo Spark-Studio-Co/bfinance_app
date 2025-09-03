@@ -34,18 +34,13 @@ export const MainLayout = ({
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-[#000000]">
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled">
-          {content}
-        </ScrollView>
-      </KeyboardAvoidingView>
+    <SafeAreaView className="flex-1 bg-[#000000]" edges={['top', 'left', 'right']}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className="flex-1"
+        keyboardShouldPersistTaps="handled">
+        {content}
+      </ScrollView>
     </SafeAreaView>
   );
 };

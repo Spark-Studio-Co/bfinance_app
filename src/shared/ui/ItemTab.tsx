@@ -1,18 +1,29 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, ImageSourcePropType } from 'react-native';
 import { useResponsive } from '../hooks';
 import Text from './Text';
 
 interface ItemTabProps {
   isFiat: boolean;
+  isCrypto?: boolean;
   currency?: string;
-  icon?: string;
+  icon?: ImageSourcePropType;
   name?: string;
   value?: string;
   title?: string;
+  cryptoAmount?: string;
 }
 
-export const ItemTab: React.FC<ItemTabProps> = ({ isFiat, currency, icon, name, value, title }) => {
+export const ItemTab: React.FC<ItemTabProps> = ({
+  isFiat,
+  isCrypto,
+  currency,
+  icon,
+  name,
+  value,
+  cryptoAmount,
+  title,
+}) => {
   const { s } = useResponsive();
 
   const containerStyle = {
@@ -35,7 +46,10 @@ export const ItemTab: React.FC<ItemTabProps> = ({ isFiat, currency, icon, name, 
 
   const nameStyle = {
     fontSize: s(17),
-    lineHeight: s(24),
+  };
+
+  const cryptoAmountStyle = {
+    fontSize: s(15),
   };
 
   return (
@@ -52,11 +66,18 @@ export const ItemTab: React.FC<ItemTabProps> = ({ isFiat, currency, icon, name, 
             </Text>
           </View>
         ) : (
-          <Image source={{ uri: icon }} style={circleStyle} className="rounded-full" />
+          <Image source={icon} style={circleStyle} className="rounded-full" />
         )}
-        <Text style={nameStyle} weight="semibold" className="text-white">
-          {name}
-        </Text>
+        <View className="flex flex-col items-start">
+          <Text style={nameStyle} weight="semibold" className="text-white">
+            {name}
+          </Text>
+          {isCrypto && (
+            <Text style={cryptoAmountStyle} weight="regular" className="mt-[2px] text-[#AAAAAA]">
+              {cryptoAmount}
+            </Text>
+          )}
+        </View>
       </View>
       <Text className="text-white" weight="medium" style={nameStyle}>
         {value}
