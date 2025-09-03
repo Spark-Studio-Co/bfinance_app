@@ -7,7 +7,7 @@ function AppleIcon(props: any) {
       height={24}
       viewBox="0 0 25 24"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      
       {...props}>
       <Path transform="translate(.5)" fill="#000" d="M0 0H24V24H0z" />
       <Path

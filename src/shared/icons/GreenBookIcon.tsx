@@ -2,13 +2,7 @@ import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
 const GreenBookIcon = (props: any) => (
-  <Svg
-    width={15}
-    height={13}
-    viewBox="0 0 15 13"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+  <Svg width={15} height={13} viewBox="0 0 15 13" fill="none" {...props}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

@@ -5,8 +5,8 @@ import Text from './Text';
 import ClockIcon from '../icons/ClockIcon';
 
 interface ProfileAvatarProps {
-  name: string;
-  imageSrc: string;
+  name?: string;
+  imageSrc?: string;
 }
 
 export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) => {
@@ -32,11 +32,15 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   return (
-    <View className="flex w-full items-center justify-between">
+    <View className="flex w-full flex-row items-center justify-between">
       <View className="flex flex-row items-center" style={containerStyle}>
-        <Image source={{ uri: imageSrc }} style={imageStyle} className="rounded-full" />
-        <Text style={textStyle} className="font-[590] text-white">
-          {name}
+        <Image
+          source={require('../../../assets/avatar.png')}
+          style={imageStyle}
+          className="rounded-full"
+        />
+        <Text style={textStyle} weight="semibold" className=" text-white">
+          Timur
         </Text>
       </View>
       <TouchableOpacity style={buttonStyle}>

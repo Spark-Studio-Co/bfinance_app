@@ -9,7 +9,6 @@ export const TotalBalanceTab = () => {
 
   const balanceStyle = {
     fontSize: s(40),
-    lineHeight: s(22),
     letterSpacing: s(-0.4),
   };
 
@@ -20,9 +19,9 @@ export const TotalBalanceTab = () => {
   };
 
   const buttonStyle = {
-    width: s(173),
     height: s(40),
     fontSize: s(15),
+    flex: 1,
   };
 
   const formatNumber = (num: number | string) => {
@@ -33,28 +32,34 @@ export const TotalBalanceTab = () => {
   const balance = 1348;
 
   return (
-    <View className="flex w-full flex-col">
-      <Text style={totalBalanceStyle} className="font-[510] text-[#484848]">
+    <View className="flex  w-full flex-col ">
+      <Text weight="medium" style={totalBalanceStyle} className="font-[510] text-[#484848]">
         Total balance
       </Text>
-      <Text style={balanceStyle} className="mt-[13px] font-[700]">
-        <Text className="text-white/50">$</Text>
-        <Text className="text-white">{formatNumber(balance)}</Text>
-      </Text>
-      <View className="flex w-full items-center justify-between">
+      <View className=" flex flex-row font-bold">
+        <Text weight="bold" className="font-bold text-white/50" style={balanceStyle}>
+          $
+        </Text>
+        <Text weight="bold" className="font-bold text-white" style={balanceStyle}>
+          {formatNumber(balance)}
+        </Text>
+      </View>
+      <View className="mt-[12px] flex w-full flex-row items-center justify-between gap-[6px]">
         <Button
           variant="neon"
           label="Top-up"
+          weight="bold"
           style={buttonStyle}
-          className="font-[700] text-black"
-          icon={<ArrowDown color="black" />}
+          className="text-black"
+          icon={<ArrowDown color="black" size={s(13)} />}
         />
         <Button
           variant="outline"
+          weight="bold"
           label="Withdraw"
+          labelClassName="text-white"
           style={buttonStyle}
-          className="font-[700] text-white"
-          icon={<ArrowUp color="white" />}
+          icon={<ArrowUp color="white" size={s(13)} />}
         />
       </View>
     </View>

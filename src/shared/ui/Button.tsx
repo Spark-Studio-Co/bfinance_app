@@ -55,7 +55,7 @@ export const Button: React.FC<ButtonProps> = ({
       : variant === 'dark'
         ? `bg-[#000000] border-[1px] border-[#454545]`
         : variant === 'neon'
-          ? `bg-transparent` // add more neon-specific classes here if needed
+          ? `bg-[#00E675] text-[#ffff] `
           : variant === 'outline'
             ? `bg-transparent border-[1px] border-[#484848]`
             : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;

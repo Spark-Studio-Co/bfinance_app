@@ -1,13 +1,7 @@
 import Svg, { Path } from 'react-native-svg';
 
 const ChevronLeft = (props: any) => (
-  <Svg
-    width={10}
-    height={16}
-    viewBox="0 0 10 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+  <Svg width={10} height={16} viewBox="0 0 10 16" fill="none" {...props}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

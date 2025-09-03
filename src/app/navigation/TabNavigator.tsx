@@ -19,6 +19,7 @@ export function TabNavigator() {
           backgroundColor: '#0F0F0F',
           borderTopColor: '#2A2A2A',
           borderTopWidth: 1,
+          paddingTop: 16.5,
         },
         tabBarShowLabel: false,
       }}>
