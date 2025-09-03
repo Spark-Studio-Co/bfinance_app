@@ -24,6 +24,7 @@ export type TabParamList = {
   Home: undefined;
   Finance: undefined;
   Budget: undefined;
+  Cards: undefined;
   Settings: undefined;
   History: undefined;
   TransactionDetail: undefined;

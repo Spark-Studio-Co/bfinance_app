@@ -4,17 +4,14 @@ import { TotalBalanceTab } from '~/widgets/ui/TotalBalanceTab';
 import { ProfileAvatar } from '~/shared/ui/ProfileAvatar';
 import { ItemsList } from '~/features/ItemsList/ItemList';
 import { BannerSwiper } from '~/features/BannerSwiper/BannerSwiper';
+import { View } from 'react-native';
 
-type HomePageProps = TabScreenProps<'Home'>;
+type CardsPageProps = TabScreenProps<'Cards'>;
 
-export function HomePage({}: HomePageProps) {
+export function CardsPage({}: CardsPageProps) {
   return (
-    <MainLayout>
-      <ProfileAvatar />
-      <TotalBalanceTab />
-      <BannerSwiper />
-      <ItemsList title="FIAT" isFiat />
-      <ItemsList title="CRYPTO" isCrypto />
+    <MainLayout title="Cards">
+      <View></View>
     </MainLayout>
   );
 }

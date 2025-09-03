@@ -7,6 +7,7 @@ import type { TabParamList } from '../../shared/types/navigation';
 import HouseIcon from '~/shared/icons/HouseIcon';
 import PaymentIcon from '~/shared/icons/PaymentIcon';
 import ServiceIcon from '~/shared/icons/ServiceIcon';
+import { CardsPage } from '~/pages/cards/CardsPage';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -31,8 +32,8 @@ export function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Finance"
-        component={FinancePage}
+        name="Cards"
+        component={CardsPage}
         options={{
           tabBarIcon: ({ focused }) => <PaymentIcon color={focused ? '#00E675' : '#A2ACB0'} />,
         }}
