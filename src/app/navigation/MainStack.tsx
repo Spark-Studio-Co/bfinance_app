@@ -4,6 +4,7 @@ import type { RootStackParamList } from '../../shared/types/navigation';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
 import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
 import { ProfileScreen } from '~/pages/profile/ProfilePage';
+import { ServicesPage } from '~/pages/services/ServicesPage';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -12,7 +13,7 @@ export function MainStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Main" component={TabNavigator} />
       <Stack.Screen name="History" component={TransactionHistoryScreen} />
-      <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
+      <Stack.Screen name="Services" component={ServicesPage} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );

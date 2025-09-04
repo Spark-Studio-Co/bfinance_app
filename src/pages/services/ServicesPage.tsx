@@ -3,10 +3,6 @@ import { MainLayout } from '~/app/layouts/MainLayout';
 import { View, ScrollView } from 'react-native';
 import { ServiceItem } from '~/features/ServiceItem/ServiceItem';
 import PlusIcon from '~/shared/icons/PlusIcon';
-import ESimIcon from '~/shared/icons/ESimIcon';
-import FlightIcon from '~/shared/icons/FlightIcon';
-import HotelIcon from '~/shared/icons/HotelIcon';
-import AirportLoungeIcon from '~/shared/icons/AirportLoungeIcon';
 
 type ServicesPageProps = TabScreenProps<'Services'>;
 
@@ -14,28 +10,28 @@ export function ServicesPage({}: ServicesPageProps) {
   const services = [
     {
       id: 1,
-      icon: <ESimIcon size={32} />,
+      image: require('../../../assets/esim.png'), // You'll need to add these images
       title: 'eSIM',
       description: 'Stay connected wherever you are',
       status: 'soon' as const,
     },
     {
       id: 2,
-      icon: <FlightIcon size={32} />,
+      image: require('../../../assets/plane.png'),
       title: 'Flights',
       description: 'Buy airline tickets directly in the app',
       status: 'soon' as const,
     },
     {
       id: 3,
-      icon: <HotelIcon size={32} />,
+      image: require('../../../assets/key.png'),
       title: 'Stays',
       description: 'Book accommodations worldwide',
       status: 'soon' as const,
     },
     {
       id: 4,
-      icon: <AirportLoungeIcon size={32} />,
+      image: require('../../../assets/crown.png'),
       title: 'Airport Lounge',
       description: 'Access premium airport lounges',
       status: 'soon' as const,
@@ -56,7 +52,7 @@ export function ServicesPage({}: ServicesPageProps) {
         {services.map((service) => (
           <ServiceItem
             key={service.id}
-            icon={service.icon}
+            image={service.image}
             title={service.title}
             description={service.description}
             status={service.status}

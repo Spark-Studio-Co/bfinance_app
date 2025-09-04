@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Auth: undefined;
   Main: undefined;
   History: undefined;
+  Services: undefined;
   TransactionDetails: { transactionId: string };
   Profile: undefined;
 };

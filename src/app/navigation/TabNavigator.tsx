@@ -1,13 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { HomePage } from '../../pages/home';
-import { FinancePage } from '../../pages/finance';
-import { BudgetPage } from '../../pages/budget';
 import type { TabParamList } from '../../shared/types/navigation';
 import HouseIcon from '~/shared/icons/HouseIcon';
 import PaymentIcon from '~/shared/icons/PaymentIcon';
 import ServiceIcon from '~/shared/icons/ServiceIcon';
 import { CardsPage } from '~/pages/cards/CardsPage';
+import { ServicesPage } from '~/pages/services/ServicesPage';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -39,8 +38,8 @@ export function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Budget"
-        component={BudgetPage}
+        name="Services"
+        component={ServicesPage}
         options={{
           tabBarIcon: ({ focused }) => <ServiceIcon color={focused ? '#00E675' : '#A2ACB0'} />,
         }}
