@@ -50,7 +50,7 @@ export function CardsPage({}: CardsPageProps) {
   return (
     <MainLayout isTitle title="Cards" isIcon icon={<PlusIcon />}>
       <ScrollView
-        className="flex-1 pt-6"
+        className="flex-1 pt-[12px]"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ gap: 12 }}>
         {cards.map((card) => (
