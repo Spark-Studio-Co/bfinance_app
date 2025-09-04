@@ -3,9 +3,8 @@ import { useResponsive } from '~/shared/hooks';
 import { Text } from '~/shared/ui';
 
 export interface CardItemProps {
+  cardName: string;
   cardNumber: string;
-  cardHolder: string;
-  expiryDate: string;
   cardType: 'visa' | 'mastercard';
   balance: string;
   currency: string;
@@ -13,16 +12,7 @@ export interface CardItemProps {
   onPress?: () => void;
 }
 
-export const CardItem = ({
-  cardNumber,
-  cardHolder,
-  expiryDate,
-  cardType,
-  balance,
-  currency,
-  isActive = false,
-  onPress,
-}: CardItemProps) => {
+export const CardItem = ({ cardName, cardNumber, balance, currency, onPress }: CardItemProps) => {
   const { s } = useResponsive();
 
   const cardStyle = {
@@ -35,6 +25,10 @@ export const CardItem = ({
     fontSize: s(17),
   };
 
+  const textBalanceStyle = {
+    fontSize: s(15),
+  };
+
   const formatCardNumber = (number: string) => {
     return number.replace(/(\d{4})(?=\d)/g, '$1 ');
   };
@@ -43,10 +37,20 @@ export const CardItem = ({
     <Pressable
       onPress={onPress}
       style={cardStyle}
-      className="flex w-full flex-row items-center justify-between  bg-[#0F0F0F]">
+      className="flex w-full flex-row items-center justify-between bg-[#0F0F0F]">
       <Image source={require('../../../assets/bfinance_card.png')} className="h-[34px] w-[54px]" />
-      <View className="flex flex-col items-start gap-[2px]">
-        <Text className="text-white"></Text>
+      <View className="ml-3 flex flex-1 flex-col items-start gap-[2px]">
+        <Text className="text-white" style={textStyle} weight="medium">
+          {cardName}
+        </Text>
+        <Text className="text-[#AAAAAA]" style={{ fontSize: s(15) }} weight="regular">
+          Visa *{cardNumber.slice(-4)}
+        </Text>
+      </View>
+      <View className="flex flex-col items-end">
+        <Text className="text-white" style={textBalanceStyle} weight="regular">
+          {balance} {currency}
+        </Text>
       </View>
     </Pressable>
   );
