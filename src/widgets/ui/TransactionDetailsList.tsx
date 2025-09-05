@@ -26,27 +26,25 @@ export const TransactionDetailsList: React.FC<TransactionDetailsListProps> = ({ 
       )}
 
       {/* Объединенная карточка для Billed amount и Fee */}
-      <View className="rounded-[16px] bg-[#0F0F0F] px-6 py-6">
+      <View className="rounded-2xl bg-[#1A1A1A] px-4 py-5">
         {/* Billed amount */}
-        <View className="flex-row items-center justify-between pb-3">
-          <Text className="pb-0 text-[16px] font-medium text-white">Billed amount</Text>
-          <Text className="text-[14px] text-[#878787]">
-            {formatAmount(transaction.billedAmount)}
-          </Text>
+        <View className="flex-row items-center justify-between">
+          <Text className="text-lg font-medium text-white">Billed amount</Text>
+          <Text className="text-lg text-[#666666]">{formatAmount(transaction.billedAmount)}</Text>
         </View>
 
         {/* Separator */}
-        <View className="h-0.5 bg-[#1E1E1E]" />
+        <View className="my-4 h-px bg-[#333333]" />
 
         {/* Fee */}
-        <View className="flex-row items-center justify-between pt-4">
-          <Text className="text-[16px] font-medium text-white">Fee</Text>
-          <Text className="text-[14px] text-[#878787]">{formatFee(transaction.fee)}</Text>
+        <View className="flex-row items-center justify-between">
+          <Text className="text-lg font-medium text-white">Fee</Text>
+          <Text className="text-lg text-[#666666]">{formatFee(transaction.fee)}</Text>
         </View>
       </View>
 
       {/* Transaction ID - отдельная карточка */}
-      <DetailRow label="Transaction ID" value={transaction.transactionId} />
+      <DetailRow label="Transaction ID" value={transaction.transactionId || '—'} />
     </View>
   );
 };

@@ -6,7 +6,6 @@ import { Button } from '~/shared/ui/Button';
 import { TransactionAmount } from '~/features/Transactions/ui/TransactionAmount';
 import { TransactionDetailsList } from '~/widgets/ui/TransactionDetailsList';
 import { useTransactionDetails } from '~/entities/transaction/model/detail-hook';
-import { Container } from '~/shared/ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type TransactionDetailsRouteParams = {
@@ -40,7 +39,7 @@ export const TransactionDetailsScreen: React.FC = () => {
     <SafeAreaView className="flex-1 bg-[#000000]">
       <Header title="Transaction" showTitle={true} onBackPress={handleBackPress} />
 
-      <View className="mt-[24px] flex-1 px-4">
+      <View className="mt-[24px] flex-1 px-[24px]">
         <TransactionAmount
           merchant={transaction.merchant}
           amount={transaction.amount}
