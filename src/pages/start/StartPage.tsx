@@ -55,7 +55,10 @@ export const StartPage = () => {
         <Video
           ref={videoRef}
           source={heroVideo}
-          style={StyleSheet.absoluteFillObject}
+          style={[
+            StyleSheet.absoluteFillObject,
+            { transform: [{ translateY: -hp(5) }] }, // move video 5% screen height upward
+          ]}
           resizeMode={ResizeMode.COVER}
           shouldPlay
           isLooping
@@ -79,8 +82,7 @@ export const StartPage = () => {
           scrollEnabled={false}
           bounces={false}>
           <View
-            className="w-full rounded-tl-[24px] rounded-tr-[24px] border border-b-[1px]
-                         border-[#00000026] bg-[#000000]"
+            className="w-full rounded-tl-[24px] rounded-tr-[24px] border border-b-[1px] border-[#00000026] bg-[#000000]"
             style={{
               minHeight: hp(44),
               paddingHorizontal: wp(6.4),
