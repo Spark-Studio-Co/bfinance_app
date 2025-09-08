@@ -6,24 +6,23 @@ import GreenBookIcon from '~/shared/icons/GreenBookIcon';
 import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
 import GreenPinIcon from '~/shared/icons/GreenPinIcon';
 import { useNavigation } from '@react-navigation/native';
-import { CommonActions } from '@react-navigation/native';
 import { useResponsive } from '~/shared/hooks/useResponsive';
+import { useVerificationStore } from './use-verification-store';
 
 export const IdentityVerificationPage = () => {
   const navigation = useNavigation();
   const { s } = useResponsive();
+  const {
+    isBasicVerificationSuccess,
+    isAdvancedVerificationSuccess,
+    basicVerificationStep,
+    advancedVerificationStep,
+    startBasicVerification,
+    startAdvancedVerification,
+  } = useVerificationStore();
 
   return (
-    <AuthLayout>
-      <Text
-        weight="semibold"
-        style={{
-          marginTop: s(24),
-          fontSize: s(20),
-          color: 'white',
-        }}>
-        Identity Verification
-      </Text>
+    <AuthLayout isBack title="Identity Verification">
       <Text
         weight="regular"
         style={{
@@ -45,17 +44,32 @@ export const IdentityVerificationPage = () => {
           { icon: <GreenBookIcon />, label: 'Photo of your ID' },
           { icon: <GreenCheckmarkIcon />, label: 'Liveness check' },
         ]}
-        ctaLabel="Start"
-        onPress={() => navigation.navigate('Main' as never)}
+        ctaLabel={'Start'}
+        onPress={() => {
+          if (!isBasicVerificationSuccess && basicVerificationStep !== 'in-progress') {
+            startBasicVerification();
+            navigation.navigate('IdentityVerificationInner' as never);
+          }
+        }}
+        isActive={!isBasicVerificationSuccess}
       />
       <IdentityVerificationCard
         className="mt-6"
         title="Advanced"
         subtitle="Increased limits"
         steps={[{ icon: <GreenPinIcon />, label: 'Proof of address' }]}
-        ctaLabel="Start"
-        onPress={() => {}}
-        isActive={false}
+        ctaLabel={'Start'}
+        onPress={() => {
+          if (
+            isBasicVerificationSuccess &&
+            !isAdvancedVerificationSuccess &&
+            advancedVerificationStep !== 'in-progress'
+          ) {
+            startAdvancedVerification();
+            navigation.navigate('IdentityVerificationInner' as never);
+          }
+        }}
+        isActive={isBasicVerificationSuccess && !isAdvancedVerificationSuccess}
       />
 
       <Button

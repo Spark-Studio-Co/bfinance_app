@@ -3,6 +3,7 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { BackButton } from '~/shared/ui/BackButton';
 import { Text } from '~/shared/ui';
+import { useResponsive } from '~/shared/hooks';
 
 export const AuthLayout = ({
   children,
@@ -20,13 +21,14 @@ export const AuthLayout = ({
   enableKeyboardAvoiding?: boolean;
 }) => {
   const insets = useSafeAreaInsets();
+  const { s } = useResponsive();
 
   const content = (
     <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
       {isBack && (
         <View className="mt-[24px] flex flex-row items-center gap-x-[24px]">
           <BackButton />
-          <Text weight="semibold" className="text-[20px] text-white">
+          <Text weight="semibold" className="text-white" style={{ fontSize: s(20) }}>
             {title}
           </Text>
         </View>

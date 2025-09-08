@@ -1,0 +1,1 @@
+export { IdentityVerificationInnerPage } from './IdentityVerificationInnerPage';

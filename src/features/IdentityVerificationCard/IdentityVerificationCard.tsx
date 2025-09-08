@@ -17,7 +17,7 @@ type Props = {
   onPress?: () => void;
   disabled?: boolean;
   className?: string;
-  isActive?: boolean; // активная или приглушённая карточка
+  isActive?: boolean;
 };
 
 export const IdentityVerificationCard: React.FC<Props> = ({
