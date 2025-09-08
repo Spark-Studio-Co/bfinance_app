@@ -7,7 +7,7 @@ import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
 import GreenPinIcon from '~/shared/icons/GreenPinIcon';
 import { useNavigation } from '@react-navigation/native';
 import { useResponsive } from '~/shared/hooks/useResponsive';
-import { useVerificationStore } from './use-verification-store';
+import { useVerificationStore } from '../model/use-verification-store';
 
 export const IdentityVerificationPage = () => {
   const navigation = useNavigation();

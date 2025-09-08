@@ -5,7 +5,7 @@ import type { AuthStackParamList } from '../../shared/types/navigation';
 import { StartPage } from '~/pages/start';
 import { EmailConfirmationPage } from '~/pages/email-confirmation/EmailConfirmatinonPage';
 import { SignUpPage } from '~/pages/sign-up/SignUpPage';
-import { IdentityVerificationPage } from '~/pages/identity-verification/IdentityVerificationPage';
+import { IdentityVerificationPage } from '~/pages/identity-verification/ui/IdentityVerificationPage';
 import { IdentityVerificationInnerPage } from '~/pages/identity-verification-inner/IdentityVerificationInnerPage';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();

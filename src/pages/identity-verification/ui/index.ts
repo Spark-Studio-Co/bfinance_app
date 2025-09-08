@@ -1,8 +1,8 @@
 export { IdentityVerificationPage } from './IdentityVerificationPage';
-export { useVerificationStore } from './use-verification-store';
+export { useVerificationStore } from '../model/use-verification-store';
 export type {
   VerificationState,
   VerificationStep,
   VerificationType,
   VerificationFlowStep,
-} from './use-verification-store';
+} from '../model/use-verification-store';

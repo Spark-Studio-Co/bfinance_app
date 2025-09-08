@@ -4,7 +4,7 @@ import { Button } from '~/shared/ui/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 import { View, ActivityIndicator } from 'react-native';
-import { useVerificationStore } from '../identity-verification/use-verification-store';
+import { useVerificationStore } from '../identity-verification/model/use-verification-store';
 import { useEffect, useState } from 'react';
 import GreenBookIcon from '~/shared/icons/GreenBookIcon';
 import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
