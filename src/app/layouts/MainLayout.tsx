@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { Text } from '~/shared/ui';
+import { BackButton, Text } from '~/shared/ui';
 
 export const MainLayout = ({
   children,
@@ -12,6 +12,7 @@ export const MainLayout = ({
   title,
   icon,
   enableKeyboardAvoiding = true,
+  isBack,
 }: {
   children: React.ReactNode;
   isTitle?: boolean;
@@ -21,11 +22,13 @@ export const MainLayout = ({
   title?: string;
   icon?: React.ReactNode;
   enableKeyboardAvoiding?: boolean;
+  isBack?: boolean;
 }) => {
   const content = (
     <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
       {isTitle && (
-        <View className="mt-[24px] flex w-full flex-row items-center justify-between">
+        <View className="mt-[24px] flex w-full flex-row items-center gap-x-[24px]">
+          {isBack && <BackButton />}
           <Text weight="semibold" className="text-[20px] text-white">
             {title}
           </Text>

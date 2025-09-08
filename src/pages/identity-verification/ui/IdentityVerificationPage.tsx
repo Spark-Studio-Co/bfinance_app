@@ -76,10 +76,19 @@ export const IdentityVerificationPage = () => {
         style={{ marginTop: 'auto', height: s(42) }}
         weight="semibold"
         labelClassName="text-[#FFFFFFF2]"
+        onPress={() => navigation.navigate('PinCode' as never)}
+        variant="dark"
+        label="PIN CODE"
+      />
+
+      {/* <Button
+        style={{ marginTop: 'auto', height: s(42) }}
+        weight="semibold"
+        labelClassName="text-[#FFFFFFF2]"
         onPress={() => navigation.navigate('Start' as never)}
         variant="dark"
         label="Log out"
-      />
+      /> */}
     </AuthLayout>
   );
 };
