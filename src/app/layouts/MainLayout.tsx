@@ -12,8 +12,9 @@ export const MainLayout = ({
   title,
   icon,
   isBack,
-  isScroll = false, // <-- новый проп
+  isScroll = false,
   onPrevStep,
+  iconPosition = 'after',
 }: {
   children: React.ReactNode;
   isTitle?: boolean;
@@ -24,20 +25,31 @@ export const MainLayout = ({
   icon?: React.ReactNode;
   enableKeyboardAvoiding?: boolean;
   isBack?: boolean;
-  isScroll?: boolean; // <-- типизация
+  isScroll?: boolean;
   onPrevStep?: { onPress: () => void };
+  iconPosition?: 'before' | 'after';
 }) => {
   const navigation = useNavigation();
 
   const content = (
     <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
       {isTitle && (
-        <View className="mt-[24px] flex w-full flex-row items-center gap-x-[24px]">
+        <View className="mt-[24px] flex w-full flex-row items-center gap-x-[16px]">
           {isBack && <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />}
+
+          {/* Иконка слева */}
+          {isIcon && icon && iconPosition === 'before' && (
+            <View className="flex-row items-center">{icon}</View>
+          )}
+
           <Text weight="semibold" className="text-[20px] text-white">
             {title}
           </Text>
-          {isIcon && icon && <View>{icon}</View>}
+
+          {/* Иконка справа */}
+          {isIcon && icon && iconPosition === 'after' && (
+            <View className="flex-row items-center">{icon}</View>
+          )}
         </View>
       )}
       {children}

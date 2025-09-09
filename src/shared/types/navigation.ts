@@ -19,6 +19,7 @@ export type AuthStackParamList = {
   IdentityVerificationInner: undefined;
   PinCode: { fromSettings?: boolean };
   Withdrawal: undefined;
+  CurrencyDetails: undefined;
 };
 
 export type TabParamList = {
