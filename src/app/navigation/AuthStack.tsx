@@ -8,6 +8,7 @@ import { SignUpPage } from '~/pages/sign-up/SignUpPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification/ui/IdentityVerificationPage';
 import { IdentityVerificationInnerPage } from '~/pages/identity-verification-inner/IdentityVerificationInnerPage';
 import { PinCodePage } from '~/pages/pin-code';
+import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -20,6 +21,7 @@ export function AuthStack() {
       <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
       <Stack.Screen name="IdentityVerificationInner" component={IdentityVerificationInnerPage} />
       <Stack.Screen name="PinCode" component={PinCodePage} />
+      <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
     </Stack.Navigator>
   );
 }

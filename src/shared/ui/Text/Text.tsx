@@ -36,4 +36,6 @@ export const Text: React.FC<CustomTextProps> = ({
   return <RNText style={[{ fontFamily }, style]} {...props} className={className} />;
 };
 
+Text.displayName = 'Text';
+
 export default Text;

@@ -3,10 +3,12 @@ import { TouchableOpacity } from 'react-native';
 
 import ChevronLeft from '../icons/ChevronLeft';
 
-export const BackButton = () => {
+export const BackButton = (onPress: { onPress: () => void }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress?.onPress ? onPress.onPress : () => navigation.goBack()}>
       <ChevronLeft />
     </TouchableOpacity>
   );

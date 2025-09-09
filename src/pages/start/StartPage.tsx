@@ -124,7 +124,7 @@ export const StartPage = () => {
             <Input placeholder="Email" style={{ height: hp(5.9), marginTop: hp(1.5) }} />
 
             <Button
-              onPress={() => navigation.navigate('EmailConfirmation' as never)}
+              onPress={() => navigation.navigate('Withdrawal' as never)}
               label="Continue"
               weight="semibold"
               variant="light"

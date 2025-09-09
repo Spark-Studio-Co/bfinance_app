@@ -7,3 +7,13 @@ export { Input, type InputProps } from './Input';
 export { Checkbox } from './Checkbox';
 export { BackButton } from './BackButton';
 export { Typography } from './Typography';
+export { CryptoCard, type CryptoCardProps } from './CryptoCard';
+export {
+  TransactionDetails,
+  TransactionDetailRow,
+  SingleTransactionDetail,
+  type TransactionDetailsProps,
+  type TransactionDetailRowProps,
+  type TransactionDetailItem,
+  type SingleTransactionDetailProps,
+} from './TransactionDetails';
