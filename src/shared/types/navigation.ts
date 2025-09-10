@@ -10,6 +10,13 @@ export type RootStackParamList = {
   Profile: undefined;
 };
 
+export type TopUpDetails = Partial<
+  Record<
+    'currency' | 'name' | 'accountNumber' | 'accountType' | 'swift' | 'bankAddress' | 'reference',
+    string
+  >
+>;
+
 export type AuthStackParamList = {
   Start: undefined;
   EmailConfirmation: { email: string };
@@ -19,6 +26,10 @@ export type AuthStackParamList = {
   IdentityVerificationInner: undefined;
   PinCode: { fromSettings?: boolean };
   Withdrawal: undefined;
+  CurrencyPage: undefined;
+  TopUp: undefined;
+  TopUpNetwork: { title?: string } | undefined;
+  TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
 };
 
 export type TabParamList = {

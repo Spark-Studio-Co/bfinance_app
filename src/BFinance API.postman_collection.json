@@ -1,0 +1,863 @@
+{
+	"info": {
+		"_postman_id": "261da9d4-d03f-4953-872d-eaf5e4c35d2e",
+		"name": "BFinance API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28558938"
+	},
+	"item": [
+		{
+			"name": "/authorization",
+			"item": [
+				{
+					"name": "/email",
+					"item": [
+						{
+							"name": "200",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"account1@bfinance.app\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/authorization/email",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorization",
+										"email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"account1@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/authorization/email",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorization",
+										"email"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Авторизация по почте"
+				},
+				{
+					"name": "/email/code",
+					"item": [
+						{
+							"name": "200",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"account1@bfinance.app\",\n    \"confirmationCode\": \"010203\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/authorization/email/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorization",
+										"email",
+										"code"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"account1@bfinance.app\",\n    \"confirmationCode\": \"3939\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/authorization/email/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorization",
+										"email",
+										"code"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Отправка кода подтверждения"
+				}
+			]
+		},
+		{
+			"name": "/registration",
+			"item": [
+				{
+					"name": "200",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/v1/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "400",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/v1/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "403",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/v1/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Регистрация пользователя"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "/me",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/user/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Получение информации о пользователе"
+				},
+				{
+					"name": "/wallets",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/user/wallets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"wallets"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Кошельки пользователя"
+				},
+				{
+					"name": "/transactions",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/user/transactions?limit=10&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Список транзакций"
+				},
+				{
+					"name": "/total",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/user/total",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"total"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Общий баланс пользователя"
+				},
+				{
+					"name": "/kyc",
+					"item": [
+						{
+							"name": "/data",
+							"item": [
+								{
+									"name": "200",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/v1/user/kyc/data",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"kyc",
+												"data"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "Информация о KYC"
+						},
+						{
+							"name": "/submit",
+							"item": [
+								{
+									"name": "200",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/v1/user/kyc/submit",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												"kyc",
+												"submit"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "Информация для sumsub"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "finance",
+			"item": [
+				{
+					"name": "/topup",
+					"item": [
+						{
+							"name": "/",
+							"item": [
+								{
+									"name": "200",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/v1/finance/topup?currencyId=67fbe534bce3563ed013455e&networkId=67fbe58ff5d563875b6b43f7",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"v1",
+												"finance",
+												"topup"
+											],
+											"query": [
+												{
+													"key": "currencyId",
+													"value": "67fbe534bce3563ed013455e"
+												},
+												{
+													"key": "networkId",
+													"value": "67fbe58ff5d563875b6b43f7"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "404",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/v1/finance/topup?currencyId=67fbe58ff5d563875b6b43f7&networkId=67fbe534bce3563ed013455e",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"v1",
+												"finance",
+												"topup"
+											],
+											"query": [
+												{
+													"key": "currencyId",
+													"value": "67fbe58ff5d563875b6b43f7"
+												},
+												{
+													"key": "networkId",
+													"value": "67fbe534bce3563ed013455e"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "Получение информации для пополнения баланса"
+						},
+						{
+							"name": "/currencies",
+							"item": [
+								{
+									"name": "/",
+									"item": [
+										{
+											"name": "200",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "x-auth-token",
+														"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost/api/v1/finance/topup/currencies",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"path": [
+														"api",
+														"v1",
+														"finance",
+														"topup",
+														"currencies"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"description": "Доступные монеты для пополнения"
+								},
+								{
+									"name": "/:id",
+									"item": [
+										{
+											"name": "/networks",
+											"item": [
+												{
+													"name": "200",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "x-auth-token",
+																"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+																"type": "text"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "http://localhost/api/v1/finance/topup/currencies/67fbe534bce3563ed013455e/networks",
+															"protocol": "http",
+															"host": [
+																"localhost"
+															],
+															"path": [
+																"api",
+																"v1",
+																"finance",
+																"topup",
+																"currencies",
+																"67fbe534bce3563ed013455e",
+																"networks"
+															]
+														}
+													},
+													"response": []
+												}
+											],
+											"description": "Доступные сети для этой монеты"
+										}
+									],
+									"description": ":id - идентификатор валюты"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/cards",
+			"item": [
+				{
+					"name": "/list",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/cards/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Список карт"
+				},
+				{
+					"name": "/types",
+					"item": [
+						{
+							"name": "200",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmMzZWU4MjczMGE1YWUxZDk2NTk1NCIsInNlc3Npb25JZCI6Imh6bkl0UXRZSmJrZnVyazl1aTJRbkRNblNIaVVwa1VselJKZ25kWUpGbzhuaEx2cmJXd1ZmUkRwelNXZm1NRWNWeEhjVTJlbVFySkpteFFFTklPY2F4WDJnOE11R0xWNzNidUZRdE93SG1JR2dyNDdqSTMyV0prYmlqUUlPRWtQIiwiaWF0IjoxNzU3MTY3NTUxLCJleHAiOjE3NTk3NTk1NTF9.pwm0tB7lEkDxS1uXAMxhz1YO-fap08ApWouB2KPG0Ag",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/v1/cards/types",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cards",
+										"types"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Список карт"
+				}
+			]
+		}
+	]
+}

@@ -4,6 +4,8 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { customFonts } from './config/custom-fonts';
 import { RootNavigator } from './navigation/RootNavigator';
+import { AuthProvider } from '~/shared/contexts/AuthContext';
+import { QueryProvider } from '~/shared/providers/QueryProvider';
 
 export default function App() {
   const [fontsLoaded] = useFonts(customFonts);
@@ -18,9 +20,13 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <QueryProvider>
+        <AuthProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </AuthProvider>
+      </QueryProvider>
     </GestureHandlerRootView>
   );
 }

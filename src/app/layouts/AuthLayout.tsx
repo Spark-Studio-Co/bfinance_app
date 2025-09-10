@@ -27,7 +27,11 @@ export const AuthLayout = ({
     <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
       {isBack && (
         <View className="mt-[24px] flex flex-row items-center gap-x-[24px]">
-          <BackButton />
+          <BackButton
+            onPress={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
           <Text weight="semibold" className="text-white" style={{ fontSize: s(20) }}>
             {title}
           </Text>

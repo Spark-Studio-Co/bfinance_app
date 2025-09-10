@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { useRef, useState } from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { useNavigation } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
@@ -11,6 +11,7 @@ import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
 import heroVideo from '../../../assets/start_video.mp4';
 import { useResponsive } from '~/shared/hooks/useResponsive';
+import { useAuth } from '~/shared/contexts/AuthContext';
 import Animated, {
   useAnimatedKeyboard,
   useAnimatedStyle,
@@ -23,9 +24,34 @@ export const StartPage = () => {
   const videoRef = useRef<Video>(null);
   const navigation = useNavigation();
   const { wp, hp, ms, fs } = useResponsive();
+  const { sendEmailAuth, isSendingEmail } = useAuth();
+  const [email, setEmail] = useState('');
 
   // Используем hook для отслеживания клавиатуры
   const keyboard = useAnimatedKeyboard();
+
+  // Функция для отправки email для авторизации
+  const handleEmailAuth = async () => {
+    if (!email.trim()) {
+      Alert.alert('Ошибка', 'Пожалуйста, введите email');
+      return;
+    }
+
+    // Простая валидация email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Ошибка', 'Пожалуйста, введите корректный email');
+      return;
+    }
+
+    try {
+      await sendEmailAuth(email);
+      (navigation as any).navigate('EmailConfirmation', { email });
+    } catch (error) {
+      console.error('Email auth error:', error);
+      Alert.alert('Ошибка', 'Не удалось отправить код подтверждения. Попробуйте еще раз.');
+    }
+  };
 
   // Анимированный стиль для контейнера
   const animatedStyle = useAnimatedStyle(() => {
@@ -102,6 +128,7 @@ export const StartPage = () => {
               className="mt-8"
               style={{ height: hp(5.2) }}
               labelClassName="text-[#000000]"
+              onPress={() => (navigation as any).navigate('TopUp')}
             />
 
             <Button
@@ -121,16 +148,22 @@ export const StartPage = () => {
               or
             </Text>
 
-            <Input placeholder="Email" style={{ height: hp(5.9), marginTop: hp(1.5) }} />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+              style={{ height: hp(5.9), marginTop: hp(1.5) }}
+            />
 
             <Button
-              onPress={() => navigation.navigate('Withdrawal' as never)}
+              onPress={handleEmailAuth}
               label="Continue"
               weight="semibold"
               variant="light"
               className="mt-3"
               style={{ height: hp(5.2) }}
               labelClassName="text-[#000000]"
+              loading={isSendingEmail}
             />
           </View>
         </Animated.ScrollView>
