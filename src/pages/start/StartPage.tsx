@@ -128,6 +128,7 @@ export const StartPage = () => {
               className="mt-8"
               style={{ height: hp(5.2) }}
               labelClassName="text-[#000000]"
+              onPress={() => (navigation as any).navigate('TopUp')}
             />
 
             <Button

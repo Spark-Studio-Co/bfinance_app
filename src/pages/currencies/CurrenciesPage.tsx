@@ -6,6 +6,7 @@ import PlusIcon from '~/shared/icons/CurrenciesIcons/PlusIcon';
 import TopRightIcon from '~/shared/icons/CurrenciesIcons/TopRightIcon';
 
 import { CurrencyOperationCard } from '~/features/Currencies/CurrenciesCard';
+import DollarIcon from '~/shared/icons/CurrenciesIcons/DollarIcon';
 
 interface CurrencyDetailsPageProps {
   route?: {
@@ -64,11 +65,7 @@ export const CurrencyDetailsPage: React.FC<CurrencyDetailsPageProps> = ({ route 
       isIcon
       iconPosition="before"
       title={name}
-      icon={
-        <View className="h-[40px] w-[40px] items-center justify-center rounded-full bg-[#1E1E1E]">
-          <Text className="text-[18px] font-medium text-white">{iconChar}</Text>
-        </View>
-      }
+      icon={<DollarIcon />}
       isScroll>
       {/* Amount */}
       <View className="mt-[32px]">
@@ -77,19 +74,19 @@ export const CurrencyDetailsPage: React.FC<CurrencyDetailsPageProps> = ({ route 
       </View>
 
       {/* Actions */}
-      <View className="mb-[32px] mt-[32px] flex flex-row justify-center gap-[132px]">
-        <TouchableOpacity className="flex flex-col items-center gap-[10px]">
+      <View className="mb-[32px] mt-[32px] flex flex-row justify-center gap-[128px]">
+        <TouchableOpacity className="flex flex-col items-center gap-[12px]">
           <PlusIcon />
-          <Text className="text-white">Topup</Text>
+          <Text className="text-[14px] font-semibold text-white">Topup</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="flex flex-col items-center gap-[10px]">
+        <TouchableOpacity className="flex flex-col items-center gap-[12px]">
           <TopRightIcon />
-          <Text className="text-white">Withdraw</Text>
+          <Text className="text-[14px] font-semibold text-white">Withdraw</Text>
         </TouchableOpacity>
       </View>
 
       {/* TODAY label */}
-      <Text className="mb-4 text-[13px] font-light text-[#AAAAAA]">TODAY</Text>
+      <Text className="mb-4 text-[13px] font-normal text-[#AAAAAA]">TODAY</Text>
 
       {/* Operations list */}
       <View className="pb-12">
