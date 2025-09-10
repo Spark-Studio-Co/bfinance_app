@@ -15,10 +15,15 @@ export const TransactionDetailRow: React.FC<TransactionDetailRowProps> = ({
   value,
   className = '',
 }) => {
+  const { fs } = useResponsive();
   return (
     <View className={`h-full flex-col justify-center ${className}`}>
-      <Text className="text-[17px] font-medium text-white">{value}</Text>
-      <Text className="mt-[2px] text-[13px] font-normal text-[#AAAAAA]"> {label}</Text>
+      <Text weight="medium" className="text-white" style={{ fontSize: fs(17) }}>
+        {value}
+      </Text>
+      <Text className="mt-[2px] font-normal text-[#AAAAAA]" style={{ fontSize: fs(13) }}>
+        {label}
+      </Text>
     </View>
   );
 };
@@ -79,23 +84,17 @@ export const SingleTransactionDetail: React.FC<SingleTransactionDetailProps> = (
   value,
   className = '',
 }) => {
-  const { s } = useResponsive();
-
   const truncateAddress = (address: string) => {
     if (address.length <= 10) return address;
-    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    return `${address.slice(0, 6)}****${address.slice(-4)}`;
   };
 
+  const shouldTruncate =
+    label.toLowerCase().includes('address') || label.toLowerCase().includes('wallet');
+
   return (
-    <View
-      className={`rounded-[16px] bg-[#0F0F0F] px-4 py-4 ${className}`}
-      style={{
-        marginTop: s(24),
-      }}>
-      <TransactionDetailRow
-        label={label}
-        value={label.toLowerCase().includes('address') ? truncateAddress(value) : value}
-      />
+    <View className={`mb-3 h-[68px] rounded-[16px] bg-[#0F0F0F] px-4 ${className}`}>
+      <TransactionDetailRow label={label} value={shouldTruncate ? truncateAddress(value) : value} />
     </View>
   );
 };

@@ -24,13 +24,10 @@ export const CryptoSelectionStep: React.FC = () => {
   const getCryptoName = (id: string): string => {
     switch (id) {
       case 'bitcoin':
-      case 'bitcoin-2':
         return 'Bitcoin';
       case 'ethereum':
-      case 'ethereum-2':
         return 'Ethereum';
       case 'ton':
-      case 'ton-2':
         return 'The Open Network';
       default:
         return 'Unknown';
@@ -40,13 +37,10 @@ export const CryptoSelectionStep: React.FC = () => {
   const getCryptoSymbol = (id: string): string => {
     switch (id) {
       case 'bitcoin':
-      case 'bitcoin-2':
         return 'BTC';
       case 'ethereum':
-      case 'ethereum-2':
         return 'ETH';
       case 'ton':
-      case 'ton-2':
         return 'TON';
       default:
         return '';
