@@ -30,6 +30,7 @@ export type AuthStackParamList = {
   TopUp: undefined;
   TopUpNetwork: { title?: string } | undefined;
   TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
+  Support: undefined;
 };
 
 export type TabParamList = {
