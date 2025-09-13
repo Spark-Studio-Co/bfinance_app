@@ -8,6 +8,18 @@ export type RootStackParamList = {
   Services: undefined;
   TransactionDetails: { transactionId: string };
   Profile: undefined;
+  TopUp: undefined;
+  TopUpNetwork: { title?: string } | undefined;
+  TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
+  QRDeposit:
+    | {
+        currency?: string;
+        network?: string;
+        address?: string;
+        minAmount?: string;
+      }
+    | undefined;
+  Withdrawal: undefined;
 };
 
 export type TopUpDetails = Partial<
@@ -25,11 +37,7 @@ export type AuthStackParamList = {
   IdentityVerification: undefined;
   IdentityVerificationInner: undefined;
   PinCode: { fromSettings?: boolean };
-  Withdrawal: undefined;
   CurrencyPage: undefined;
-  TopUp: undefined;
-  TopUpNetwork: { title?: string } | undefined;
-  TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
   Support: undefined;
 };
 

@@ -32,27 +32,27 @@ export const StartPage = () => {
 
   // Функция для отправки email для авторизации
   const handleEmailAuth = async () => {
-    // if (!email.trim()) {
-    //   Alert.alert('Ошибка', 'Пожалуйста, введите email');
-    //   return;
-    // }
+    if (!email.trim()) {
+      Alert.alert('Ошибка', 'Пожалуйста, введите email');
+      return;
+    }
 
     // // Простая валидация email
-    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // if (!emailRegex.test(email)) {
-    //   Alert.alert('Ошибка', 'Пожалуйста, введите корректный email');
-    //   return;
-    // }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Ошибка', 'Пожалуйста, введите корректный email');
+      return;
+    }
 
-    // try {
-    //   await sendEmailAuth(email);
-    //   (navigation as any).navigate('EmailConfirmation', { email });
-    // } catch (error) {
-    //   console.error('Email auth error:', error);
-    //   Alert.alert('Ошибка', 'Не удалось отправить код подтверждения. Попробуйте еще раз.');
-    // }
+    try {
+      // await sendEmailAuth(email);
+      (navigation as any).navigate('EmailConfirmation', { email });
+    } catch (error) {
+      console.error('Email auth error:', error);
+      Alert.alert('Ошибка', 'Не удалось отправить код подтверждения. Попробуйте еще раз.');
+    }
 
-    navigation.navigate('Support' as never);
+    // navigation.navigate('Support' as never);
   };
 
   // Анимированный стиль для контейнера

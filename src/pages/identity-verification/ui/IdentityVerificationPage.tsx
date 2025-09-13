@@ -6,11 +6,13 @@ import GreenBookIcon from '~/shared/icons/GreenBookIcon';
 import GreenCheckmarkIcon from '~/shared/icons/GreenCheckmarkIcon';
 import GreenPinIcon from '~/shared/icons/GreenPinIcon';
 import { useNavigation } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import type { AuthStackParamList } from '~/shared/types/navigation';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 import { useVerificationStore } from '../model/use-verification-store';
 
 export const IdentityVerificationPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { s } = useResponsive();
   const {
     isBasicVerificationSuccess,
@@ -46,9 +48,16 @@ export const IdentityVerificationPage = () => {
         ]}
         ctaLabel={'Start'}
         onPress={() => {
+          console.log('Basic verification button pressed');
+          console.log('isBasicVerificationSuccess:', isBasicVerificationSuccess);
+          console.log('basicVerificationStep:', basicVerificationStep);
+
           if (!isBasicVerificationSuccess && basicVerificationStep !== 'in-progress') {
+            console.log('Starting basic verification...');
             startBasicVerification();
-            navigation.navigate('IdentityVerificationInner' as never);
+            navigation.navigate('IdentityVerificationInner');
+          } else {
+            console.log('Conditions not met for basic verification');
           }
         }}
         isActive={!isBasicVerificationSuccess}
@@ -66,19 +75,10 @@ export const IdentityVerificationPage = () => {
             advancedVerificationStep !== 'in-progress'
           ) {
             startAdvancedVerification();
-            navigation.navigate('IdentityVerificationInner' as never);
+            navigation.navigate('IdentityVerificationInner');
           }
         }}
         isActive={isBasicVerificationSuccess && !isAdvancedVerificationSuccess}
-      />
-
-      <Button
-        style={{ marginTop: 'auto', height: s(42) }}
-        weight="semibold"
-        labelClassName="text-[#FFFFFFF2]"
-        onPress={() => navigation.navigate('Start' as never)}
-        variant="dark"
-        label="Log out"
       />
     </AuthLayout>
   );

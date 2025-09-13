@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import type { RootStackParamList } from '~/shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
 import { CurrencyPickCard } from '~/features/TopUp/CurrencyPickCard';
 import BitcoinIcon from '~/shared/icons/BitcoinIcon';
@@ -8,6 +11,8 @@ import EthereumIcon from '~/shared/icons/EthereumIcon';
 import TonIcon from '~/shared/icons/TonIcon';
 
 export const TopUpPage: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   const fiat = [{ id: 'usd', title: 'Dollars', code: 'USD', icon: <DollarIcon /> }];
   const crypto = [
     { id: 'btc-1', title: 'Bitcoin', code: 'BTC', icon: <BitcoinIcon /> },
@@ -20,6 +25,8 @@ export const TopUpPage: React.FC = () => {
 
   const onPick = (id: string) => {
     console.log('pick:', id);
+    // Переходим на страницу выбора сети для пополнения
+    navigation.navigate('TopUpNetwork', { title: `Top up with ${id.toUpperCase()}` });
   };
 
   return (

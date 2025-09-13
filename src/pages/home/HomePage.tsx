@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import type { TabScreenProps } from '../../shared/types/navigation';
+import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import type { TabScreenProps, RootStackParamList } from '../../shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
 import { TotalBalanceTab } from '~/widgets/ui/TotalBalanceTab';
 import { ProfileAvatar } from '~/shared/ui/ProfileAvatar';
@@ -13,6 +15,7 @@ type HomePageProps = TabScreenProps<'Home'>;
 
 export function HomePage({}: HomePageProps) {
   const { isAuthenticated } = useAuth();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   // Загружаем данные только если пользователь авторизован
   const { data: user, isLoading: isUserLoading, error: userError } = useUser(isAuthenticated);
@@ -54,7 +57,7 @@ export function HomePage({}: HomePageProps) {
   }
 
   return (
-    <MainLayout>
+    <MainLayout isScroll>
       <ProfileAvatar />
       <TotalBalanceTab />
       <BannerSwiper />

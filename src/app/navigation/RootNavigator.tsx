@@ -6,6 +6,11 @@ import type { RootStackParamList } from '../../shared/types/navigation';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
 import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
 import { ProfileScreen } from '~/pages/profile/ProfilePage';
+import { TopUpPage } from '~/pages/topup/TopUpPage';
+import { TopUpNetworkPage } from '~/pages/topup-network/TopUpNetworkPage';
+import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
+import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
+import { QRDepositPage } from '~/pages/qr-deposit';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +24,11 @@ export const RootNavigator = () => {
         <Stack.Screen name="History" component={TransactionHistoryScreen} />
         <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="TopUp" component={TopUpPage} />
+        <Stack.Screen name="TopUpNetwork" component={TopUpNetworkPage} />
+        <Stack.Screen name="TopUpDetail" component={TopUpDetailPage} />
+        <Stack.Screen name="QRDeposit" component={QRDepositPage} />
+        <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
       </Stack.Navigator>
     </>
   );

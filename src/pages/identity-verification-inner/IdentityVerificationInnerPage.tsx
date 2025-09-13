@@ -2,6 +2,8 @@ import { AuthLayout } from '~/app/layouts/AuthLayout';
 import { Text } from '~/shared/ui';
 import { Button } from '~/shared/ui/Button';
 import { useNavigation } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import type { RootStackParamList } from '~/shared/types/navigation';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 import { View, ActivityIndicator } from 'react-native';
 import { useVerificationStore } from '../identity-verification/model/use-verification-store';
@@ -13,7 +15,7 @@ import { MiniLoader } from '~/shared/ui/MiniLoader';
 import BigCheckMarkIcon from '~/shared/icons/BigCheckMarkIcon';
 
 export const IdentityVerificationInnerPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { hp, s } = useResponsive();
   const {
     currentVerificationType,
@@ -64,12 +66,24 @@ export const IdentityVerificationInnerPage = () => {
   const handleContinue = () => {
     if (currentVerificationType === 'basic' && currentFlowStep === 'success') {
       // Check if we just completed document capture and need liveness check
-      const { basicPhotoIdStatus, basicLivenessCheckStatus } = useVerificationStore.getState();
+      const { basicPhotoIdStatus, basicLivenessCheckStatus, isBasicVerificationSuccess } =
+        useVerificationStore.getState();
 
       if (basicPhotoIdStatus === 'completed' && basicLivenessCheckStatus === 'idle') {
         setCurrentFlowStep('liveness-check');
+      } else if (isBasicVerificationSuccess) {
+        // Both steps completed, navigate to main app
+        navigation.navigate('Main');
       } else {
-        // Both steps completed, go back
+        // Go back if verification not complete
+        navigation.goBack();
+      }
+    } else if (currentVerificationType === 'advanced' && currentFlowStep === 'success') {
+      // Advanced verification completed, navigate to main app
+      const { isAdvancedVerificationSuccess } = useVerificationStore.getState();
+      if (isAdvancedVerificationSuccess) {
+        navigation.navigate('Main');
+      } else {
         navigation.goBack();
       }
     } else {

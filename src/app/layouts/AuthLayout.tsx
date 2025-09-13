@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { BackButton } from '~/shared/ui/BackButton';
 import { Text } from '~/shared/ui';
 import { useResponsive } from '~/shared/hooks';
@@ -22,16 +23,13 @@ export const AuthLayout = ({
 }) => {
   const insets = useSafeAreaInsets();
   const { s } = useResponsive();
+  const navigation = useNavigation();
 
   const content = (
     <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
       {isBack && (
         <View className="mt-[24px] flex flex-row items-center gap-x-[24px]">
-          <BackButton
-            onPress={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
+          <BackButton onPress={() => navigation.goBack()} />
           <Text weight="semibold" className="text-white" style={{ fontSize: s(20) }}>
             {title}
           </Text>
