@@ -25,6 +25,29 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
   const contentOpacityAnim = React.useRef(new Animated.Value(0)).current;
   const scaleAnim = React.useRef(new Animated.Value(0.95)).current;
 
+  // Функция для анимированного закрытия
+  const handleAnimatedClose = () => {
+    Animated.parallel([
+      Animated.timing(slideAnim, {
+        toValue: screenHeight,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacityAnim, {
+        toValue: 0,
+        duration: 250,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleAnim, {
+        toValue: 0.95,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      onClose(); // Вызываем реальное закрытие только после завершения анимации
+    });
+  };
+
   const panResponder = React.useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: (_, gestureState) => {
@@ -59,7 +82,7 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
               duration: 250,
               useNativeDriver: true,
             }),
-          ]).start(() => onClose());
+          ]).start(() => onClose()); // Здесь можно оставить прямой вызов, так как анимация уже выполнена
         } else {
           // Возврат в исходное положение
           Animated.parallel([
@@ -108,26 +131,8 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
           friction: 10,
         }),
       ]).start();
-    } else {
-      // Плавное исчезновение вниз
-      Animated.parallel([
-        Animated.timing(slideAnim, {
-          toValue: screenHeight,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: 0,
-          duration: 250,
-          useNativeDriver: true,
-        }),
-        Animated.timing(scaleAnim, {
-          toValue: 0.95,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-      ]).start();
     }
+    // Убираем else блок - анимация закрытия теперь управляется вручную
   }, [visible]);
 
   const copyToClipboard = async (text: string) => {
@@ -158,10 +163,10 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
   ];
 
   return (
-    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
+    <Modal visible={visible} transparent animationType="none" onRequestClose={handleAnimatedClose}>
       {/* Background overlay with fade animation */}
       <Animated.View style={{ opacity: opacityAnim }} className="flex-1 bg-black/30">
-        <TouchableOpacity className="flex-1" activeOpacity={1} onPress={onClose} />
+        <TouchableOpacity className="flex-1" activeOpacity={1} onPress={handleAnimatedClose} />
 
         {/* Bottom sheet */}
         <Animated.View
@@ -177,7 +182,7 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
             </Text>
             <View className="absolute right-4">
               <CloseIcon
-                onPress={onClose}
+                onPress={handleAnimatedClose}
                 size={28}
                 backgroundColor="#333333"
                 iconColor="#848484"
