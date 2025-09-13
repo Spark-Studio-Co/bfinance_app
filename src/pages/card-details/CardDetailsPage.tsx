@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '~/shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
-import { Text } from '~/shared/ui';
+import { Text, CardDetailsModal } from '~/shared/ui';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 
 type CardDetailsNavigationProp = NativeStackNavigationProp<RootStackParamList, 'CardDetails'>;
@@ -15,6 +15,7 @@ export const CardDetailsPage: React.FC = () => {
   const navigation = useNavigation<CardDetailsNavigationProp>();
   const route = useRoute<CardDetailsRouteProp>();
   const { s } = useResponsive();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { cardId, cardNumber, balance, currency } = route.params;
 
@@ -50,6 +51,14 @@ export const CardDetailsPage: React.FC = () => {
 
   const handleWithdraw = () => {
     navigation.navigate('Withdrawal');
+  };
+
+  const handleShowCardDetails = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -163,7 +172,10 @@ export const CardDetailsPage: React.FC = () => {
         <View className="mb-6 rounded-[16px] bg-[#0F0F0F]" style={{ padding: s(12) }}>
           <View className="flex-row justify-between" style={{ height: s(76) }}>
             {/* Show */}
-            <TouchableOpacity className="flex-1 items-center justify-center" style={{ gap: s(10) }}>
+            <TouchableOpacity
+              className="flex-1 items-center justify-center"
+              style={{ gap: s(10) }}
+              onPress={handleShowCardDetails}>
               <Image
                 source={require('../../../assets/eye_dark.png')}
                 style={{ width: s(36), height: s(36) }}
@@ -327,6 +339,9 @@ export const CardDetailsPage: React.FC = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Card Details Modal */}
+      <CardDetailsModal visible={isModalVisible} onClose={handleCloseModal} />
     </MainLayout>
   );
 };

@@ -8,6 +8,9 @@ export { Checkbox } from './Checkbox';
 export { BackButton } from './BackButton';
 export { Typography } from './Typography';
 export { CryptoCard, type CryptoCardProps } from './CryptoCard';
+export { CardDetailsModal } from './CardDetailsModal';
+export { CopyIcon } from './CopyIcon';
+export { CloseIcon } from './CloseIcon';
 export {
   TransactionDetails,
   TransactionDetailRow,
