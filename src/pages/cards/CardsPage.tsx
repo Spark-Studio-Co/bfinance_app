@@ -3,10 +3,15 @@ import { MainLayout } from '~/app/layouts/MainLayout';
 import { View, ScrollView } from 'react-native';
 import { CardItem } from '~/features/CardItem/CardItem';
 import PlusIcon from '~/shared/icons/PlusIcon';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '~/shared/types/navigation';
 
 type CardsPageProps = TabScreenProps<'Cards'>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export function CardsPage({}: CardsPageProps) {
+  const navigation = useNavigation<NavigationProp>();
   // Mock data for cards
   const cards = [
     {
@@ -43,8 +48,15 @@ export function CardsPage({}: CardsPageProps) {
   ];
 
   const handleCardPress = (cardId: number) => {
-    console.log('Card pressed:', cardId);
-    // Add navigation or other logic here
+    const card = cards.find((c) => c.id === cardId);
+    if (card) {
+      navigation.navigate('CardDetails', {
+        cardId: card.id,
+        cardNumber: card.cardNumber,
+        balance: card.balance,
+        currency: card.currency,
+      });
+    }
   };
 
   return (

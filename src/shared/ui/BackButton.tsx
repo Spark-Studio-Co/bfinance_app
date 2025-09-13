@@ -8,6 +8,7 @@ export const BackButton = (onPress: { onPress: () => void }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
+      className=""
       onPress={onPress?.onPress ? onPress.onPress : () => navigation.goBack()}>
       <ChevronLeft />
     </TouchableOpacity>

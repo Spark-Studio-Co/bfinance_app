@@ -20,6 +20,12 @@ export type RootStackParamList = {
       }
     | undefined;
   Withdrawal: undefined;
+  CardDetails: {
+    cardId: number;
+    cardNumber: string;
+    balance: string;
+    currency: string;
+  };
 };
 
 export type TopUpDetails = Partial<

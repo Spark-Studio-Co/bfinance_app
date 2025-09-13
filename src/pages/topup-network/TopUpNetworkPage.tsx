@@ -7,10 +7,10 @@ import BitcoinIcon from '~/shared/icons/BitcoinIcon';
 import EthereumIcon from '~/shared/icons/EthereumIcon';
 import TonIcon from '~/shared/icons/TonIcon';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { AuthStackParamList } from '~/shared/types/navigation';
+import type { RootStackParamList } from '~/shared/types/navigation';
 
 export const TopUpNetworkPage: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const crypto = [
     { id: 'btc-1', title: 'Bitcoin', code: 'BTC', icon: <BitcoinIcon /> },
@@ -22,11 +22,33 @@ export const TopUpNetworkPage: React.FC = () => {
     const picked = crypto.find((c) => c.id === id);
     if (!picked) return;
 
-    navigation.navigate('TopUpDetail', {
-      title: picked.title,
-      details: {
-        currency: picked.code,
-      },
+    // Для всех криптовалют переходим на QR экран
+    let address = '';
+    let minAmount = '';
+
+    switch (picked.code) {
+      case 'BTC':
+        address = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
+        minAmount = '0.001 BTC';
+        break;
+      case 'ETH':
+        address = '0x742f35Cc6481C7f41c3fa0F1aC2b0A2F9F745B1d';
+        minAmount = '0.01 ETH';
+        break;
+      case 'TON':
+        address = 'UQCj5nBQIRMMfgUuHtuep7AZ5Id64RJShCs0LLYw1vDPALYW';
+        minAmount = '0.1 TON';
+        break;
+      default:
+        address = 'Unknown address';
+        minAmount = '0.001';
+    }
+
+    navigation.navigate('QRDeposit', {
+      currency: picked.code,
+      network: picked.title,
+      address,
+      minAmount,
     });
   };
 

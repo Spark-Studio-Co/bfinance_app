@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, ScrollView } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { BackButton, Text } from '~/shared/ui';
 import { useNavigation } from '@react-navigation/native';
 
@@ -15,6 +16,8 @@ export const MainLayout = ({
   isScroll = false,
   onPrevStep,
   iconPosition = 'after',
+  isGradient,
+  gradientColor = '161616',
 }: {
   children: React.ReactNode;
   isTitle?: boolean;
@@ -28,21 +31,40 @@ export const MainLayout = ({
   isScroll?: boolean;
   onPrevStep?: { onPress: () => void };
   iconPosition?: 'before' | 'after';
+  isGradient?: boolean;
+  gradientColor?: string;
 }) => {
   const navigation = useNavigation();
 
+  // Убираем # если он есть в начале строки
+  const cleanGradientColor = gradientColor?.startsWith('#')
+    ? gradientColor.slice(1)
+    : gradientColor;
+  const gradientColors: [string, string] = [`#${cleanGradientColor}99`, '#00000000']; // 60% opacity to transparent
+
   const content = (
-    <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>
+    <View className="flex-1">
       {isTitle && (
-        <View className="mt-[24px] flex w-full flex-row items-center gap-x-[16px]">
-          {isBack && <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />}
+        <View
+          className={`mt-[24px] flex w-full flex-row items-center gap-x-[16px] ${isNoPadding ? 'px-[24px]' : ''}`}>
+          {isBack && (
+            <View className={isBack && isNoPadding ? '' : 'pl-[24px]'}>
+              <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />
+            </View>
+          )}
 
           {/* Иконка слева */}
           {isIcon && icon && iconPosition === 'before' && (
             <View className="flex-row items-center">{icon}</View>
           )}
 
-          <Text weight="semibold" className="text-[20px] text-white">
+          <Text
+            weight="semibold"
+            style={{
+              fontSize: 20,
+              color: 'white',
+              paddingLeft: !isBack && !isNoPadding ? 24 : 0,
+            }}>
             {title}
           </Text>
 
@@ -52,8 +74,28 @@ export const MainLayout = ({
           )}
         </View>
       )}
-      {children}
+      <View className={`flex-1 ${isNoPadding ? '' : 'px-[24px]'}`}>{children}</View>
     </View>
+  );
+
+  const backgroundContent = isGradient ? (
+    <View className="flex-1">
+      <LinearGradient
+        colors={gradientColors}
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 0.46154 }}
+        style={{
+          position: 'absolute',
+          top: -5,
+          left: 0,
+          right: 0,
+          height: 398,
+        }}
+      />
+      {content}
+    </View>
+  ) : (
+    content
   );
 
   return (
@@ -63,10 +105,10 @@ export const MainLayout = ({
           showsVerticalScrollIndicator={false}
           className="flex-1"
           keyboardShouldPersistTaps="handled">
-          {content}
+          {backgroundContent}
         </ScrollView>
       ) : (
-        <View className="flex-1">{content}</View>
+        <View className="flex-1">{backgroundContent}</View>
       )}
     </SafeAreaView>
   );
