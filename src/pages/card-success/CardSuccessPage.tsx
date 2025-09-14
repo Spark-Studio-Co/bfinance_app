@@ -1,9 +1,6 @@
-import React from 'react';
 import { View } from 'react-native';
 import { MainLayout } from '~/app/layouts/MainLayout';
 import { Text } from '~/shared/ui';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '~/shared/types/navigation';
 import CardSuccessIcon from '~/shared/icons/CardSuccessIcon';
 
 export function CardSuccessPage() {

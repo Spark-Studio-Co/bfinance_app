@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Text, Button } from '~/shared/ui';
 import SadFaceIcon from '~/shared/icons/SadFaceIcon';
 
@@ -35,13 +35,14 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           </Text>
         </View>
 
-        <Button
-          label={buttonText}
+        <TouchableOpacity
           onPress={onButtonPress}
-          variant="light"
-          weight="semibold"
-          className="!flex h-[36px] w-[168px] !items-center !justify-center !rounded-full"
-        />
+          activeOpacity={0.7}
+          className="flex h-[36px] w-[168px] items-center justify-center !rounded-full bg-white">
+          <Text weight="semibold" className="text-center text-[15px] tracking-[-0.23px] text-black">
+            {buttonText}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
