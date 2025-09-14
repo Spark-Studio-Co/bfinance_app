@@ -28,6 +28,7 @@ export type RootStackParamList = {
   };
   Support: undefined;
   IdentityVerification: undefined;
+  PinCode: { fromSettings?: boolean };
 };
 
 export type TopUpDetails = Partial<
