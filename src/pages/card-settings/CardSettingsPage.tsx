@@ -22,7 +22,7 @@ const MenuItem = ({
 }: MenuItemProps) => (
   <TouchableOpacity
     onPress={onPress}
-    className="relative mb-2 flex-row items-center rounded-2xl bg-[#0f0f0f] px-4 py-4"
+    className="relative mb-2 h-[68px] flex-row items-center rounded-2xl bg-[#0f0f0f] px-4"
     activeOpacity={0.7}>
     <View className="mr-4 h-10 w-10 items-center justify-center rounded-full bg-[rgba(41,144,255,0.15)]">
       {icon}
