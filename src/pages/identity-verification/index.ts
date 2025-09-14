@@ -1,0 +1,1 @@
+export { IdentityVerificationPage } from './IdentityVerificationPage';

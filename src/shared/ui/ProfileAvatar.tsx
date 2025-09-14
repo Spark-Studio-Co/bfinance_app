@@ -18,6 +18,10 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
     navigation.navigate('History' as never);
   };
 
+  const handleProfilePress = () => {
+    navigation.navigate('Profile' as never);
+  };
+
   const imageStyle = {
     width: s(40),
     height: s(40),
@@ -39,7 +43,11 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
 
   return (
     <View className="flex w-full flex-row items-center justify-between">
-      <View className="flex flex-row items-center" style={containerStyle}>
+      <TouchableOpacity
+        className="flex flex-row items-center"
+        style={containerStyle}
+        onPress={handleProfilePress}
+        activeOpacity={0.7}>
         <Image
           source={require('../../../assets/avatar.png')}
           style={imageStyle}
@@ -48,7 +56,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
         <Text style={textStyle} weight="semibold" className=" text-white">
           Timur
         </Text>
-      </View>
+      </TouchableOpacity>
       <TouchableOpacity style={buttonStyle} onPress={handleHistoryPress}>
         <ClockIcon />
       </TouchableOpacity>

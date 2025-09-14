@@ -1,29 +1,32 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
-import { Header } from '~/features/Header/ui/Header';
-import { MenuCard } from '~/features/Profile/ui/ProfileCard';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { MenuCard } from '~/features/Profile/ui/ProfileCard';
 import { menuSections } from '~/features/Profile/model/mock';
+import LogoIcon from '~/shared/icons/LogoIcon';
+import LogoutIcon from '~/shared/ui/LogoutIcon';
 
 export const ProfileScreen = () => {
   const navigation = useNavigation();
+
+  const handleBack = () => {
+    navigation.goBack();
+  };
+
+  const handleLogout = () => {
+    // Logout logic
+  };
 
   const handleMenuPress = (itemId: string) => {
     console.log(`Pressed: ${itemId}`);
 
     switch (itemId) {
-      case 'history':
-        (navigation as any).navigate('History');
-        break;
-      case 'transaction-details':
-        // Передаем существующий ID транзакции из мока
-        (navigation as any).navigate('TransactionDetails', { transactionId: '1' });
-        break;
       case 'identity':
-        // Добавить навигацию на страницу верификации
+        (navigation as any).navigate('IdentityVerification');
         break;
       case 'support':
-        // Добавить навигацию на страницу поддержки
+        (navigation as any).navigate('Support');
         break;
       case 'privacy':
         // Добавить навигацию на политику конфиденциальности
@@ -41,50 +44,52 @@ export const ProfileScreen = () => {
 
   return (
     <View className="flex-1 bg-black">
-      <Header title="" showLogout />
-      <View className="flex-1 px-4">
-        {/* Profile Header */}
-        <View className="mb-8 items-center">
-          <View className="mb-4 h-24 w-24 overflow-hidden rounded-full">
-            <Image
-              source={{
-                uri: '../../../assets/avatar.png',
-              }}
-              className="h-full w-full"
-            />
-          </View>
-
-          <Text className="mb-2 text-[20px] font-semibold text-white">Timur</Text>
-
-          <Text className="mb-4 text-[14px] text-[#878787]">user@example.com</Text>
-
-          <View className="rounded-[10px] bg-[#00E675] px-5 py-3">
-            <Text className="font-medium text-black">Verified</Text>
-          </View>
+      {/* Header */}
+      <View className="bg-[#0f0f0f] px-6 pb-6 pt-16">
+        {/* Header Controls */}
+        <View className="mb-6 flex-row items-center justify-between">
+          <TouchableOpacity onPress={handleBack}>
+            <Ionicons name="chevron-back" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleLogout}>
+            <LogoutIcon />
+          </TouchableOpacity>
         </View>
 
-        {/* Menu Sections */}
-        <View className="">
-          {menuSections.map((section, sectionIndex) => (
-            <View key={section.title} className="mb-3">
-              <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">
-                {section.title}
-              </Text>
+        {/* Profile Info */}
+        <View className="items-center">
+          <View className="mb-4 h-[85px] w-[85px] overflow-hidden rounded-full">
+            <Image source={require('../../../assets/avatar.png')} className="h-full w-full" />
+          </View>
 
-              <View className="">
-                {section.items.map((item) => (
-                  <MenuCard
-                    key={item.id}
-                    icon={item.icon}
-                    title={item.title}
-                    onPress={() => handleMenuPress(item.id)}
-                  />
-                ))}
-              </View>
-            </View>
-          ))}
+          <Text className="mb-1 text-[20px] font-bold text-white">Timur</Text>
+          <Text className="mb-4 text-[14px] text-[rgba(255,255,255,0.5)]">user@example.com</Text>
+
+          <View className="rounded-[10px] bg-[#00E675] px-4 py-1">
+            <Text className="text-[13px] font-medium text-black">Verified</Text>
+          </View>
         </View>
       </View>
+
+      {/* Menu Content */}
+      <ScrollView className="flex-1 px-6 py-3">
+        {/* Menu Sections */}
+        {menuSections.map((section, sectionIndex) => (
+          <View key={section.title} className="mb-4">
+            <Text className="mb-2 text-[13px] uppercase tracking-wider text-[#AAAAAA]">
+              {section.title}
+            </Text>
+            {section.items.map((item) => (
+              <MenuCard
+                key={item.id}
+                icon={item.icon}
+                title={item.title}
+                onPress={() => handleMenuPress(item.id)}
+              />
+            ))}
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };

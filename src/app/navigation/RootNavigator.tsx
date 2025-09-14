@@ -12,6 +12,8 @@ import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
 import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
 import { QRDepositPage } from '~/pages/qr-deposit';
 import { CardDetailsPage } from '~/pages/card-details';
+import { SupportPage } from '~/pages/support/SupportPage';
+import { IdentityVerificationPage } from '~/pages/identity-verification';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -31,6 +33,8 @@ export const RootNavigator = () => {
         <Stack.Screen name="QRDeposit" component={QRDepositPage} />
         <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
         <Stack.Screen name="CardDetails" component={CardDetailsPage} />
+        <Stack.Screen name="Support" component={SupportPage} />
+        <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
       </Stack.Navigator>
     </>
   );

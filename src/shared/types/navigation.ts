@@ -26,6 +26,8 @@ export type RootStackParamList = {
     balance: string;
     currency: string;
   };
+  Support: undefined;
+  IdentityVerification: undefined;
 };
 
 export type TopUpDetails = Partial<

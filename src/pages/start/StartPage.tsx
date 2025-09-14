@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { useNavigation } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
@@ -29,6 +29,11 @@ export const StartPage = () => {
 
   // Используем hook для отслеживания клавиатуры
   const keyboard = useAnimatedKeyboard();
+
+  // Функция для пропуска авторизации и перехода на главный экран
+  const handleSkipAuth = () => {
+    (navigation as any).navigate('Main');
+  };
 
   // Функция для отправки email для авторизации
   const handleEmailAuth = async () => {
@@ -95,6 +100,15 @@ export const StartPage = () => {
         />
 
         <View style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0,0,0,0.35)' }]} />
+
+        {/* Skip Button */}
+        <View className="absolute right-6 top-16 z-10">
+          <TouchableOpacity onPress={handleSkipAuth} className="rounded-full bg-black/50 px-4 py-2">
+            <Text weight="medium" className="text-white" style={{ fontSize: fs(16) }}>
+              Skip
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Logo */}
         <View className="w-full items-center justify-center" style={{ marginTop: hp(7) }}>
