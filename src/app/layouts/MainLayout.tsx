@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BackButton, Text } from '~/shared/ui';
 import { useNavigation } from '@react-navigation/native';
@@ -46,7 +46,7 @@ export const MainLayout = ({
     <View className="flex-1">
       {isTitle && (
         <View
-          className={`mt-[24px] flex w-full flex-row items-center gap-x-[16px] ${isNoPadding ? 'px-[24px]' : ''}`}>
+          className={`mb-[12px] mt-[24px] flex w-full flex-row items-center gap-x-[16px] ${isNoPadding ? 'px-[24px]' : ''}`}>
           {isBack && (
             <View className={isBack && isNoPadding ? '' : 'pl-[24px]'}>
               <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />
@@ -58,15 +58,20 @@ export const MainLayout = ({
             <View className="flex-row items-center">{icon}</View>
           )}
 
-          <Text
-            weight="semibold"
-            style={{
-              fontSize: 20,
-              color: 'white',
-              paddingLeft: !isBack && !isNoPadding ? 24 : 0,
-            }}>
-            {title}
-          </Text>
+          <TouchableOpacity
+            onPress={isBack ? (onPrevStep?.onPress ?? (() => navigation.goBack())) : undefined}
+            disabled={!isBack}
+            activeOpacity={isBack ? 0.7 : 1}>
+            <Text
+              weight="semibold"
+              style={{
+                fontSize: 20,
+                color: 'white',
+                paddingLeft: !isBack && !isNoPadding ? 24 : 0,
+              }}>
+              {title}
+            </Text>
+          </TouchableOpacity>
 
           {/* Иконка справа */}
           {isIcon && icon && iconPosition === 'after' && (
