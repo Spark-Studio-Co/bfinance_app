@@ -12,7 +12,7 @@ export const ReEnterPinScreen = () => {
   const { s } = useResponsive();
 
   return (
-    <Animated.View className="flex-1 bg-black px-5" entering={SlideInRight} exiting={SlideOutLeft}>
+    <Animated.View className="flex-1" entering={SlideInRight} exiting={SlideOutLeft}>
       <View className="flex-1 items-center" style={{ paddingTop: s(106) }}>
         <Text weight="semibold" className="text-white" style={{ fontSize: s(19) }}>
           Re-enter new PIN code
@@ -25,9 +25,8 @@ export const ReEnterPinScreen = () => {
             <Text className="mt-5 text-center text-sm text-red-500">{error}</Text>
           </Animated.View>
         )}
+        <NumberPad />
       </View>
-
-      <NumberPad />
     </Animated.View>
   );
 };

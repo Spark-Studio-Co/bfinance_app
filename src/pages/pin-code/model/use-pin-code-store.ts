@@ -144,6 +144,14 @@ export const usePinCodeStore = create<PinCodeStore>((set, get) => ({
   },
 
   reset: () => {
-    set(initialState);
+    set(() => ({
+      step: PinCodeStep.ENTER_NEW,
+      firstPin: '',
+      secondPin: '',
+      currentPin: '',
+      pinDots: [false, false, false, false],
+      isLoading: false,
+      error: null,
+    }));
   },
 }));
