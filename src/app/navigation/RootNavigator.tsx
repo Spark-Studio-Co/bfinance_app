@@ -19,6 +19,7 @@ import { CardSuccessPage } from '~/pages/card-success';
 import { SupportPage } from '~/pages/support/SupportPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification';
 import { PinCodePage } from '~/pages/pin-code/ui/PinCodePage';
+import { CardSettingsPage } from '~/pages/card-settings';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -45,6 +46,7 @@ export const RootNavigator = () => {
         <Stack.Screen name="Support" component={SupportPage} />
         <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
         <Stack.Screen name="PinCode" component={PinCodePage} />
+        <Stack.Screen name="CardSettings" component={CardSettingsPage} />
       </Stack.Navigator>
     </>
   );

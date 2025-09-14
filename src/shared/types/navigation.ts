@@ -39,6 +39,7 @@ export type RootStackParamList = {
   Support: undefined;
   IdentityVerification: undefined;
   PinCode: { fromSettings?: boolean };
+  CardSettings: { cardNumber: string };
 };
 
 export type TopUpDetails = Partial<
