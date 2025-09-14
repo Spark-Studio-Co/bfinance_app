@@ -61,6 +61,10 @@ export const CardDetailsPage: React.FC = () => {
     setIsModalVisible(false);
   };
 
+  const handleSettings = () => {
+    navigation.navigate('CardSettings', { cardNumber: cardNumber.slice(-4) });
+  };
+
   return (
     <MainLayout
       isTitle
@@ -213,7 +217,10 @@ export const CardDetailsPage: React.FC = () => {
             </TouchableOpacity>
 
             {/* Settings */}
-            <TouchableOpacity className="flex-1 items-center justify-center" style={{ gap: s(10) }}>
+            <TouchableOpacity
+              className="flex-1 items-center justify-center"
+              style={{ gap: s(10) }}
+              onPress={handleSettings}>
               <Image
                 source={require('../../../assets/gear.png')}
                 style={{ width: s(36), height: s(36) }}
