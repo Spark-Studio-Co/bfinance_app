@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TabNavigator } from './TabNavigator';
 import type { RootStackParamList } from '../../shared/types/navigation';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
-import { TransactionDetailsScreen } from '~/pages/transaction-detail/TransactionDetailsPage';
 import { ProfileScreen } from '~/pages/profile/ProfilePage';
 import { ServicesPage } from '~/pages/services/ServicesPage';
 

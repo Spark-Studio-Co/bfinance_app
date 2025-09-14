@@ -1,0 +1,1 @@
+export { CardPaymentPage } from './CardPaymentPage';

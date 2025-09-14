@@ -68,9 +68,8 @@ export const MainLayout = ({
             {title}
           </Text>
 
-          {/* Иконка справа */}
           {isIcon && icon && iconPosition === 'after' && (
-            <View className="flex-row items-center">{icon}</View>
+            <View className="ml-auto flex-row items-center pr-[24px]">{icon}</View>
           )}
         </View>
       )}

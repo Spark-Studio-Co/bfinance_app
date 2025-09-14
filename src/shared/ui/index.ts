@@ -7,6 +7,8 @@ export { Input, type InputProps } from './Input';
 export { Checkbox } from './Checkbox';
 export { BackButton } from './BackButton';
 export { Typography } from './Typography';
+export { EmptyState } from './EmptyState';
+export { PaymentModal } from './PaymentModal';
 export { CryptoCard, type CryptoCardProps } from './CryptoCard';
 export { CardDetailsModal } from './CardDetailsModal';
 export { CopyIcon } from './CopyIcon';

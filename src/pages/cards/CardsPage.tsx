@@ -1,7 +1,8 @@
 import type { TabScreenProps } from '../../shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
-import { View, ScrollView } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import { CardItem } from '~/features/CardItem/CardItem';
+import { EmptyState } from '~/shared/ui/EmptyState';
 import PlusIcon from '~/shared/icons/PlusIcon';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -12,14 +13,16 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export function CardsPage({}: CardsPageProps) {
   const navigation = useNavigation<NavigationProp>();
-  // Mock data for cards
+
+  // Mock data for cards - set to empty array to show empty state
+  const cards: any[] = [];
+  /* 
   const cards = [
     {
       id: 1,
       cardName: 'Business Card',
       cardNumber: '4532123456789012',
       cardHolder: 'John Doe',
-
       cardType: 'visa' as const,
       balance: '2,450.00',
       currency: 'USD',
@@ -46,6 +49,7 @@ export function CardsPage({}: CardsPageProps) {
       isActive: false,
     },
   ];
+  */
 
   const handleCardPress = (cardId: number) => {
     const card = cards.find((c) => c.id === cardId);
@@ -59,25 +63,48 @@ export function CardsPage({}: CardsPageProps) {
     }
   };
 
+  const handleIssueCard = () => {
+    navigation.navigate('CardIssuance');
+  };
+
   return (
-    <MainLayout isTitle title="Cards" isIcon icon={<PlusIcon />}>
-      <ScrollView
-        className="flex-1 pt-[12px]"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ gap: 12 }}>
-        {cards.map((card) => (
-          <CardItem
-            key={card.id}
-            cardName={card.cardName}
-            cardNumber={card.cardNumber}
-            cardType={card.cardType}
-            balance={card.balance}
-            currency={card.currency}
-            isActive={card.isActive}
-            onPress={() => handleCardPress(card.id)}
-          />
-        ))}
-      </ScrollView>
+    <MainLayout
+      isTitle
+      title="Cards"
+      isIcon
+      icon={
+        cards.length > 0 && (
+          <TouchableOpacity onPress={handleIssueCard} activeOpacity={0.7}>
+            <PlusIcon />
+          </TouchableOpacity>
+        )
+      }>
+      {cards.length === 0 ? (
+        <EmptyState
+          title="Nothing here :("
+          description="Issue your card and start paying with crypto today"
+          buttonText="Issue card now"
+          onButtonPress={handleIssueCard}
+        />
+      ) : (
+        <ScrollView
+          className="flex-1 pt-[12px]"
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ gap: 12 }}>
+          {cards.map((card) => (
+            <CardItem
+              key={card.id}
+              cardName={card.cardName}
+              cardNumber={card.cardNumber}
+              cardType={card.cardType}
+              balance={card.balance}
+              currency={card.currency}
+              isActive={card.isActive}
+              onPress={() => handleCardPress(card.id)}
+            />
+          ))}
+        </ScrollView>
+      )}
     </MainLayout>
   );
 }

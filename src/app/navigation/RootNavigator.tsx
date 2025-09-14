@@ -12,6 +12,10 @@ import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
 import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
 import { QRDepositPage } from '~/pages/qr-deposit';
 import { CardDetailsPage } from '~/pages/card-details';
+import { CardIssuanceDetailsPage } from '~/pages/card-details/CardIssuanceDetailsPage';
+import { CardIssuancePage } from '~/pages/card-issuance';
+import { CardPaymentPage } from '~/pages/card-payment';
+import { CardSuccessPage } from '~/pages/card-success';
 import { SupportPage } from '~/pages/support/SupportPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification';
 import { PinCodePage } from '~/pages/pin-code/ui/PinCodePage';
@@ -34,6 +38,10 @@ export const RootNavigator = () => {
         <Stack.Screen name="QRDeposit" component={QRDepositPage} />
         <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
         <Stack.Screen name="CardDetails" component={CardDetailsPage} />
+        <Stack.Screen name="CardIssuanceDetails" component={CardIssuanceDetailsPage} />
+        <Stack.Screen name="CardIssuance" component={CardIssuancePage} />
+        <Stack.Screen name="CardPayment" component={CardPaymentPage} />
+        <Stack.Screen name="CardSuccess" component={CardSuccessPage} />
         <Stack.Screen name="Support" component={SupportPage} />
         <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
         <Stack.Screen name="PinCode" component={PinCodePage} />

@@ -26,6 +26,16 @@ export type RootStackParamList = {
     balance: string;
     currency: string;
   };
+  CardIssuanceDetails: {
+    cardType: 'lite' | 'card';
+    cardName: string;
+  };
+  CardIssuance: undefined;
+  CardPayment: {
+    cardType: 'lite' | 'card';
+    cardName: string;
+  };
+  CardSuccess: undefined;
   Support: undefined;
   IdentityVerification: undefined;
   PinCode: { fromSettings?: boolean };
