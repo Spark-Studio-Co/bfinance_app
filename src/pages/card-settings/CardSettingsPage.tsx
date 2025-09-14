@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { MainLayout } from '~/app/layouts/MainLayout';
 
 interface MenuItemProps {
   title: string;
@@ -49,10 +50,6 @@ export const CardSettingsPage = () => {
   const route = useRoute();
   const { cardNumber } = route.params as { cardNumber: string };
 
-  const handleBack = () => {
-    navigation.goBack();
-  };
-
   const handleMenuPress = (itemId: string) => {
     console.log(`Pressed: ${itemId}`);
 
@@ -78,76 +75,58 @@ export const CardSettingsPage = () => {
   };
 
   return (
-    <View className="flex-1 bg-black">
-      {/* Header */}
-      <View className="bg-black px-6 pb-6 pt-16">
-        <View className="flex-row items-center">
-          <TouchableOpacity onPress={handleBack} className="mr-4">
-            <Ionicons name="chevron-back" size={24} color="white" />
-          </TouchableOpacity>
-          <Text className="text-[20px] font-semibold tracking-[-0.23px] text-white">
-            Card {cardNumber}
-          </Text>
-        </View>
+    <MainLayout isTitle isBack title={`Card *${cardNumber}`} isScroll>
+      {/* Security Section */}
+      <View className="mb-6">
+        <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">SECURITY</Text>
+        <MenuItem
+          title="Change PIN code"
+          icon={
+            <Image className="h-[40px] w-[40px]" source={require('../../../assets/security.png')} />
+          }
+          onPress={() => handleMenuPress('pin')}
+        />
       </View>
 
-      {/* Menu Content */}
-      <ScrollView className="flex-1 px-6">
-        {/* Security Section */}
-        <View className="mb-6">
-          <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">SECURITY</Text>
-          <MenuItem
-            title="Change PIN code"
-            icon={
-              <Image
-                className="h-[40px] w-[40px]"
-                source={require('../../../assets/security.png')}
-              />
-            }
-            onPress={() => handleMenuPress('pin')}
-          />
-        </View>
+      {/* Contacts Section */}
+      <View className="mb-6">
+        <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">CONTACTS</Text>
+        <MenuItem
+          title="Change email"
+          icon={
+            <Image className="h-[40px] w-[40px]" source={require('../../../assets/email.png')} />
+          }
+          onPress={() => handleMenuPress('email')}
+        />
+        <MenuItem
+          title="Change phone"
+          icon={
+            <Image className="h-[40px] w-[40px]" source={require('../../../assets/phone.png')} />
+          }
+          onPress={() => handleMenuPress('phone')}
+        />
+      </View>
 
-        {/* Contacts Section */}
-        <View className="mb-6">
-          <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">CONTACTS</Text>
-          <MenuItem
-            title="Change email"
-            icon={
-              <Image className="h-[40px] w-[40px]" source={require('../../../assets/email.png')} />
-            }
-            onPress={() => handleMenuPress('email')}
-          />
-          <MenuItem
-            title="Change phone"
-            icon={
-              <Image className="h-[40px] w-[40px]" source={require('../../../assets/phone.png')} />
-            }
-            onPress={() => handleMenuPress('phone')}
-          />
-        </View>
-
-        <View className="mb-6">
-          <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">INFO</Text>
-          <MenuItem
-            title="Change Label"
-            icon={
-              <Image className="h-[40px] w-[40px]" source={require('../../../assets/edit.png')} />
-            }
-            onPress={() => handleMenuPress('label')}
-          />
-          <MenuItem
-            title="Limits & Restrictions"
-            icon={
-              <Image className="h-[40px] w-[40px]" source={require('../../../assets/params.png')} />
-            }
-            onPress={() => handleMenuPress('limits')}
-            showBadge={true}
-            isCloseBadge={true}
-            badgeText="soon"
-          />
-        </View>
-      </ScrollView>
-    </View>
+      {/* Info Section */}
+      <View className="mb-6">
+        <Text className="mb-3 text-[13px] uppercase tracking-wider text-[#AAAAAA]">INFO</Text>
+        <MenuItem
+          title="Change Label"
+          icon={
+            <Image className="h-[40px] w-[40px]" source={require('../../../assets/edit.png')} />
+          }
+          onPress={() => handleMenuPress('label')}
+        />
+        <MenuItem
+          title="Limits & Restrictions"
+          icon={
+            <Image className="h-[40px] w-[40px]" source={require('../../../assets/params.png')} />
+          }
+          onPress={() => handleMenuPress('limits')}
+          showBadge={true}
+          badgeText="soon"
+        />
+      </View>
+    </MainLayout>
   );
 };

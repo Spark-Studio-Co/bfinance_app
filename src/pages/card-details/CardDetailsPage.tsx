@@ -72,12 +72,11 @@ export const CardDetailsPage: React.FC = () => {
       isGradient={true}
       gradientColor="161616">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        <View className="mb-[12px] overflow-hidden rounded-[16px]">
+        <View className="mb-[12px] overflow-hidden rounded-[16px] ">
           <ImageBackground
             source={require('../../../assets/card_placeholder.png')}
             style={{
               height: 209,
-              marginTop: 12,
             }}
             resizeMode="cover">
             <View className="absolute bottom-[20px] left-[20px]">
@@ -116,7 +115,7 @@ export const CardDetailsPage: React.FC = () => {
               <TouchableOpacity
                 onPress={handleTopUp}
                 className="flex-1 items-center justify-center rounded-[12px] bg-white"
-                style={{ height: 42 }}>
+                style={{ height: 42, width: 154 }}>
                 <Text
                   weight="semibold"
                   className="text-black"
@@ -130,7 +129,7 @@ export const CardDetailsPage: React.FC = () => {
                 onPress={handleWithdraw}
                 className="items-center justify-center rounded-[12px]  bg-[#0F0F0F]"
                 style={{
-                  width: 142,
+                  width: '50%',
                   height: 42,
                 }}>
                 <Text
@@ -147,7 +146,6 @@ export const CardDetailsPage: React.FC = () => {
         </View>
         <View className="mb-6 rounded-[16px] bg-[#0F0F0F]" style={{ padding: 12 }}>
           <View className="flex-row justify-between" style={{ height: 76 }}>
-            {/* Show */}
             <TouchableOpacity
               className="flex-1 items-center justify-center"
               style={{ gap: 10 }}
