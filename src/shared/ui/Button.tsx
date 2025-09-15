@@ -67,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const labelStyle = {
-    fontSize: s(15),
+    fontSize: 15,
   };
 
   return (

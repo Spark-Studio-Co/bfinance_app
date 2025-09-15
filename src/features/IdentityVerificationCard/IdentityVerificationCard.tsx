@@ -39,12 +39,12 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   };
 
   const titleStyle = {
-    fontSize: s(20),
+    fontSize: 20,
   };
 
   const subtitleStyle = {
     marginTop: s(6),
-    fontSize: s(12),
+    fontSize: 12,
   };
 
   const stepsContainerStyle = {
@@ -57,7 +57,7 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   };
 
   const stepTextStyle = {
-    fontSize: s(13),
+    fontSize: 13,
     letterSpacing: 1,
   };
 
@@ -68,7 +68,7 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   };
 
   const buttonTextStyle = {
-    fontSize: s(15),
+    fontSize: 15,
     letterSpacing: -0.23,
   };
 

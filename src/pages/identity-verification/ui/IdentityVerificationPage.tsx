@@ -30,7 +30,7 @@ export const IdentityVerificationPage = () => {
         style={{
           marginTop: s(12),
           maxWidth: s(290),
-          fontSize: s(14),
+          fontSize: 14,
           lineHeight: s(22),
           letterSpacing: -0.43,
           color: '#FFFFFFCC',

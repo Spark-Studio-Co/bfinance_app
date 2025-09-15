@@ -132,7 +132,7 @@ export const StartPage = () => {
               borderTopLeftRadius: ms(24),
               borderTopRightRadius: ms(24),
             }}>
-            <Text weight="semibold" className="text-center text-white" style={{ fontSize: fs(24) }}>
+            <Text weight="semibold" className="text-center text-white" style={{ fontSize: 24 }}>
               Welcome!
             </Text>
 
@@ -160,7 +160,7 @@ export const StartPage = () => {
             <Text
               weight="semibold"
               className="mt-3 text-center text-[#FFFFFF99]"
-              style={{ fontSize: fs(13) }}>
+              style={{ fontSize: 13 }}>
               or
             </Text>
 
@@ -177,7 +177,7 @@ export const StartPage = () => {
               weight="semibold"
               variant="light"
               className="mt-3"
-              style={{ height: hp(5.2) }}
+              style={{ height: 42 }}
               labelClassName="text-[#000000]"
               loading={isSendingEmail}
             />

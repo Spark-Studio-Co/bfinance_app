@@ -17,7 +17,7 @@ export const EmailConfirmationPage = () => {
         style={{
           marginTop: s(24),
           maxWidth: s(343),
-          fontSize: s(14),
+          fontSize: 14,
           color: 'white',
         }}>
         We have just sent a confirmation code to <Text weight="semibold">john@example.com</Text>.
@@ -27,7 +27,7 @@ export const EmailConfirmationPage = () => {
       <Button
         onPress={() => navigation.navigate('SignUp' as never)}
         label="Confirm"
-        style={{ marginTop: s(12), height: s(42) }}
+        style={{ marginTop: s(12), height: 42 }}
         weight="semibold"
         labelClassName="text-[#000000]"
         variant="light"

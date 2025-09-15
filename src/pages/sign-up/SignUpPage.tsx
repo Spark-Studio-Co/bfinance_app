@@ -17,8 +17,8 @@ export const SignUpPage = () => {
 
   return (
     <AuthLayout isBack title="Sign Up">
-      <Input placeholder="First name" style={{ marginTop: s(24), height: s(48) }} />
-      <Input placeholder="Last name" style={{ marginTop: s(12), height: s(48) }} />
+      <Input placeholder="First name" style={{ marginTop: s(24), height: 48 }} />
+      <Input placeholder="Last name" style={{ marginTop: s(12), height: 48 }} />
 
       <View
         style={{
@@ -64,7 +64,7 @@ export const SignUpPage = () => {
       <Button
         onPress={() => navigation.navigate('IdentityVerification' as never)}
         label="Continue"
-        style={{ marginTop: s(24), height: s(42) }}
+        style={{ marginTop: s(24), height: 42 }}
         weight="semibold"
         labelClassName="text-[#000000]"
         variant="light"

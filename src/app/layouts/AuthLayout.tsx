@@ -4,7 +4,6 @@ import { View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BackButton } from '~/shared/ui/BackButton';
 import { Text } from '~/shared/ui';
-import { useResponsive } from '~/shared/hooks';
 
 export const AuthLayout = ({
   children,

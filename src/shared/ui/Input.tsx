@@ -27,7 +27,7 @@ export const Input: React.FC<InputProps> = ({
   const combinedStyle = {
     paddingHorizontal: s(16),
     paddingVertical: s(12),
-    fontSize: s(17),
+    fontSize: 17,
     borderRadius: s(12),
     height: s(48),
     ...style,
