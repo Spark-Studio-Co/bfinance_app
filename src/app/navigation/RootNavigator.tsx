@@ -10,6 +10,7 @@ import { TopUpPage } from '~/pages/topup/TopUpPage';
 import { TopUpNetworkPage } from '~/pages/topup-network/TopUpNetworkPage';
 import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
 import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
+import { CardWithdrawalPage, CardWithdrawalSuccessPage } from '~/pages/card-withdrawal';
 import { QRDepositPage } from '~/pages/qr-deposit';
 import { CardDetailsPage } from '~/pages/card-details';
 import { CardTopupPage } from '~/pages/card-topup/CardTopupPage';
@@ -41,6 +42,8 @@ export const RootNavigator = () => {
         <Stack.Screen name="TopUpDetail" component={TopUpDetailPage} />
         <Stack.Screen name="QRDeposit" component={QRDepositPage} />
         <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
+        <Stack.Screen name="CardWithdrawal" component={CardWithdrawalPage} />
+        <Stack.Screen name="CardWithdrawalSuccess" component={CardWithdrawalSuccessPage} />
         <Stack.Screen name="CardDetails" component={CardDetailsPage} />
         <Stack.Screen name="CardIssuanceDetails" component={CardIssuanceDetailsPage} />
         <Stack.Screen name="CardIssuance" component={CardIssuancePage} />

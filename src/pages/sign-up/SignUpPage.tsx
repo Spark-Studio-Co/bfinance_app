@@ -12,7 +12,7 @@ import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export const SignUpPage = () => {
   const navigation = useNavigation();
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(true);
   const { s } = useResponsive();
 
   return (

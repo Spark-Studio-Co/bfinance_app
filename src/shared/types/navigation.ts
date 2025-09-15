@@ -21,6 +21,8 @@ export type RootStackParamList = {
       }
     | undefined;
   Withdrawal: undefined;
+  CardWithdrawal: undefined;
+  CardWithdrawalSuccess: undefined;
   CardDetails: {
     cardId: number;
     cardNumber: string;
