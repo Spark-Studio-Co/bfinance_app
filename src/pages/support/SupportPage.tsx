@@ -10,8 +10,6 @@ import WhatsappCircleIcon from '~/shared/icons/WhatsappCircleIcon';
 import PhoneCircleIcon from '~/shared/icons/PhoneCircleIcon';
 
 export const SupportPage = () => {
-  const { fs } = useResponsive();
-
   const supportContent = [
     {
       label: 'Telegram',
@@ -39,7 +37,7 @@ export const SupportPage = () => {
 
   return (
     <MainLayout isTitle title="Support" isBack>
-      <Text weight="regular" className="mt-6 text-[#AAAAAA]" style={{ fontSize: fs(13) }}>
+      <Text weight="regular" className="mt-6 text-[#AAAAAA]" style={{ fontSize: 13 }}>
         CHAT
       </Text>
       <View className="mt-2 flex flex-col gap-y-2">
@@ -47,7 +45,7 @@ export const SupportPage = () => {
           <SupportTab key={index} {...item} />
         ))}
       </View>
-      <Text weight="regular" className="mt-6 text-[#AAAAAA]" style={{ fontSize: fs(13) }}>
+      <Text weight="regular" className="mt-6 text-[#AAAAAA]" style={{ fontSize: 13 }}>
         PHONE
       </Text>
       <View className="mt-2 flex flex-col gap-y-2">

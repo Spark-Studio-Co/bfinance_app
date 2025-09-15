@@ -22,11 +22,11 @@ export const CardItem = ({ cardName, cardNumber, balance, currency, onPress }: C
   };
 
   const textStyle = {
-    fontSize: s(17),
+    fontSize: 17,
   };
 
   const textBalanceStyle = {
-    fontSize: s(15),
+    fontSize: 15,
   };
 
   const formatCardNumber = (number: string) => {

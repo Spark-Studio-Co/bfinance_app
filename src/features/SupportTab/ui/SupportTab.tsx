@@ -24,11 +24,11 @@ export const SupportTab = ({
       activeOpacity={0.7}>
       {icon}
       <View className="flex flex-col">
-        <Text weight="medium" className=" text-[#FFFFFF]" style={{ fontSize: fs(17) }}>
+        <Text weight="medium" className=" text-[#FFFFFF]" style={{ fontSize: 17 }}>
           {label}
         </Text>
         {description && (
-          <Text weight="regular" className="mt-[2px] text-[#AAAAAA]" style={{ fontSize: fs(13) }}>
+          <Text weight="regular" className="mt-[2px] text-[#AAAAAA]" style={{ fontSize: 13 }}>
             {description}
           </Text>
         )}

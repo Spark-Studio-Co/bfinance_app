@@ -15,13 +15,12 @@ export const TransactionDetailRow: React.FC<TransactionDetailRowProps> = ({
   value,
   className = '',
 }) => {
-  const { fs } = useResponsive();
   return (
     <View className={`h-full flex-col justify-center ${className}`}>
-      <Text weight="medium" className="text-white" style={{ fontSize: fs(17) }}>
+      <Text weight="medium" className="text-white" style={{ fontSize: 17 }}>
         {value}
       </Text>
-      <Text className="mt-[2px] font-normal text-[#AAAAAA]" style={{ fontSize: fs(13) }}>
+      <Text className="mt-[2px] font-normal text-[#AAAAAA]" style={{ fontSize: 13 }}>
         {label}
       </Text>
     </View>

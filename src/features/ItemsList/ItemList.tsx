@@ -96,10 +96,8 @@ const cryptoItems = [
 ];
 
 export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto }) => {
-  const { s } = useResponsive();
-
   const titleContainer = {
-    fontSize: s(13),
+    fontSize: 13,
   };
 
   // Determine which items to show based on props

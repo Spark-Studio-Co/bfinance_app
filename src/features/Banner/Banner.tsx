@@ -24,12 +24,12 @@ export const Banner = ({
 
   const textStyle = {
     width: s(130),
-    fontSize: s(24),
+    fontSize: 24,
   };
 
   const textSmallStyle = {
     width: s(165),
-    fontSize: s(13),
+    fontSize: 13,
   };
 
   const imageStyle = {

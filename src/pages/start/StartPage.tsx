@@ -104,7 +104,7 @@ export const StartPage = () => {
         {/* Skip Button */}
         <View className="absolute right-6 top-16 z-10">
           <TouchableOpacity onPress={handleSkipAuth} className="rounded-full bg-black/50 px-4 py-2">
-            <Text weight="medium" className="text-white" style={{ fontSize: fs(16) }}>
+            <Text weight="medium" className="text-white" style={{ fontSize: 16 }}>
               Skip
             </Text>
           </TouchableOpacity>

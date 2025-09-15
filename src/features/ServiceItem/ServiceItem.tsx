@@ -30,7 +30,7 @@ export const ServiceItem = ({
         <View
           style={{ paddingHorizontal: s(10), paddingVertical: s(2) }}
           className="!rounded-full bg-[#00E675]">
-          <Text className="text-center text-black" style={{ fontSize: s(12) }} weight="semibold">
+          <Text className="text-center text-black" style={{ fontSize: 12 }} weight="semibold">
             soon
           </Text>
         </View>
@@ -53,14 +53,14 @@ export const ServiceItem = ({
           </View>
           <View className="flex-1">
             <View className="mb-1 flex-row items-center">
-              <Text className={`text-white`} style={{ fontSize: s(17) }} weight="medium">
+              <Text className={`text-white`} style={{ fontSize: 17 }} weight="medium">
                 {title}
               </Text>
               {status === 'soon' && (
                 <View className="ml-2 rounded-full bg-[#00E675]">{getStatusBadge()}</View>
               )}
             </View>
-            <Text className="text-[#AAAAAA]" style={{ fontSize: s(13) }} weight="regular">
+            <Text className="text-[#AAAAAA]" style={{ fontSize: 13 }} weight="regular">
               {description}
             </Text>
           </View>
