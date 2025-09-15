@@ -56,7 +56,7 @@ export const TotalBalanceTab = () => {
           style={buttonStyle}
           className="text-black"
           icon={<ArrowDown color="black" size={s(13)} />}
-          onPress={() => navigation.navigate('TopUp')}
+          onPress={() => navigation.navigate('CardTopup')}
         />
         <Button
           variant="outline"

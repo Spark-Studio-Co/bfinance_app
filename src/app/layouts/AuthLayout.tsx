@@ -22,7 +22,6 @@ export const AuthLayout = ({
   enableKeyboardAvoiding?: boolean;
 }) => {
   const insets = useSafeAreaInsets();
-  const { s } = useResponsive();
   const navigation = useNavigation();
 
   const content = (
@@ -30,7 +29,7 @@ export const AuthLayout = ({
       {isBack && (
         <View className="mt-[24px] flex flex-row items-center gap-x-[24px]">
           <BackButton onPress={() => navigation.goBack()} />
-          <Text weight="semibold" className="text-white" style={{ fontSize: s(20) }}>
+          <Text weight="semibold" className="text-white" style={{ fontSize: 20 }}>
             {title}
           </Text>
         </View>

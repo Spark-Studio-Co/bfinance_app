@@ -1,6 +1,6 @@
 import { StatusBar } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TabNavigator } from './TabNavigator';
+import { TabNavigatorWrapper } from './TabNavigatorWrapper';
 import { AuthStack } from './AuthStack';
 import type { RootStackParamList } from '../../shared/types/navigation';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
@@ -12,6 +12,7 @@ import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
 import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
 import { QRDepositPage } from '~/pages/qr-deposit';
 import { CardDetailsPage } from '~/pages/card-details';
+import { CardTopupPage } from '~/pages/card-topup/CardTopupPage';
 import { CardIssuanceDetailsPage } from '~/pages/card-details/CardIssuanceDetailsPage';
 import { CardIssuancePage } from '~/pages/card-issuance';
 import { CardPaymentPage } from '~/pages/card-payment';
@@ -20,6 +21,7 @@ import { SupportPage } from '~/pages/support/SupportPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification';
 import { PinCodePage } from '~/pages/pin-code/ui/PinCodePage';
 import { CardSettingsPage } from '~/pages/card-settings';
+import { CardTopupSuccess } from '~/pages/card-topup-success/CardTopupSuccess';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,11 +31,12 @@ export const RootNavigator = () => {
       <StatusBar backgroundColor="#000000" />
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
         <Stack.Screen name="Auth" component={AuthStack} />
-        <Stack.Screen name="Main" component={TabNavigator} />
+        <Stack.Screen name="Main" component={TabNavigatorWrapper} />
         <Stack.Screen name="History" component={TransactionHistoryScreen} />
         <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="TopUp" component={TopUpPage} />
+        <Stack.Screen name="CardTopup" component={CardTopupPage} />
         <Stack.Screen name="TopUpNetwork" component={TopUpNetworkPage} />
         <Stack.Screen name="TopUpDetail" component={TopUpDetailPage} />
         <Stack.Screen name="QRDeposit" component={QRDepositPage} />
@@ -47,6 +50,7 @@ export const RootNavigator = () => {
         <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
         <Stack.Screen name="PinCode" component={PinCodePage} />
         <Stack.Screen name="CardSettings" component={CardSettingsPage} />
+        <Stack.Screen name="CardTopupSuccess" component={CardTopupSuccess} />
       </Stack.Navigator>
     </>
   );

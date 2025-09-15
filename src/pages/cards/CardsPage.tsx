@@ -15,8 +15,8 @@ export function CardsPage({}: CardsPageProps) {
   const navigation = useNavigation<NavigationProp>();
 
   // Mock data for cards - set to empty array to show empty state
-  const cards: any[] = [];
-  /* 
+  // const cards: any[] = [];
+  // /*
   const cards = [
     {
       id: 1,
@@ -49,7 +49,6 @@ export function CardsPage({}: CardsPageProps) {
       isActive: false,
     },
   ];
-  */
 
   const handleCardPress = (cardId: number) => {
     const card = cards.find((c) => c.id === cardId);

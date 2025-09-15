@@ -26,7 +26,7 @@ export const TransactionDetailsList: React.FC<TransactionDetailsListProps> = ({ 
       )}
 
       {/* Объединенная карточка для Billed amount и Fee */}
-      <View className="rounded-2xl bg-[#1A1A1A] px-4 py-5">
+      <View className="rounded-2xl bg-[#0F0F0F] px-4 py-5">
         {/* Billed amount */}
         <View className="flex-row items-center justify-between">
           <Text className="text-lg font-medium text-white">Billed amount</Text>

@@ -13,7 +13,7 @@ export const DetailRow: React.FC<DetailRowProps> = ({ label, value, variant = 'n
     return (
       <View className="rounded-[16px] bg-[#0F0F0F] px-6 py-6">
         <Text className="mb-1 text-[17px] font-medium text-white">{label}</Text>
-        <Text className="text-[15px] text-[#878787]">{value}</Text>
+        <Text className="text-[15px] text-[#666666]">{value}</Text>
       </View>
     );
   }
@@ -21,7 +21,7 @@ export const DetailRow: React.FC<DetailRowProps> = ({ label, value, variant = 'n
   return (
     <View className="flex-row items-center justify-between rounded-[16px] bg-[#0F0F0F] px-6 py-6">
       <Text className="text-[16px] font-medium text-white">{label}</Text>
-      <Text className="text-[14px] text-[#878787]">{value}</Text>
+      <Text className="text-[14px] text-[#666666]">{value}</Text>
     </View>
   );
 };

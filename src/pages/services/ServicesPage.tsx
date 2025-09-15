@@ -10,7 +10,7 @@ export function ServicesPage({}: ServicesPageProps) {
   const services = [
     {
       id: 1,
-      image: require('../../../assets/esim.png'), // You'll need to add these images
+      image: require('../../../assets/esim.png'),
       title: 'eSIM',
       description: 'Stay connected wherever you are',
       status: 'soon' as const,
@@ -44,11 +44,8 @@ export function ServicesPage({}: ServicesPageProps) {
   };
 
   return (
-    <MainLayout isTitle title="Services" isIcon icon={<PlusIcon />}>
-      <ScrollView
-        className="flex-1 pt-6"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ gap: 12 }}>
+    <MainLayout isTitle title="Services">
+      <View className=" gap-y-[12px]">
         {services.map((service) => (
           <ServiceItem
             key={service.id}
@@ -59,7 +56,7 @@ export function ServicesPage({}: ServicesPageProps) {
             onPress={() => handleServicePress(service.id)}
           />
         ))}
-      </ScrollView>
+      </View>
     </MainLayout>
   );
 }

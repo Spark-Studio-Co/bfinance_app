@@ -3,12 +3,13 @@ import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 export type RootStackParamList = {
   Auth: undefined;
-  Main: undefined;
+  Main: { initialTab?: keyof TabParamList } | undefined;
   History: undefined;
   Services: undefined;
   TransactionDetails: { transactionId: string };
   Profile: undefined;
   TopUp: undefined;
+  CardTopup: undefined;
   TopUpNetwork: { title?: string } | undefined;
   TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
   QRDeposit:
@@ -36,6 +37,7 @@ export type RootStackParamList = {
     cardName: string;
   };
   CardSuccess: undefined;
+  CardTopupSuccess: undefined;
   Support: undefined;
   IdentityVerification: undefined;
   PinCode: { fromSettings?: boolean };
