@@ -14,6 +14,7 @@ interface PinCodeState {
   pinDots: boolean[];
   isLoading: boolean;
   error: string | null;
+  navigation: any | null;
 }
 
 interface PinCodeActions {
@@ -23,6 +24,11 @@ interface PinCodeActions {
   goToNextStep: () => void;
   goToPreviousStep: () => void;
   reset: () => void;
+  setNavigation: (navigation: any) => void;
+  navigateToReEnter: () => void;
+  navigateToSuccess: () => void;
+  setFirstPin: (pin: string) => void;
+  setStep: (step: PinCodeStep) => void;
 }
 
 type PinCodeStore = PinCodeState & PinCodeActions;
@@ -35,6 +41,7 @@ const initialState: PinCodeState = {
   pinDots: [false, false, false, false],
   isLoading: false,
   error: null,
+  navigation: null,
 };
 
 export const usePinCodeStore = create<PinCodeStore>((set, get) => ({
@@ -54,24 +61,18 @@ export const usePinCodeStore = create<PinCodeStore>((set, get) => ({
         error: null,
       });
 
-      // Auto proceed when PIN is complete
-      if (newPin.length === 4) {
-        setTimeout(() => {
-          if (step === PinCodeStep.ENTER_NEW) {
-            get().goToNextStep();
-          } else if (step === PinCodeStep.RE_ENTER) {
-            const { firstPin } = get();
-            if (newPin === firstPin) {
-              get().goToNextStep();
-            } else {
-              set({
-                error: 'PINs do not match',
-                currentPin: '',
-                pinDots: [false, false, false, false],
-              });
-            }
-          }
-        }, 100);
+      // Для RE_ENTER проверяем совпадение пинов и устанавливаем ошибку если не совпадают
+      if (step === PinCodeStep.RE_ENTER && newPin.length === 4) {
+        const { firstPin } = get();
+        if (newPin !== firstPin) {
+          setTimeout(() => {
+            set({
+              error: 'PINs do not match',
+              currentPin: '',
+              pinDots: [false, false, false, false],
+            });
+          }, 100);
+        }
       }
     }
   },
@@ -144,7 +145,8 @@ export const usePinCodeStore = create<PinCodeStore>((set, get) => ({
   },
 
   reset: () => {
-    set(() => ({
+    console.log('reset called - resetting entire store');
+    set({
       step: PinCodeStep.ENTER_NEW,
       firstPin: '',
       secondPin: '',
@@ -152,6 +154,62 @@ export const usePinCodeStore = create<PinCodeStore>((set, get) => ({
       pinDots: [false, false, false, false],
       isLoading: false,
       error: null,
-    }));
+      navigation: null,
+    });
+  },
+
+  setNavigation: (navigation: any) => {
+    console.log('setNavigation called');
+    set({ navigation });
+  },
+
+  navigateToReEnter: () => {
+    console.log('navigateToReEnter called');
+    const { navigation, currentPin } = get();
+    if (navigation) {
+      set({
+        firstPin: currentPin,
+        currentPin: '',
+        pinDots: [false, false, false, false],
+        error: null,
+      });
+      // @ts-ignore
+      navigation.navigate('PinCodeReEnter');
+    }
+  },
+
+  navigateToSuccess: () => {
+    console.log('navigateToSuccess called');
+    const { navigation, currentPin, firstPin } = get();
+    if (navigation) {
+      if (currentPin === firstPin) {
+        set({
+          secondPin: currentPin,
+          isLoading: true,
+        });
+        // @ts-ignore
+        navigation.navigate('PinCodeSuccess');
+        // Simulate API call
+        setTimeout(() => {
+          set({ isLoading: false });
+        }, 1000);
+      } else {
+        set({
+          error: 'PINs do not match',
+          currentPin: '',
+          pinDots: [false, false, false, false],
+        });
+      }
+    }
+  },
+
+  setFirstPin: (pin: string) => {
+    console.log('setFirstPin called with:', pin);
+    set({ firstPin: pin });
+  },
+
+  setStep: (step: PinCodeStep) => {
+    console.log('setStep called with:', step);
+    set({ step });
   },
 }));

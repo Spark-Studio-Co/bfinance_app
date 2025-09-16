@@ -20,9 +20,11 @@ import { CardPaymentPage } from '~/pages/card-payment';
 import { CardSuccessPage } from '~/pages/card-success';
 import { SupportPage } from '~/pages/support/SupportPage';
 import { IdentityVerificationPage } from '~/pages/identity-verification';
-import { PinCodePage } from '~/pages/pin-code/ui/PinCodePage';
 import { CardSettingsPage } from '~/pages/card-settings';
 import { CardTopupSuccess } from '~/pages/card-topup-success/CardTopupSuccess';
+import { PinCodeEnterPage } from '~/pages/pin-code-enter';
+import { PinCodeReEnterPage } from '~/pages/pin-code-re-enter';
+import { PinCodeSuccessPage } from '~/pages/pin-code-success';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -51,7 +53,9 @@ export const RootNavigator = () => {
         <Stack.Screen name="CardSuccess" component={CardSuccessPage} />
         <Stack.Screen name="Support" component={SupportPage} />
         <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
-        <Stack.Screen name="PinCode" component={PinCodePage} />
+        <Stack.Screen name="PinCodeEnter" component={PinCodeEnterPage} />
+        <Stack.Screen name="PinCodeReEnter" component={PinCodeReEnterPage} />
+        <Stack.Screen name="PinCodeSuccess" component={PinCodeSuccessPage} />
         <Stack.Screen name="CardSettings" component={CardSettingsPage} />
         <Stack.Screen name="CardTopupSuccess" component={CardTopupSuccess} />
       </Stack.Navigator>

@@ -18,15 +18,15 @@ export const Typography: React.FC<TypographyProps> = ({
   const getVariantStyle = () => {
     switch (variant) {
       case 'heading':
-        return { fontSize: s(24), fontWeight: 'bold' as const };
+        return { fontSize: 24, fontWeight: 'bold' as const };
       case 'subheading':
-        return { fontSize: s(18), fontWeight: '600' as const };
+        return { fontSize: 18, fontWeight: '600' as const };
       case 'body':
-        return { fontSize: s(16), fontWeight: 'normal' as const };
+        return { fontSize: 16, fontWeight: 'normal' as const };
       case 'caption':
-        return { fontSize: s(14), fontWeight: 'normal' as const };
+        return { fontSize: 14, fontWeight: 'normal' as const };
       default:
-        return { fontSize: s(16), fontWeight: 'normal' as const };
+        return { fontSize: 16, fontWeight: 'normal' as const };
     }
   };
 

@@ -32,7 +32,7 @@ export const SignUpPage = () => {
         <Text
           weight="regular"
           style={{
-            fontSize: s(14),
+            fontSize: 14,
             lineHeight: s(20),
             letterSpacing: -0.23,
             color: 'white',

@@ -53,7 +53,6 @@ export const MainLayout = ({
             </View>
           )}
 
-          {/* Иконка слева */}
           {isIcon && icon && iconPosition === 'before' && (
             <View className="flex-row items-center">{icon}</View>
           )}

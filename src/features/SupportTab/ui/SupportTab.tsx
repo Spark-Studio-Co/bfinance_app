@@ -15,8 +15,6 @@ export const SupportTab = ({
   description?: string;
   url: string;
 }) => {
-  const { fs } = useResponsive();
-
   return (
     <TouchableOpacity
       className="flex h-[68px] w-full flex-row items-center gap-x-4 rounded-[16px] bg-[#0F0F0F] pl-4"

@@ -12,19 +12,19 @@ export const TotalBalanceTab = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const balanceStyle = {
-    fontSize: s(40),
+    fontSize: 40,
     letterSpacing: s(-0.4),
   };
 
   const totalBalanceStyle = {
-    fontSize: s(16),
+    fontSize: 16,
     lineHeight: s(22),
     letterSpacing: s(-0.4),
   };
 
   const buttonStyle = {
     height: s(40),
-    fontSize: s(15),
+    fontSize: 15,
     flex: 1,
   };
 

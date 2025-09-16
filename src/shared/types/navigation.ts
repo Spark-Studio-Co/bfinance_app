@@ -42,7 +42,9 @@ export type RootStackParamList = {
   CardTopupSuccess: undefined;
   Support: undefined;
   IdentityVerification: undefined;
-  PinCode: { fromSettings?: boolean };
+  PinCodeEnter: undefined;
+  PinCodeReEnter: undefined;
+  PinCodeSuccess: undefined;
   CardSettings: { cardNumber: string };
 };
 

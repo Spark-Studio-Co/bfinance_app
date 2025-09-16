@@ -41,15 +41,15 @@ export const ItemTab: React.FC<ItemTabProps> = ({
   };
 
   const circleTextStyle = {
-    fontSize: s(19),
+    fontSize: 19,
   };
 
   const nameStyle = {
-    fontSize: s(17),
+    fontSize: 17,
   };
 
   const cryptoAmountStyle = {
-    fontSize: s(15),
+    fontSize: 15,
   };
 
   return (

@@ -28,7 +28,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   const textStyle = {
-    fontSize: s(15),
+    fontSize: 15,
     lineHeight: s(22),
   };
 

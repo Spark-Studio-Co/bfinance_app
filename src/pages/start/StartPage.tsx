@@ -23,7 +23,7 @@ import Animated, {
 export const StartPage = () => {
   const videoRef = useRef<Video>(null);
   const navigation = useNavigation();
-  const { wp, hp, ms, fs } = useResponsive();
+  const { wp, hp, ms } = useResponsive();
   const { sendEmailAuth, isSendingEmail } = useAuth();
   const [email, setEmail] = useState('');
 
