@@ -18,12 +18,12 @@ export const TotalBalanceTab = () => {
 
   const totalBalanceStyle = {
     fontSize: 16,
-    lineHeight: s(22),
-    letterSpacing: s(-0.4),
+    lineHeight: 22,
+    letterSpacing: -0.4,
   };
 
   const buttonStyle = {
-    height: s(40),
+    height: 40,
     fontSize: 15,
     flex: 1,
   };
@@ -55,7 +55,7 @@ export const TotalBalanceTab = () => {
           weight="bold"
           style={buttonStyle}
           className="text-black"
-          icon={<ArrowDown color="black" size={s(13)} />}
+          icon={<ArrowDown color="black" size={13} />}
           onPress={() => navigation.navigate('CardTopup')}
         />
         <Button
@@ -64,7 +64,7 @@ export const TotalBalanceTab = () => {
           label="Withdraw"
           labelClassName="text-white"
           style={buttonStyle}
-          icon={<ArrowUp color="white" size={s(13)} />}
+          icon={<ArrowUp color="white" size={13} />}
           onPress={() => navigation.navigate('CardWithdrawal')}
         />
       </View>

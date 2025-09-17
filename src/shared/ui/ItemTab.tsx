@@ -27,17 +27,17 @@ export const ItemTab: React.FC<ItemTabProps> = ({
   const { s } = useResponsive();
 
   const containerStyle = {
-    borderRadius: s(16),
-    height: s(68),
-    paddingLeft: s(16),
-    paddingRight: s(16),
-    paddingTop: s(11),
-    paddingBottom: s(11),
+    borderRadius: 16,
+    height: 68,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 11,
+    paddingBottom: 11,
   };
 
   const circleStyle = {
-    width: s(40),
-    height: s(40),
+    width: 40,
+    height: 40,
   };
 
   const circleTextStyle = {

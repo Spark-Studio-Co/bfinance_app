@@ -23,22 +23,22 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   const imageStyle = {
-    width: s(40),
-    height: s(40),
+    width: 40,
+    height: 40,
   };
 
   const textStyle = {
     fontSize: 15,
-    lineHeight: s(22),
+    lineHeight: 22,
   };
 
   const buttonStyle = {
-    width: s(28),
-    height: s(28),
+    width: 28,
+    height: 28,
   };
 
   const containerStyle = {
-    gap: s(6),
+    gap: 6,
   };
 
   return (

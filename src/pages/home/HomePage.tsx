@@ -71,8 +71,6 @@ export function HomePage({}: HomePageProps) {
           <ItemsList title="CRYPTO" isCrypto />
         </>
       )}
-
-      {/* Pin Code Button */}
       <View className="mb-4 mt-8 px-6">
         <TouchableOpacity
           onPress={() => navigation.navigate('PinCodeEnter')}
