@@ -64,13 +64,10 @@ export const ProfileScreen = () => {
           </View>
         </View>
       </View>
-
-      {/* Menu Content */}
       <ScrollView className="mt-[12px] flex-1 px-6">
-        {/* Menu Sections */}
         {menuSections.map((section, sectionIndex) => (
           <View key={section.title} className="mb-4">
-            <Text className="mb-2 text-[13px] uppercase tracking-wider text-[#AAAAAA]">
+            <Text className="mb-[16px] text-[13px] uppercase tracking-wider text-[#AAAAAA]">
               {section.title}
             </Text>
             {section.items.map((item) => (
