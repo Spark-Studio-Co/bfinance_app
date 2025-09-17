@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { useNavigation } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
@@ -12,6 +12,7 @@ import { Input } from '~/shared/ui/Input';
 import heroVideo from '../../../assets/start_video.mp4';
 import { useResponsive } from '~/shared/hooks/useResponsive';
 import { useAuth } from '~/shared/contexts/AuthContext';
+import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
 import Animated, {
   useAnimatedKeyboard,
   useAnimatedStyle,
@@ -25,6 +26,7 @@ export const StartPage = () => {
   const navigation = useNavigation();
   const { wp, hp, ms } = useResponsive();
   const { sendEmailAuth, isSendingEmail } = useAuth();
+  const { showError } = useErrorHandler();
   const [email, setEmail] = useState('');
 
   // Используем hook для отслеживания клавиатуры
@@ -38,14 +40,14 @@ export const StartPage = () => {
   // Функция для отправки email для авторизации
   const handleEmailAuth = async () => {
     if (!email.trim()) {
-      Alert.alert('Ошибка', 'Пожалуйста, введите email');
+      showError('Пожалуйста, введите email');
       return;
     }
 
     // // Простая валидация email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      Alert.alert('Ошибка', 'Пожалуйста, введите корректный email');
+      showError('Пожалуйста, введите корректный email');
       return;
     }
 
@@ -54,7 +56,7 @@ export const StartPage = () => {
       (navigation as any).navigate('EmailConfirmation', { email });
     } catch (error) {
       console.error('Email auth error:', error);
-      Alert.alert('Ошибка', 'Не удалось отправить код подтверждения. Попробуйте еще раз.');
+      showError('Не удалось отправить код подтверждения. Попробуйте еще раз.');
     }
 
     // navigation.navigate('Support' as never);

@@ -12,19 +12,13 @@ export const GlobalErrorDisplay: React.FC = () => {
   }
 
   return (
-    <View className="absolute left-0 right-0 top-0 z-50" style={{ paddingTop: 60 }}>
+    <View
+      className="absolute bottom-0  left-0 right-0 z-50 h-[48px]"
+      style={{ paddingBottom: 100 }}>
       {errors.map((error) => (
-        <View key={error.id} className="mx-4 mb-2">
-          <View className="relative">
+        <View key={error.id} className="mx-4 mb-2 h-[48px]">
+          <View className="relative h-[48px]">
             <ErrorTab message={error.message} />
-            <View className="absolute right-2 top-2">
-              <CloseIcon
-                onPress={() => removeError(error.id)}
-                size={16}
-                backgroundColor="transparent"
-                iconColor="#FFFFFF"
-              />
-            </View>
           </View>
         </View>
       ))}

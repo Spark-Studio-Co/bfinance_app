@@ -23,20 +23,45 @@ interface ErrorState {
 }
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
+const MAX_ERRORS = 2; // Maximum number of errors to show at once
+const DUPLICATE_TIMEOUT = 2000; // 2 seconds to prevent duplicate messages
 
 export const useErrorStore = create<ErrorState>((set, get) => ({
   errors: [],
 
   addError: (error) => {
+    const currentState = get();
+    const now = Date.now();
+
+    // Check for duplicate messages within the timeout period
+    const isDuplicate = currentState.errors.some(
+      (existingError) =>
+        existingError.message === error.message &&
+        existingError.type === error.type &&
+        now - existingError.timestamp < DUPLICATE_TIMEOUT
+    );
+
+    if (isDuplicate) {
+      return; // Don't add duplicate error
+    }
+
     const newError: AppError = {
       ...error,
       id: generateId(),
-      timestamp: Date.now(),
+      timestamp: now,
     };
 
-    set((state) => ({
-      errors: [...state.errors, newError],
-    }));
+    set((state) => {
+      // Limit the number of errors
+      let updatedErrors = [...state.errors, newError];
+
+      // Remove oldest errors if we exceed the limit
+      if (updatedErrors.length > MAX_ERRORS) {
+        updatedErrors = updatedErrors.slice(-MAX_ERRORS);
+      }
+
+      return { errors: updatedErrors };
+    });
 
     // Auto-dismiss if specified
     if (newError.autoDismiss) {

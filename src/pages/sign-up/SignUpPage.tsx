@@ -9,16 +9,49 @@ import { Button } from '~/shared/ui/Button';
 import { Checkbox } from '~/shared/ui/Checkbox';
 import { Input } from '~/shared/ui/Input';
 import { useResponsive } from '~/shared/hooks/useResponsive';
+import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
 
 export const SignUpPage = () => {
   const navigation = useNavigation();
-  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const { s } = useResponsive();
+  const { showError } = useErrorHandler();
+
+  const handleContinue = () => {
+    if (!firstName.trim()) {
+      showError('Пожалуйста, введите имя');
+      return;
+    }
+
+    if (!lastName.trim()) {
+      showError('Пожалуйста, введите фамилию');
+      return;
+    }
+
+    if (!termsAccepted) {
+      showError('Пожалуйста, примите условия использования');
+      return;
+    }
+
+    navigation.navigate('IdentityVerification' as never);
+  };
 
   return (
     <AuthLayout isBack title="Sign Up">
-      <Input placeholder="First name" style={{ marginTop: s(24), height: 48 }} />
-      <Input placeholder="Last name" style={{ marginTop: s(12), height: 48 }} />
+      <Input
+        placeholder="First name"
+        value={firstName}
+        onChangeText={setFirstName}
+        style={{ marginTop: s(24), height: 48 }}
+      />
+      <Input
+        placeholder="Last name"
+        value={lastName}
+        onChangeText={setLastName}
+        style={{ marginTop: s(12), height: 48 }}
+      />
 
       <View
         style={{
@@ -62,7 +95,7 @@ export const SignUpPage = () => {
       </View>
 
       <Button
-        onPress={() => navigation.navigate('IdentityVerification' as never)}
+        onPress={handleContinue}
         label="Continue"
         style={{ marginTop: s(24), height: 42 }}
         weight="semibold"

@@ -6,6 +6,7 @@ import { customFonts } from './config/custom-fonts';
 import { RootNavigator } from './navigation/RootNavigator';
 import { AuthProvider } from '~/shared/contexts/AuthContext';
 import { QueryProvider } from '~/shared/providers/QueryProvider';
+import { GlobalErrorDisplay } from '~/shared/ui';
 
 export default function App() {
   const [fontsLoaded] = useFonts(customFonts);
@@ -25,6 +26,8 @@ export default function App() {
           <NavigationContainer>
             <RootNavigator />
           </NavigationContainer>
+          {/* Global Error Display */}
+          <GlobalErrorDisplay />
         </AuthProvider>
       </QueryProvider>
     </GestureHandlerRootView>
