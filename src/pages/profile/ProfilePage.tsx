@@ -57,9 +57,11 @@ export const ProfileScreen = () => {
           </TouchableOpacity>
         </View>
         <View className="items-center">
-          <Text className="mb-1 text-[20px] font-bold text-white">Timur</Text>
-          <Text className="mb-4 text-[14px] text-[rgba(255,255,255,0.5)]">user@example.com</Text>
-          <View className="rounded-[10px] bg-[#00E675] px-[16px] py-[4px]">
+          <Text className=" mt-[12px] text-[20px] font-bold text-white">Timur</Text>
+          <Text className="mt-[3px] text-[14px] text-[rgba(255,255,255,0.5)]">
+            user@example.com
+          </Text>
+          <View className="mt-[12px] rounded-[10px] bg-[#00E675] px-[16px] py-[4px]">
             <Text className="text-[13px] font-medium text-black">Verified</Text>
           </View>
         </View>
