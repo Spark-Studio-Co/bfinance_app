@@ -17,24 +17,24 @@ export const Banner = ({
   const { s } = useResponsive();
 
   const bannerStyle = {
-    borderRadius: s(10),
-    height: s(144),
+    borderRadius: 10,
+    height: 144,
     overflow: 'hidden' as const,
   };
 
   const textStyle = {
-    width: s(130),
+    width: 130,
     fontSize: 24,
   };
 
   const textSmallStyle = {
-    width: s(165),
+    width: 165,
     fontSize: 13,
   };
 
   const imageStyle = {
-    right: s(18),
-    top: s(-21),
+    right: 18,
+    top: -21,
   };
 
   return (

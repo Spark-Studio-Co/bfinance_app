@@ -4,9 +4,9 @@ import { TransactionHistoryList } from '~/widgets/ui/HistoryList';
 import { Header } from '~/features/Header/ui/Header';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { AuthStackParamList } from '~/shared/types/navigation';
+import type { RootStackParamList } from '~/shared/types/navigation';
 
-type NavigationProp = NativeStackNavigationProp<AuthStackParamList>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export const TransactionHistoryScreen = () => {
   const navigation = useNavigation<NavigationProp>();

@@ -54,14 +54,11 @@ export const TransactionAmount: React.FC<TransactionAmountProps> = ({
       <View className="mb-5">
         <TransactionIcon merchant={merchant} size="large" />
       </View>
-
       <Text className="mb-4 text-[16px] text-white">{merchant}</Text>
-
       <Text className="mb-2 text-[40px] font-bold" style={{ color: getAmountColor() }}>
         {getAmountPrefix()}
         {formatAmount(amount)} USD
       </Text>
-
       <Text className="text-[17px] text-[#707579]">{getStatusText()}</Text>
     </View>
   );

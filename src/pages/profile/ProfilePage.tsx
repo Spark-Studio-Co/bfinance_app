@@ -43,28 +43,22 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-black">
-      {/* Header */}
-      <View className="bg-[#0f0f0f] px-6 pb-6 pt-16">
-        {/* Header Controls */}
-        <View className="mb-6 flex-row items-center justify-between">
+    <View className="h-[224px] flex-1 bg-black">
+      <View className="mt-[64px] bg-[#0f0f0f] px-6 pb-6">
+        <View className=" relative mt-[24px] flex-row items-start justify-between">
           <TouchableOpacity onPress={handleBack}>
             <Ionicons name="chevron-back" size={24} color="white" />
           </TouchableOpacity>
+          <View className=" mt-[10px] h-[85px] w-[85px] overflow-hidden rounded-full">
+            <Image source={require('../../../assets/avatar.png')} className="h-full w-full" />
+          </View>
           <TouchableOpacity onPress={handleLogout}>
             <LogoutIcon />
           </TouchableOpacity>
         </View>
-
-        {/* Profile Info */}
         <View className="items-center">
-          <View className="mb-4 h-[85px] w-[85px] overflow-hidden rounded-full">
-            <Image source={require('../../../assets/avatar.png')} className="h-full w-full" />
-          </View>
-
           <Text className="mb-1 text-[20px] font-bold text-white">Timur</Text>
           <Text className="mb-4 text-[14px] text-[rgba(255,255,255,0.5)]">user@example.com</Text>
-
           <View className="rounded-[10px] bg-[#00E675] px-4 py-1">
             <Text className="text-[13px] font-medium text-black">Verified</Text>
           </View>

@@ -19,6 +19,7 @@ import ServiceIcon from '~/shared/icons/ServiceIcon';
 import { CardsPage } from '~/pages/cards/CardsPage';
 import { ServicesPage } from '~/pages/services/ServicesPage';
 import { useTabStore } from '~/shared/store/useTabStore';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -77,6 +78,7 @@ export function TabNavigator() {
   const { activeTab, setActiveTab } = useTabStore();
   const [key, setKey] = useState(0);
   const slideAnim = useSharedValue(0);
+  const insets = useSafeAreaInsets();
 
   // Force re-render when activeTab changes to switch to the correct tab
   useEffect(() => {
@@ -101,7 +103,7 @@ export function TabNavigator() {
           borderTopWidth: 1,
           paddingTop: 16.5,
           paddingBottom: 20,
-          height: 70,
+          height: 90,
           elevation: 10,
           shadowColor: '#000',
           shadowOffset: {

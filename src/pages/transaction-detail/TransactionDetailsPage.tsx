@@ -38,18 +38,15 @@ export const TransactionDetailsScreen: React.FC = () => {
   return (
     <SafeAreaView className="flex-1 bg-[#000000]">
       <Header title="Transaction" showTitle={true} onBackPress={handleBackPress} />
-
       <View className="mt-[24px] flex-1 px-[24px]">
         <TransactionAmount
           merchant={transaction.merchant}
           amount={transaction.amount}
           status={transaction.status}
         />
-
         <View className="mb-4">
           <TransactionDetailsList transaction={transaction} />
         </View>
-
         <View className="">
           <Button
             className="pb-[12px] pt-[12px]"
