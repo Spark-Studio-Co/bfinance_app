@@ -44,7 +44,7 @@ export const ProfileScreen = () => {
 
   return (
     <View className="h-[224px] flex-1 bg-black">
-      <View className="mt-[64px] bg-[#0f0f0f] px-6 pb-6">
+      <View className="bg-[#0f0f0f] px-6  py-[64px] pb-[29px]">
         <View className=" relative mt-[24px] flex-row items-start justify-between">
           <TouchableOpacity onPress={handleBack}>
             <Ionicons name="chevron-back" size={24} color="white" />
@@ -59,14 +59,14 @@ export const ProfileScreen = () => {
         <View className="items-center">
           <Text className="mb-1 text-[20px] font-bold text-white">Timur</Text>
           <Text className="mb-4 text-[14px] text-[rgba(255,255,255,0.5)]">user@example.com</Text>
-          <View className="rounded-[10px] bg-[#00E675] px-4 py-1">
+          <View className="rounded-[10px] bg-[#00E675] px-[16px] py-[4px]">
             <Text className="text-[13px] font-medium text-black">Verified</Text>
           </View>
         </View>
       </View>
 
       {/* Menu Content */}
-      <ScrollView className="flex-1 px-6 py-3">
+      <ScrollView className="mt-[12px] flex-1 px-6">
         {/* Menu Sections */}
         {menuSections.map((section, sectionIndex) => (
           <View key={section.title} className="mb-4">
