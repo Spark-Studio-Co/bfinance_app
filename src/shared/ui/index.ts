@@ -22,3 +22,5 @@ export {
   type TransactionDetailItem,
   type SingleTransactionDetailProps,
 } from './TransactionDetails';
+export { ErrorTab } from './ErrorTab';
+export { GlobalErrorDisplay } from './GlobalErrorDisplay';

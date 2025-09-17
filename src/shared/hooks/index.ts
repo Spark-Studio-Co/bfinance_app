@@ -1,4 +1,5 @@
 export { useResponsive } from './useResponsive';
+export { useErrorHandler, type UseErrorHandlerReturn } from './useErrorHandler';
 
 // API Hooks
 export * from './useApi';

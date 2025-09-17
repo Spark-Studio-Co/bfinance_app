@@ -1,9 +1,9 @@
 {
-	"servers": {
-		"my-mcp-server-aca397fb": {
-			"url": "http://127.0.0.1:3845/mcp",
-			"type": "http"
-		}
-	},
-	"inputs": []
+  "servers": {
+    "my-mcp-server-aca397fb": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "type": "http"
+    }
+  },
+  "inputs": []
 }
