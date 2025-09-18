@@ -16,29 +16,25 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({ transaction, o
   };
 
   const formatCardNumber = (cardNumber: string) => {
-    return `Card •${cardNumber}`;
+    return `Card *${cardNumber}`;
   };
 
   return (
     <TouchableOpacity
-      className="mb-2.5 rounded-2xl bg-[#0F0F0F] p-4"
+      className="mb-[8px] rounded-2xl bg-[#0F0F0F] px-[16px] py-[12px]"
       onPress={() => onPress?.(transaction)}
       activeOpacity={0.7}>
       <View className="flex-row items-center">
-        {/* Apple Icon */}
-        <View className="mr-3">
+        <View className="mr-[16px]">
           <AppleIcon />
         </View>
-        {/* Transaction Info */}
         <View className="flex-1">
-          <Text className="mb-1 text-[17px] text-white">{transaction.merchant}</Text>
+          <Text className="mb-[2px] text-[17px] text-white">{transaction.merchant}</Text>
           <Text className="text-[15px] text-[#AAAAAA]">
             {transaction.time} • {formatCardNumber(transaction.cardNumber)}
           </Text>
         </View>
-
-        {/* Amount */}
-        <Text className="mb-1 text-[17px] text-white">{formatAmount(transaction.amount)}</Text>
+        <Text className="text-[17px] text-white">{formatAmount(transaction.amount)}</Text>
       </View>
     </TouchableOpacity>
   );

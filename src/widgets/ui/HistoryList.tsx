@@ -21,7 +21,7 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
   }
 
   return (
-    <ScrollView className="mt-[24px] flex-1 bg-black" showsVerticalScrollIndicator={false}>
+    <ScrollView className="mt-[24px] w-full flex-1  bg-black" showsVerticalScrollIndicator={false}>
       {transactions.map((group, index) => (
         <TransactionGroup
           key={`${group.date}-${index}`}

@@ -31,8 +31,8 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   const buttonStyle = {
-    width: 28,
-    height: 28,
+    width: 23,
+    height: 23,
   };
 
   const containerStyle = {
