@@ -194,7 +194,6 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
           opacity: opacityAnim,
         }}>
         <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={handleAnimatedClose} />
-
         <Animated.View
           style={{
             backgroundColor: '#000000',
@@ -205,9 +204,9 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
             flex: 1,
           }}
           {...panResponder.panHandlers}>
-          <View className="flex-1 px-[25px]">
+          <View className="flex-1 px-[16px]">
             <View className="items-center">
-              <View className="mb-[13px] mt-[13px] items-center">
+              <View className="mb-[6px] mt-[13px] items-center">
                 <Text weight="semibold" className="mb-[6px] text-[17px] text-white">
                   Payment
                 </Text>
@@ -230,10 +229,9 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
               <View className="mt-[12px]">
                 <Text
                   weight="regular"
-                  className="mb-3 text-[14px] uppercase tracking-wider text-[#aaaaaa]">
+                  className="mb-[8px] text-[13px] uppercase tracking-wider text-[#aaaaaa]">
                   FIAT
                 </Text>
-
                 <View className="gap-3">
                   {fiatMethods.map((method) => (
                     <PaymentMethod
@@ -248,15 +246,12 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
                   ))}
                 </View>
               </View>
-
-              {/* CRYPTO Section */}
               <View className="mb-6 mt-[24px]">
                 <Text
                   weight="regular"
                   className="mb-3 text-[14px] uppercase tracking-wider text-[#aaaaaa]">
                   CRYPTO
                 </Text>
-
                 <View className="gap-3">
                   {cryptoMethods.map((method) => (
                     <PaymentMethod
@@ -273,13 +268,13 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
               </View>
             </ScrollView>
 
-            <View className="pb-8 pt-4">
+            <View className="pb-[48px] pt-4">
               <Button
                 label="Pay"
                 onPress={handlePayment}
                 variant="light"
                 weight="semibold"
-                className="h-[42px] rounded-[12px]"
+                className="h-[48px] rounded-[12px]"
               />
             </View>
           </View>

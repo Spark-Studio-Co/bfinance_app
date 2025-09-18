@@ -25,11 +25,11 @@ export const Input: React.FC<InputProps> = ({
   const { s } = useResponsive();
 
   const combinedStyle = {
-    paddingHorizontal: s(16),
-    paddingVertical: s(12),
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     fontSize: 17,
-    borderRadius: s(12),
-    height: s(48),
+    borderRadius: 12,
+    height: 48,
     ...style,
   };
 

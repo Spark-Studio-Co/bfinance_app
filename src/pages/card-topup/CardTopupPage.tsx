@@ -53,7 +53,7 @@ export const CardTopupPage: React.FC = () => {
               placeholder="Amount"
               keyboardType="numeric"
               variant="dark"
-              className="rounded-[16px] bg-[#0F0F0F]"
+              className="h-[48px] rounded-[16px]  bg-[#0F0F0F]"
             />
           </View>
 
@@ -64,7 +64,7 @@ export const CardTopupPage: React.FC = () => {
               onPress={handleContinue}
               variant="light"
               weight="semibold"
-              className="h-[42px] rounded-[12px]"
+              className="h-[48px] rounded-[12px] text-[15px]"
               disabled={!amount.trim()}
             />
           </View>

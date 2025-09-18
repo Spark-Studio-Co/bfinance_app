@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
+import { Text } from '~/shared/ui';
 
 interface MenuCardProps {
   icon: React.ReactNode;
@@ -10,11 +11,13 @@ interface MenuCardProps {
 export const MenuCard: React.FC<MenuCardProps> = ({ icon, title, onPress }) => {
   return (
     <TouchableOpacity
-      className="mb-2.5 h-[68px] flex-row items-center gap-3 rounded-2xl bg-[#0F0F0F] px-6"
+      className="mb-[8px] h-[68px] flex-row items-center  rounded-2xl bg-[#0F0F0F] px-[16px]"
       onPress={onPress}
       activeOpacity={0.7}>
       <View className="mr-[16px] h-[40px] w-[40px] items-center justify-center">{icon}</View>
-      <Text className="flex-1 text-[17px] text-white">{title}</Text>
+      <Text className="flex-1 text-[17px] text-white" weight="medium">
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
