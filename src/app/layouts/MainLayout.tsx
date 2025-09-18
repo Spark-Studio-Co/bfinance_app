@@ -46,7 +46,7 @@ export const MainLayout = ({
     <View className="flex-1">
       {isTitle && (
         <View
-          className={`mb-[12px] mt-[24px] flex w-full flex-row items-center gap-x-[16px] ${isNoPadding ? 'px-[24px]' : ''}`}>
+          className={`mb-[12px] mt-[24px] flex w-full flex-row items-center gap-x-[24px] ${isNoPadding ? 'px-[24px]' : ''}`}>
           {isBack && (
             <View className={isBack && isNoPadding ? '' : 'pl-[24px]'}>
               <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />
