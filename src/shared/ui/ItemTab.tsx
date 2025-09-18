@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Image, ImageSourcePropType } from 'react-native';
-import { useResponsive } from '../hooks';
 import Text from './Text';
 
 interface ItemTabProps {
@@ -24,8 +23,6 @@ export const ItemTab: React.FC<ItemTabProps> = ({
   cryptoAmount,
   title,
 }) => {
-  const { s } = useResponsive();
-
   const containerStyle = {
     borderRadius: 16,
     height: 68,

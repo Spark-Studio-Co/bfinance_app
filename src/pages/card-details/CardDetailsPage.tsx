@@ -6,7 +6,6 @@ import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '~/shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
 import { Text, CardDetailsModal } from '~/shared/ui';
-import { useResponsive } from '~/shared/hooks/useResponsive';
 
 type CardDetailsNavigationProp = NativeStackNavigationProp<RootStackParamList, 'CardDetails'>;
 type CardDetailsRouteProp = RouteProp<RootStackParamList, 'CardDetails'>;
@@ -14,10 +13,9 @@ type CardDetailsRouteProp = RouteProp<RootStackParamList, 'CardDetails'>;
 export const CardDetailsPage: React.FC = () => {
   const navigation = useNavigation<CardDetailsNavigationProp>();
   const route = useRoute<CardDetailsRouteProp>();
-  const { s } = useResponsive();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { cardId, cardNumber, balance, currency } = route.params;
+  const { cardNumber, balance } = route.params;
 
   const transactions = [
     {
@@ -27,7 +25,7 @@ export const CardDetailsPage: React.FC = () => {
       amount: '-1000 KZT',
       amountUSD: '2 USD',
       type: 'expense',
-      avatar: require('../../../assets/avatar.png'),
+      avatar: require('../../../assets/bitcoin.png'),
     },
     {
       id: 2,
@@ -36,7 +34,7 @@ export const CardDetailsPage: React.FC = () => {
       amount: '$10.32',
       amountUSD: '',
       type: 'income',
-      avatar: require('../../../assets/avatar.png'),
+      avatar: require('../../../assets/bitcoin.png'),
     },
   ];
 
@@ -164,7 +162,7 @@ export const CardDetailsPage: React.FC = () => {
                 Show
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity className="flex-1 items-center justify-center" style={{ gap: s(10) }}>
+            <TouchableOpacity className="flex-1 items-center justify-center" style={{ gap: 10 }}>
               <Image
                 source={require('../../../assets/freeze.png')}
                 style={{ width: 36, height: 36 }}
@@ -221,7 +219,6 @@ export const CardDetailsPage: React.FC = () => {
                 className="rounded-[16px] bg-[#0F0F0F]"
                 style={{ padding: 16 }}>
                 <View className="flex-row items-center" style={{ gap: 16 }}>
-                  {/* Avatar */}
                   <View className="relative">
                     <View
                       className="overflow-hidden rounded-full bg-[#2990FF]/15"
@@ -248,8 +245,6 @@ export const CardDetailsPage: React.FC = () => {
                       />
                     </View>
                   </View>
-
-                  {/* Content */}
                   <View className="flex-1" style={{ gap: 2 }}>
                     <Text
                       weight="medium"
@@ -268,8 +263,6 @@ export const CardDetailsPage: React.FC = () => {
                       {transaction.time}
                     </Text>
                   </View>
-
-                  {/* Amount */}
                   <View className="items-end" style={{ gap: 2 }}>
                     <Text
                       weight="regular"
@@ -296,8 +289,6 @@ export const CardDetailsPage: React.FC = () => {
           </View>
         </View>
       </ScrollView>
-
-      {/* Card Details Modal */}
       <CardDetailsModal visible={isModalVisible} onClose={handleCloseModal} />
     </MainLayout>
   );

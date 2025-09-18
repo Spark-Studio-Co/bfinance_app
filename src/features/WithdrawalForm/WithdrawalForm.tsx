@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Input, Text } from '~/shared/ui';
-import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export interface WithdrawalFormData {
   walletAddress: string;
@@ -19,7 +18,6 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
   initialData,
   className = '',
 }) => {
-  const { s } = useResponsive();
   const [walletAddress, setWalletAddress] = useState(initialData?.walletAddress || '');
   const [amount, setAmount] = useState(initialData?.amount || '');
 
@@ -35,8 +33,8 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
 
   return (
     <View className={className}>
-      <View style={{ marginBottom: s(12) }}>
-        <Text className="mb-2 text-base font-medium text-[#AAAAAA]" style={{ fontSize: s(13) }}>
+      <View style={{ marginBottom: 12 }}>
+        <Text className="mb-2 text-base font-medium text-[#AAAAAA]" style={{ fontSize: 13 }}>
           WALLET ADDRESS
         </Text>
         <Input
@@ -48,7 +46,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
       </View>
 
       <View>
-        <Text className="mb-2 text-base font-medium text-[#AAAAAA]" style={{ fontSize: s(13) }}>
+        <Text className="mb-2 text-base font-medium text-[#AAAAAA]" style={{ fontSize: 13 }}>
           AMOUNT
         </Text>
         <Input

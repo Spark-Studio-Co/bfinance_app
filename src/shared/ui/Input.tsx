@@ -1,6 +1,5 @@
 import React from 'react';
 import { TextInput } from 'react-native';
-import { useResponsive } from '../hooks/useResponsive';
 
 type Variant = 'dark' | 'outline' | 'ghost';
 
@@ -22,8 +21,6 @@ export const Input: React.FC<InputProps> = ({
   style,
   ...props
 }) => {
-  const { s } = useResponsive();
-
   const combinedStyle = {
     paddingHorizontal: 16,
     paddingVertical: 12,

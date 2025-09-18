@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Text } from './Text';
-import { useResponsive } from '../hooks/useResponsive';
 
 export interface TransactionDetailRowProps {
   label: string;
@@ -41,8 +40,6 @@ export const TransactionDetails: React.FC<TransactionDetailsProps> = ({
   items,
   className = '',
 }) => {
-  const { s } = useResponsive();
-
   const truncateAddress = (address: string) => {
     if (address.length <= 10) return address;
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
@@ -52,10 +49,10 @@ export const TransactionDetails: React.FC<TransactionDetailsProps> = ({
     <View
       className={`rounded-[16px] bg-[#0F0F0F] px-4 py-4 ${className}`}
       style={{
-        marginTop: s(24),
+        marginTop: 24,
       }}>
       {items.map((item, index) => (
-        <View key={index} style={{ marginBottom: index < items.length - 1 ? s(16) : 0 }}>
+        <View key={index} style={{ marginBottom: index < items.length - 1 ? 16 : 0 }}>
           <TransactionDetailRow
             label={item.label}
             value={

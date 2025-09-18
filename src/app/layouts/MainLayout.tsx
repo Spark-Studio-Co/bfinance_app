@@ -86,10 +86,10 @@ export const MainLayout = ({
       <LinearGradient
         colors={gradientColors}
         start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 0.46154 }}
+        end={{ x: 0.5, y: 10 }}
         style={{
           position: 'absolute',
-          top: -5,
+          top: -42,
           left: 0,
           right: 0,
           height: 398,

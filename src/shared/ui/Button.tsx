@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text } from '.';
-import { useResponsive } from '../hooks/useResponsive';
 
 type Variant = 'light' | 'dark' | 'ghost' | 'neon' | 'outline';
 
@@ -45,8 +44,6 @@ export const Button: React.FC<ButtonProps> = ({
   weight = 'semibold',
   style,
 }) => {
-  const { s } = useResponsive();
-
   const base = 'inline-flex flex-row w-full items-center justify-center';
 
   const variantCls =

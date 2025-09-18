@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, View } from 'react-native';
 import CheckIcon from '../icons/CheckIcon';
-import { useResponsive } from '../hooks/useResponsive';
 
 interface CheckboxProps {
   checked: boolean;
@@ -16,12 +15,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
   className,
 }) => {
-  const { s } = useResponsive();
-
   const checkboxStyle = {
-    height: s(20),
-    width: s(20),
-    borderRadius: s(4),
+    height: 20,
+    width: 20,
+    borderRadius: 4,
   };
 
   return (

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { CryptoCard } from '~/shared/ui';
 import BitcoinIcon from '~/shared/icons/BitcoinIcon';
 import EthereumIcon from '~/shared/icons/EthereumIcon';
 import TonIcon from '~/shared/icons/TonIcon';
-import { useResponsive } from '~/shared/hooks/useResponsive';
 
 export interface CryptoOption {
   id: string;

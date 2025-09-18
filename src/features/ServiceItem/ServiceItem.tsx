@@ -1,7 +1,5 @@
-import React from 'react';
 import { View, Pressable, Image, ImageSourcePropType } from 'react-native';
 import { Text } from '~/shared/ui';
-import { useResponsive } from '~/shared/hooks';
 
 export interface ServiceItemProps {
   image: ImageSourcePropType;
@@ -18,17 +16,15 @@ export const ServiceItem = ({
   status = 'available',
   onPress,
 }: ServiceItemProps) => {
-  const { s } = useResponsive();
-
   const containerStyle = {
-    borderRadius: s(16),
+    borderRadius: 16,
   };
 
   const getStatusBadge = () => {
     if (status === 'soon') {
       return (
         <View
-          style={{ paddingHorizontal: s(10), paddingVertical: s(2) }}
+          style={{ paddingHorizontal: 10, paddingVertical: 2 }}
           className="!rounded-full bg-[#00E675]">
           <Text className="text-center text-black" style={{ fontSize: 12 }} weight="semibold">
             soon
@@ -49,7 +45,7 @@ export const ServiceItem = ({
       <View className="flex-row items-center justify-between">
         <View className="flex-1 flex-row items-center">
           <View className="mr-4">
-            <Image source={image} style={{ width: s(40), height: s(40) }} resizeMode="contain" />
+            <Image source={image} style={{ width: 40, height: 40 }} resizeMode="contain" />
           </View>
           <View className="flex-1">
             <View className="mb-1 flex-row items-center">

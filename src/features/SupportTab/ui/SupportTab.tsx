@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import { View, TouchableOpacity, Linking } from 'react-native';
 import { Text } from '~/shared/ui';
 
-import { useResponsive } from '~/shared/hooks';
-
 export const SupportTab = ({
   icon,
   label,

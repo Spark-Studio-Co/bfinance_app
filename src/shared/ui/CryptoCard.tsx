@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Image } from 'react-native';
 import { Text } from './Text';
-import { useResponsive } from '../hooks/useResponsive';
 
 export interface CryptoCardProps {
   icon: any;
@@ -19,15 +18,13 @@ export const CryptoCard: React.FC<CryptoCardProps> = ({
   onPress,
   className = '',
 }) => {
-  const { s } = useResponsive();
-
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
       className={`flex-row items-center justify-between rounded-[16px] bg-[#0F0F0F] px-4 py-[14px]  ${className}`}
       style={{
-        marginBottom: s(8),
+        marginBottom: 8,
       }}>
       <View className="flex-row items-center gap-x-4">
         {icon}

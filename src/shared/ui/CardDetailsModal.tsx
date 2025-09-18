@@ -9,8 +9,8 @@ import {
   PanResponder,
 } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
-import { CopyIcon } from './CopyIcon';
 import { CloseIcon } from './CloseIcon';
+import CopyIcon from '../icons/CopyIcon';
 
 interface CardDetailsModalProps {
   visible: boolean;
@@ -209,7 +209,7 @@ export function CardDetailsModal({ visible, onClose }: CardDetailsModalProps) {
                   <TouchableOpacity
                     onPress={() => copyToClipboard(item.value)}
                     className="h-6 w-6 items-center justify-center">
-                    <CopyIcon size={20} color="#00e675" />
+                    <CopyIcon />
                   </TouchableOpacity>
                 </View>
               ))}

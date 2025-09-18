@@ -1,6 +1,4 @@
-import React from 'react';
 import { Image, View, ImageSourcePropType } from 'react-native';
-import { useResponsive } from '~/shared/hooks';
 import { Text } from '~/shared/ui';
 
 interface BannerProps {
@@ -14,8 +12,6 @@ export const Banner = ({
   subtitle = 'Issue your Visa crypto-card in seconds',
   image = require('../../../assets/paycard.png'),
 }: BannerProps) => {
-  const { s } = useResponsive();
-
   const bannerStyle = {
     borderRadius: 10,
     height: 144,

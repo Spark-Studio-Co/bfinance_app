@@ -2,7 +2,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Text } from '~/shared/ui';
-import { useResponsive } from '~/shared/hooks/useResponsive';
 
 type Step = {
   label: string;
@@ -30,12 +29,11 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   className = '',
   isActive = true,
 }) => {
-  const { s } = useResponsive();
   const inactiveCls = !isActive ? 'opacity-50' : '';
 
   const cardStyle = {
-    borderRadius: s(16),
-    padding: s(24),
+    borderRadius: 16,
+    padding: 24,
   };
 
   const titleStyle = {
@@ -43,17 +41,17 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   };
 
   const subtitleStyle = {
-    marginTop: s(6),
+    marginTop: 6,
     fontSize: 12,
   };
 
   const stepsContainerStyle = {
-    marginTop: s(16.5),
-    gap: s(8),
+    marginTop: 16.5,
+    gap: 8,
   };
 
   const stepIconStyle = {
-    marginRight: s(12),
+    marginRight: 12,
   };
 
   const stepTextStyle = {
@@ -62,9 +60,9 @@ export const IdentityVerificationCard: React.FC<Props> = ({
   };
 
   const buttonStyle = {
-    marginTop: s(16),
-    height: s(36),
-    borderRadius: s(20),
+    marginTop: 16,
+    height: 36,
+    borderRadius: 20,
   };
 
   const buttonTextStyle = {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, TextProps } from 'react-native';
-import { useResponsive } from '../hooks/useResponsive';
 
 interface TypographyProps extends TextProps {
   variant?: 'heading' | 'subheading' | 'body' | 'caption';
@@ -13,8 +12,6 @@ export const Typography: React.FC<TypographyProps> = ({
   style,
   ...props
 }) => {
-  const { s } = useResponsive();
-
   const getVariantStyle = () => {
     switch (variant) {
       case 'heading':

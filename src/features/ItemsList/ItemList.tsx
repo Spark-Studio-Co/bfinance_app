@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ItemTab } from '../../shared/ui/ItemTab';
-import { useResponsive } from '~/shared/hooks';
 import Text from '../../shared/ui/Text';
 
 interface ItemsListProps {

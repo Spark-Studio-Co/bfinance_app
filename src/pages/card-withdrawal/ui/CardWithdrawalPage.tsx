@@ -3,7 +3,6 @@ import { View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@react-navigation/native';
 import type { RootStackParamList } from '~/shared/types/navigation';
-import { useResponsive } from '~/shared/hooks';
 import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
 import { Text, Button } from '~/shared/ui';
 import { GlobalErrorDisplay } from '~/shared/ui';
@@ -11,7 +10,6 @@ import { PaymentModal } from '~/shared/ui/PaymentModal';
 import { MainLayout } from '~/app/layouts/MainLayout';
 
 export const CardWithdrawalPage = () => {
-  const { s } = useResponsive();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { showError } = useErrorHandler();
   const [amount, setAmount] = useState('');

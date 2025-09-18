@@ -2,24 +2,20 @@ import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@react-navigation/native';
 import type { RootStackParamList } from '~/shared/types/navigation';
-import { useResponsive } from '~/shared/hooks';
 import ArrowDown from '~/shared/icons/ArrowDown';
 import ArrowUp from '~/shared/icons/ArrowUp';
 import { Button, Text } from '~/shared/ui';
 
 export const TotalBalanceTab = () => {
-  const { s } = useResponsive();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const balanceStyle = {
     fontSize: 40,
-    letterSpacing: s(-0.4),
   };
 
   const totalBalanceStyle = {
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.4,
   };
 
   const buttonStyle = {

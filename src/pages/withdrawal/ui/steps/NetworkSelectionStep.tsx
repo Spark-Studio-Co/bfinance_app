@@ -2,13 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, CryptoCard } from '~/shared/ui';
 import { useWithdrawalStore, type NetworkData } from '../../model/use-withdrawal-store';
-import { useResponsive } from '~/shared/hooks/useResponsive';
 import BitcoinIcon from '~/shared/icons/BitcoinIcon';
 import EthereumIcon from '~/shared/icons/EthereumIcon';
 import TonIcon from '~/shared/icons/TonIcon';
 
 export const NetworkSelectionStep: React.FC = () => {
-  const { s } = useResponsive();
   const { selectedCrypto, selectedNetwork, setSelectedNetwork, nextStep } = useWithdrawalStore();
 
   const getNetworksForCrypto = () => {
@@ -80,7 +78,7 @@ export const NetworkSelectionStep: React.FC = () => {
 
   return (
     <View>
-      <Text className="mb-2 mt-[24px] text-[#AAAAAA]" style={{ fontSize: s(13) }}>
+      <Text className="mb-2 mt-[24px] text-[#AAAAAA]" style={{ fontSize: 13 }}>
         SELECT NETWORK
       </Text>
 

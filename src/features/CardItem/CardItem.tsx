@@ -1,5 +1,4 @@
 import { Image, Pressable, View } from 'react-native';
-import { useResponsive } from '~/shared/hooks';
 import { Text } from '~/shared/ui';
 
 export interface CardItemProps {
@@ -13,12 +12,10 @@ export interface CardItemProps {
 }
 
 export const CardItem = ({ cardName, cardNumber, balance, currency, onPress }: CardItemProps) => {
-  const { s } = useResponsive();
-
   const cardStyle = {
-    height: s(68),
-    borderRadius: s(16),
-    padding: s(16),
+    height: 68,
+    borderRadius: 16,
+    padding: 16,
   };
 
   const textStyle = {
@@ -43,7 +40,7 @@ export const CardItem = ({ cardName, cardNumber, balance, currency, onPress }: C
         <Text className="text-white" style={textStyle} weight="medium">
           {cardName}
         </Text>
-        <Text className="text-[#AAAAAA]" style={{ fontSize: s(15) }} weight="regular">
+        <Text className="text-[#AAAAAA]" style={{ fontSize: 15 }} weight="regular">
           Visa *{cardNumber.slice(-4)}
         </Text>
       </View>
