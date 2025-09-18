@@ -70,14 +70,6 @@ export function HomePage({}: HomePageProps) {
           <ItemsList title="CRYPTO" isCrypto />
         </>
       )}
-      <View className="mb-4 mt-8 px-6">
-        <TouchableOpacity
-          onPress={() => navigation.navigate('PinCodeEnter')}
-          className="w-full rounded-2xl bg-[#0F0F0F] px-4 py-4"
-          activeOpacity={0.7}>
-          <Text className="text-center text-[17px] font-medium text-white">Настройки PIN-кода</Text>
-        </TouchableOpacity>
-      </View>
     </MainLayout>
   );
 }
