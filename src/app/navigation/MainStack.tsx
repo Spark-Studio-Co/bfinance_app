@@ -4,6 +4,7 @@ import type { RootStackParamList } from '../../shared/types/navigation';
 import { TransactionHistoryScreen } from '~/pages/history/HistoryPage';
 import { ProfileScreen } from '~/pages/profile/ProfilePage';
 import { ServicesPage } from '~/pages/services/ServicesPage';
+import { PinCodeEnterPage, PinCodeReEnterPage, PinCodeSuccessPage } from '~/pages/pin-code-pages';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -18,6 +19,10 @@ export function MainStack() {
       <Stack.Screen name="History" component={TransactionHistoryScreen} />
       <Stack.Screen name="Services" component={ServicesPage} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="PinCode" component={PinCodeEnterPage} />
+      <Stack.Screen name="PinCodeEnter" component={PinCodeEnterPage} />
+      <Stack.Screen name="PinCodeReEnter" component={PinCodeReEnterPage} />
+      <Stack.Screen name="PinCodeSuccess" component={PinCodeSuccessPage} />
     </Stack.Navigator>
   );
 }

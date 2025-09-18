@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { MainLayout } from '~/app/layouts/MainLayout';
+import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
 
 interface MenuItemProps {
   title: string;
@@ -48,29 +49,38 @@ const MenuItem = ({
 export const CardSettingsPage = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const { showError, showInfo } = useErrorHandler();
   const { cardNumber } = route.params as { cardNumber: string };
 
   const handleMenuPress = (itemId: string) => {
     console.log(`Pressed: ${itemId}`);
 
-    switch (itemId) {
-      case 'pin':
-        (navigation as any).navigate('PinCode', { fromSettings: true });
-        break;
-      case 'email':
-        // Navigate to change email
-        break;
-      case 'phone':
-        // Navigate to change phone
-        break;
-      case 'label':
-        // Navigate to change label
-        break;
-      case 'limits':
-        // Navigate to limits (coming soon)
-        break;
-      default:
-        console.log(`No navigation defined for: ${itemId}`);
+    try {
+      switch (itemId) {
+        case 'pin':
+          (navigation as any).navigate('PinCode', {
+            fromSettings: true,
+            cardNumber: cardNumber,
+          });
+          break;
+        case 'email':
+          showInfo('Change email feature coming soon');
+          break;
+        case 'phone':
+          showInfo('Change phone feature coming soon');
+          break;
+        case 'label':
+          showInfo('Change label feature coming soon');
+          break;
+        case 'limits':
+          showInfo('Limits & Restrictions feature coming soon');
+          break;
+        default:
+          showError(`Unknown menu item: ${itemId}`);
+      }
+    } catch (error) {
+      showError('Navigation failed. Please try again.');
+      console.error('Navigation error:', error);
     }
   };
 
