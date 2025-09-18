@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
+import type { RootStackParamList } from '~/shared/types/navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { MainLayout } from '~/app/layouts/MainLayout';
 import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
@@ -47,7 +49,7 @@ const MenuItem = ({
 );
 
 export const CardSettingsPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const route = useRoute();
   const { showError, showInfo } = useErrorHandler();
   const { cardNumber } = route.params as { cardNumber: string };
@@ -58,10 +60,7 @@ export const CardSettingsPage = () => {
     try {
       switch (itemId) {
         case 'pin':
-          (navigation as any).navigate('PinCode', {
-            fromSettings: true,
-            cardNumber: cardNumber,
-          });
+          navigation.navigate('PinCodeEnter');
           break;
         case 'email':
           showInfo('Change email feature coming soon');
