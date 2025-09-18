@@ -154,13 +154,12 @@ export const IdentityVerificationInnerPage = () => {
         className={`${currentFlowStep === 'processing' || currentFlowStep === 'success' ? 'bg-transparent' : 'bg-[#0F0F0F]'} mt-[24px] items-center justify-center rounded-[20px]  px-6 pt-10`}
         style={{ height: hp(75) }}>
         <View>{content.icon}</View>
-
         <Text
           weight="semibold"
           className="mt-3 text-center text-white"
           style={{
-            fontSize: s(20),
-            lineHeight: s(24),
+            fontSize: 20,
+            lineHeight: 24,
           }}>
           {content.title}
         </Text>
@@ -169,8 +168,8 @@ export const IdentityVerificationInnerPage = () => {
           weight="regular"
           className="mb-8 mt-1 max-w-[260px] text-center text-[#AAAAAA]"
           style={{
-            fontSize: s(17),
-            lineHeight: s(22),
+            fontSize: 17,
+            lineHeight: 22,
           }}>
           {content.subtitle}
         </Text>
@@ -181,9 +180,9 @@ export const IdentityVerificationInnerPage = () => {
             onPress={content.onPress}
             style={{
               width: '100%',
-              height: s(48),
+              height: 48,
               marginTop: 'auto',
-              marginBottom: s(20),
+              marginBottom: 20,
             }}
             disabled={isProcessing}
           />

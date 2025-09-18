@@ -144,7 +144,7 @@ export const StartPage = () => {
               icon={<GoogleIcon />}
               variant="light"
               className="mt-8"
-              style={{ height: hp(5.2) }}
+              style={{ height: 48 }}
               labelClassName="text-[#000000]"
               onPress={() => (navigation as any).navigate('TopUp')}
             />
@@ -154,8 +154,8 @@ export const StartPage = () => {
               weight="semibold"
               icon={<AppleIcon />}
               variant="dark"
-              className="mt-3"
-              style={{ height: hp(5.2) }}
+              className="mt-[12px]"
+              style={{ height: 48 }}
               labelClassName="text-white"
             />
 
@@ -165,21 +165,20 @@ export const StartPage = () => {
               style={{ fontSize: 13 }}>
               or
             </Text>
-
             <Input
               placeholder="Email"
               value={email}
               onChangeText={setEmail}
-              style={{ height: hp(5.9), marginTop: hp(1.5) }}
+              className="mt-[12px]"
+              style={{ height: 48 }}
             />
-
             <Button
               onPress={handleEmailAuth}
               label="Continue"
               weight="semibold"
               variant="light"
               className="mt-3"
-              style={{ height: 42 }}
+              style={{ height: 48 }}
               labelClassName="text-[#000000]"
               loading={isSendingEmail}
             />

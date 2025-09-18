@@ -21,17 +21,17 @@ export const SignUpPage = () => {
 
   const handleContinue = () => {
     if (!firstName.trim()) {
-      showError('Пожалуйста, введите имя');
+      showError('Please enter first name');
       return;
     }
 
     if (!lastName.trim()) {
-      showError('Пожалуйста, введите фамилию');
+      showError('Please enter last name');
       return;
     }
 
     if (!termsAccepted) {
-      showError('Пожалуйста, примите условия использования');
+      showError('Please accept terms and conditions to continue');
       return;
     }
 
@@ -44,13 +44,13 @@ export const SignUpPage = () => {
         placeholder="First name"
         value={firstName}
         onChangeText={setFirstName}
-        style={{ marginTop: s(24), height: 48 }}
+        style={{ marginTop: 24, height: 48 }}
       />
       <Input
         placeholder="Last name"
         value={lastName}
         onChangeText={setLastName}
-        style={{ marginTop: s(12), height: 48 }}
+        style={{ marginTop: 12, height: 48 }}
       />
 
       <View
@@ -66,7 +66,7 @@ export const SignUpPage = () => {
           weight="regular"
           style={{
             fontSize: 14,
-            lineHeight: s(20),
+            lineHeight: 20,
             letterSpacing: -0.23,
             color: 'white',
           }}>
@@ -93,11 +93,10 @@ export const SignUpPage = () => {
           , and the collection and processing of my personal data.
         </Text>
       </View>
-
       <Button
         onPress={handleContinue}
         label="Continue"
-        style={{ marginTop: s(24), height: 42 }}
+        style={{ marginTop: 24, height: 48 }}
         weight="semibold"
         labelClassName="text-[#000000]"
         variant="light"
