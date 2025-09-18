@@ -84,7 +84,7 @@ export const WithdrawalPage = () => {
               label={getButtonText()}
               onPress={handleContinue}
               disabled={!canProceed()}
-              className="h-[42px] w-full"
+              className="h-[48px] w-full"
             />
           </View>
         )}

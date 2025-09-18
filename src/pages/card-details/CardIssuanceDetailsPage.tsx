@@ -96,7 +96,7 @@ export function CardIssuanceDetailsPage() {
           onPress={handleIssueCard}
           variant="light"
           weight="semibold"
-          className="h-[42px] rounded-[12px]"
+          className="h-[48px] rounded-[12px]"
         />
       </View>
 
