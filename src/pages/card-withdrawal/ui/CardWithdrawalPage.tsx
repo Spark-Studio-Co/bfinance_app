@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@react-navigation/native';
 import type { RootStackParamList } from '~/shared/types/navigation';
 import { useResponsive } from '~/shared/hooks';
+import { useErrorHandler } from '~/shared/hooks/useErrorHandler';
 import { Text, Button } from '~/shared/ui';
+import { GlobalErrorDisplay } from '~/shared/ui';
 import { PaymentModal } from '~/shared/ui/PaymentModal';
-import ChevronLeft from '~/shared/icons/ChevronLeft';
+import { MainLayout } from '~/app/layouts/MainLayout';
 
 export const CardWithdrawalPage = () => {
   const { s } = useResponsive();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const { showError } = useErrorHandler();
   const [amount, setAmount] = useState('');
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
@@ -22,9 +25,23 @@ export const CardWithdrawalPage = () => {
   };
 
   const handleContinue = () => {
-    if (amount.trim()) {
-      setShowPaymentModal(true);
+    if (!amount.trim()) {
+      showError('Please enter withdrawal amount');
+      return;
     }
+
+    const amountValue = parseFloat(amount);
+    if (isNaN(amountValue) || amountValue <= 0) {
+      showError('Please enter a valid amount greater than 0');
+      return;
+    }
+
+    if (amountValue < 1) {
+      showError('Minimum withdrawal amount is $1');
+      return;
+    }
+
+    setShowPaymentModal(true);
   };
 
   const handlePayment = () => {
@@ -35,90 +52,61 @@ export const CardWithdrawalPage = () => {
   const canProceed = amount.trim() !== '' && parseFloat(amount) > 0;
 
   return (
-    <View className="flex-1 bg-black">
-      {/* Header */}
-      <View className="flex-row items-center px-6 pb-6 pt-16">
-        <TouchableOpacity onPress={handleBack} className="mr-3">
-          <ChevronLeft color="white" size={s(24)} />
-        </TouchableOpacity>
-        <Text
-          weight="semibold"
-          className="text-[20px] text-white"
-          style={{ letterSpacing: s(-0.23) }}>
-          Withdraw from card
-        </Text>
-      </View>
-
-      {/* Main Content */}
-      <View className="flex-1 px-6">
-        {/* Withdrawal Fee Section */}
+    <MainLayout isBack isTitle title="Withdraw from card">
+      <View className="mt-[24px] flex-1">
         <View className="rounded-[16px] bg-[#0f0f0f]">
-          <View className="flex-row items-center justify-between px-4 py-4">
+          <View className="flex-row items-center justify-between px-4 py-[14px]">
             <View className="flex-1">
-              <Text
-                weight="medium"
-                className="mb-1 text-[17px] text-white"
-                style={{ letterSpacing: s(-0.4) }}>
+              <Text weight="medium" className="mb-1 text-[17px] text-white">
                 {withdrawalFee}%
               </Text>
-              <Text
-                weight="regular"
-                className="text-[13px] text-[#aaaaaa]"
-                style={{ letterSpacing: s(-0.08) }}>
+              <Text weight="regular" className="text-[13px] text-[#aaaaaa]">
                 Withdrawal fee
               </Text>
             </View>
-            <Text
-              weight="regular"
-              className="text-[17px] text-white"
-              style={{ letterSpacing: s(-0.4) }}>
+            <Text weight="regular" className="text-[17px] text-white">
               {feeAmount}$
             </Text>
           </View>
         </View>
-
-        {/* Amount Input */}
         <View className="mt-[24px] h-[48px] justify-center rounded-[16px] bg-[#0f0f0f] px-4">
           <TextInput
             value={amount}
             onChangeText={setAmount}
             placeholder="Amount"
             placeholderTextColor="#78797e"
-            className="text-[17px] text-white"
+            className="h-[48px] text-[17px] text-white"
             keyboardType="numeric"
             style={{
               fontFamily: 'SF Pro',
-              fontSize: s(17),
+              fontSize: 17,
               fontWeight: '400',
-              lineHeight: s(22),
-              letterSpacing: s(-0.4),
+              lineHeight: 22,
             }}
           />
         </View>
-
-        {/* Continue Button */}
         <View className="mt-[12px] pb-8">
           <Button
             label="Continue"
             onPress={handleContinue}
-            disabled={!canProceed}
             variant="light"
             weight="semibold"
-            className="h-[42px] rounded-[12px]"
+            className="h-[48px] rounded-[12px]"
             style={{
-              fontSize: s(15),
-              letterSpacing: s(-0.23),
+              fontSize: 15,
             }}
           />
         </View>
       </View>
-
       <PaymentModal
         visible={showPaymentModal}
         onClose={() => setShowPaymentModal(false)}
         onPay={handlePayment}
         cardName="Withdrawal"
       />
-    </View>
+
+      {/* Local error display for testing */}
+      <GlobalErrorDisplay />
+    </MainLayout>
   );
 };

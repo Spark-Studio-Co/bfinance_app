@@ -13,8 +13,12 @@ export const GlobalErrorDisplay: React.FC = () => {
 
   return (
     <View
-      className="absolute bottom-0  left-0 right-0 z-50 h-[48px]"
-      style={{ paddingBottom: 100 }}>
+      className="absolute bottom-0 left-0 right-0"
+      style={{
+        paddingBottom: 100,
+        zIndex: 9999,
+        elevation: 9999, // for Android
+      }}>
       {errors.map((error) => (
         <View key={error.id} className="mx-4 mb-2 h-[48px]">
           <View className="relative h-[48px]">
