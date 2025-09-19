@@ -1,13 +1,11 @@
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import type { NavigationProp } from '@react-navigation/native';
-import type { RootStackParamList } from '~/shared/types/navigation';
 import ArrowDown from '~/shared/icons/ArrowDown';
 import ArrowUp from '~/shared/icons/ArrowUp';
 import { Button, Text } from '~/shared/ui';
 
 export const TotalBalanceTab = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation();
 
   const balanceStyle = {
     fontSize: 40,
@@ -52,7 +50,7 @@ export const TotalBalanceTab = () => {
           style={buttonStyle}
           className="text-black"
           icon={<ArrowDown color="black" size={13} />}
-          onPress={() => navigation.navigate('CardTopup')}
+          onPress={() => navigation.navigate('TopUp' as never)}
         />
         <Button
           variant="outline"
@@ -61,7 +59,7 @@ export const TotalBalanceTab = () => {
           labelClassName="text-white"
           style={buttonStyle}
           icon={<ArrowUp color="white" size={13} />}
-          onPress={() => navigation.navigate('CardWithdrawal')}
+          onPress={() => navigation.navigate('Withdrawal' as never)}
         />
       </View>
     </View>

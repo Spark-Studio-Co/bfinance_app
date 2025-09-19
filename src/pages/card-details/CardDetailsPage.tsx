@@ -42,11 +42,11 @@ export const CardDetailsPage: React.FC = () => {
   const cardTitle = `Card *${cardNumber.slice(-4)}`;
 
   const handleTopUp = () => {
-    navigation.navigate('TopUp');
+    navigation.navigate('CardTopup');
   };
 
   const handleWithdraw = () => {
-    navigation.navigate('Withdrawal');
+    navigation.navigate('CardWithdrawal');
   };
 
   const handleShowCardDetails = () => {
