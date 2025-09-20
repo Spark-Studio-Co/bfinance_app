@@ -9,7 +9,7 @@ import Animated, {
   interpolate,
   runOnJS,
 } from 'react-native-reanimated';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 
 import { HomePage } from '../../pages/home';
 import type { TabParamList } from '../../shared/types/navigation';
@@ -92,58 +92,69 @@ export function TabNavigator() {
   }, [activeTab]);
 
   return (
-    <Tab.Navigator
-      key={key}
-      initialRouteName={activeTab as keyof TabParamList}
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#0F0F0F',
-          borderTopColor: '#2A2A2A',
-          borderTopWidth: 1,
-          paddingTop: 16.5,
-          paddingBottom: 20,
-          height: 90,
-          elevation: 10,
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: -2,
+    <>
+      <Tab.Navigator
+        key={key}
+        initialRouteName={activeTab as keyof TabParamList}
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            borderTopWidth: 0,
+            backgroundColor: '#0F0F0F',
+            paddingTop: 16.5,
+            paddingBottom: 20,
+            height: 90,
+            elevation: 10,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: -2,
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 3.84,
           },
-          shadowOpacity: 0.1,
-          shadowRadius: 3.84,
-        },
-        tabBarShowLabel: false,
-      }}
-      screenListeners={{
-        state: (e) => {
-          const routeName = e.data?.state?.routeNames[e.data?.state?.index];
-          if (routeName) {
-            setActiveTab(routeName);
-          }
-        },
-      }}>
-      <Tab.Screen
-        name="Home"
-        component={HomePage}
-        options={{
-          tabBarIcon: ({ focused }) => <HouseIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+          tabBarShowLabel: false,
+          tabBarBackground: () => (
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: '#0F0F0F',
+                borderTopWidth: 1,
+                borderTopColor: '#2A2A2A',
+              }}
+            />
+          ),
         }}
-      />
-      <Tab.Screen
-        name="Cards"
-        component={CardsPage}
-        options={{
-          tabBarIcon: ({ focused }) => <PaymentIcon color={focused ? '#00E675' : '#A2ACB0'} />,
-        }}
-      />
-      <Tab.Screen
-        name="Services"
-        component={ServicesPage}
-        options={{
-          tabBarIcon: ({ focused }) => <ServiceIcon color={focused ? '#00E675' : '#A2ACB0'} />,
-        }}
-      />
-    </Tab.Navigator>
+        screenListeners={{
+          state: (e) => {
+            const routeName = e.data?.state?.routeNames[e.data?.state?.index];
+            if (routeName) {
+              setActiveTab(routeName);
+            }
+          },
+        }}>
+        <Tab.Screen
+          name="Home"
+          component={HomePage}
+          options={{
+            tabBarIcon: ({ focused }) => <HouseIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+          }}
+        />
+        <Tab.Screen
+          name="Cards"
+          component={CardsPage}
+          options={{
+            tabBarIcon: ({ focused }) => <PaymentIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+          }}
+        />
+        <Tab.Screen
+          name="Services"
+          component={ServicesPage}
+          options={{
+            tabBarIcon: ({ focused }) => <ServiceIcon color={focused ? '#00E675' : '#A2ACB0'} />,
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 }
