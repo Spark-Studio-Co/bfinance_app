@@ -51,7 +51,7 @@ export function CardIssuanceDetailsPage() {
   };
 
   return (
-    <MainLayout isBack isTitle>
+    <MainLayout isBack isTitle isScroll>
       <View className="-mt-7 items-center">
         <Image
           source={require('../../../assets/card_image.png')}
