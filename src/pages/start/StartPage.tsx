@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Video, ResizeMode } from 'expo-av';
+import { VideoView, useVideoPlayer } from 'expo-video';
 import { useNavigation } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
 import LogoIcon from '~/shared/icons/LogoIcon';
@@ -22,12 +22,18 @@ import Animated, {
 } from 'react-native-reanimated';
 
 export const StartPage = () => {
-  const videoRef = useRef<Video>(null);
   const navigation = useNavigation();
   const { wp, hp, ms } = useResponsive();
   const { sendEmailAuth, isSendingEmail } = useAuth();
   const { showError } = useErrorHandler();
   const [email, setEmail] = useState('');
+
+  // Create video player instance
+  const player = useVideoPlayer(heroVideo, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
 
   // Используем hook для отслеживания клавиатуры
   const keyboard = useAnimatedKeyboard();
@@ -87,18 +93,15 @@ export const StartPage = () => {
   return (
     <AuthLayout isNoPadding isBottomShown={true} enableKeyboardAvoiding={false}>
       <View className="flex-1" style={{ backgroundColor: 'black' }}>
-        <Video
-          ref={videoRef}
-          source={heroVideo}
+        <VideoView
+          player={player}
           style={[
             StyleSheet.absoluteFillObject,
             { transform: [{ translateY: -hp(5) }] }, // move video 5% screen height upward
           ]}
-          resizeMode={ResizeMode.COVER}
-          shouldPlay
-          isLooping
-          isMuted
-          pointerEvents="none"
+          contentFit="cover"
+          allowsFullscreen={false}
+          allowsPictureInPicture={false}
         />
 
         <View style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0,0,0,0.35)' }]} />

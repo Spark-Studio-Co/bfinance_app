@@ -5,7 +5,7 @@ import { Text } from '~/shared/ui';
 interface MenuCardProps {
   icon: React.ReactNode;
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 export const MenuCard: React.FC<MenuCardProps> = ({ icon, title, onPress }) => {

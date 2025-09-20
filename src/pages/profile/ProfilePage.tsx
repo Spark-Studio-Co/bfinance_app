@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { MenuCard } from '~/features/Profile/ui/ProfileCard';
 import { menuSections } from '~/features/Profile/model/mock';
-import LogoIcon from '~/shared/icons/LogoIcon';
 import LogoutIcon from '~/shared/ui/LogoutIcon';
 
 export const ProfileScreen = () => {
@@ -29,13 +28,13 @@ export const ProfileScreen = () => {
         (navigation as any).navigate('Support');
         break;
       case 'privacy':
-        // Добавить навигацию на политику конфиденциальности
+        Linking.openURL('https://cdn.bfinance.app/privacy-policy.pdf');
         break;
       case 'terms':
-        // Добавить навигацию на условия использования
+        Linking.openURL('https://cdn.bfinance.app/terms-of-use.pdf');
         break;
       case 'aml':
-        // Добавить навигацию на AML политику
+        Linking.openURL('https://cdn.bfinance.app/aml-policy.pdf');
         break;
       default:
         console.log(`No navigation defined for: ${itemId}`);

@@ -19,7 +19,7 @@ import { CardIssuancePage } from '~/pages/card-issuance';
 import { CardPaymentPage } from '~/pages/card-payment';
 import { CardSuccessPage } from '~/pages/card-success';
 import { SupportPage } from '~/pages/support/SupportPage';
-import { IdentityVerificationPage } from '~/pages/identity-verification';
+import { IdentityVerificationPage } from '~/pages/identity-verification/ui/IdentityVerificationPage';
 import { CardSettingsPage } from '~/pages/card-settings';
 import { CardTopupSuccess } from '~/pages/card-topup-success/CardTopupSuccess';
 import { PinCodeEnterPage } from '~/pages/pin-code-enter';
