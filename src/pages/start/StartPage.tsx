@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { useNavigation } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
@@ -35,7 +35,7 @@ export const StartPage = () => {
     player.play();
   });
 
-  // Используем hook для отслеживания клавиатуры
+  // Используем hook для отслеживания клавиатуры только на iOS
   const keyboard = useAnimatedKeyboard();
 
   // Функция для пропуска авторизации и перехода на главный экран
@@ -68,8 +68,13 @@ export const StartPage = () => {
     // navigation.navigate('Support' as never);
   };
 
-  // Анимированный стиль для контейнера
+  // Анимированный стиль для контейнера - только для iOS
   const animatedStyle = useAnimatedStyle(() => {
+    // Отключаем анимацию на Android
+    if (Platform.OS === 'android') {
+      return {};
+    }
+
     const translateY = interpolate(
       keyboard.height.value,
       [0, 300], // От 0 до примерной высоты клавиатуры

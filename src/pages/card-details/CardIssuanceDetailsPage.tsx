@@ -90,21 +90,18 @@ export function CardIssuanceDetailsPage() {
         <TermsRow label="ATM fee" value="1$ + 2%" />
       </View>
 
-      <View className="mt-[16px]">
-        <Button
-          label="Issue card for 20$"
-          onPress={handleIssueCard}
-          variant="light"
-          weight="semibold"
-          className="h-[48px] rounded-[12px]"
-        />
-      </View>
-
       <PaymentModal
         visible={isPaymentModalVisible}
         onClose={handleClosePaymentModal}
         onPay={handlePayment}
         cardName={cardName}
+      />
+      <Button
+        label="Issue card for 20$"
+        onPress={handleIssueCard}
+        variant="light"
+        weight="semibold"
+        className="mb-8 mt-auto h-[48px] rounded-[12px]"
       />
     </MainLayout>
   );

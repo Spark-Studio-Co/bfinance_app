@@ -47,8 +47,6 @@ export const CardWithdrawalPage = () => {
     navigation.navigate('CardWithdrawalSuccess');
   };
 
-  const canProceed = amount.trim() !== '' && parseFloat(amount) > 0;
-
   return (
     <MainLayout isBack isTitle title="Withdraw from card">
       <View className="mt-[24px] flex-1">

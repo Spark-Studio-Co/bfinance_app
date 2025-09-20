@@ -50,7 +50,9 @@ export const CardDetailsPage: React.FC = () => {
   };
 
   const handleShowCardDetails = () => {
+    console.log('handleShowCardDetails called, current isModalVisible:', isModalVisible);
     setIsModalVisible(true);
+    console.log('setIsModalVisible(true) called');
   };
 
   const handleCloseModal = () => {

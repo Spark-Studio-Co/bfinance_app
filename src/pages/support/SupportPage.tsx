@@ -19,7 +19,7 @@ export const SupportPage = () => {
     {
       label: 'WhatsApp',
       icon: <WhatsappCircleIcon />,
-      url: '',
+      url: 'https://t.me/bfinsupbot',
     },
     {
       label: '+1 701 800 0012',

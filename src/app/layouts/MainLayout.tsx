@@ -105,6 +105,7 @@ export const MainLayout = ({
     <SafeAreaView className="flex-1 bg-[#000000]" edges={['top', 'left', 'right']}>
       {isScroll ? (
         <ScrollView
+          contentContainerStyle={{ paddingBottom: 16 }}
           showsVerticalScrollIndicator={false}
           className="flex-1"
           keyboardShouldPersistTaps="handled">

@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Modal,
-  TouchableOpacity,
-  Animated,
-  Dimensions,
-  PanResponder,
-  ScrollView,
-} from 'react-native';
+import { View, Modal, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Text, Button } from '~/shared/ui';
 import BitcoinIcon from '~/shared/icons/BitcoinIcon';
 import CircleCrossIcon from '../icons/CircleCrossIcon';
@@ -31,16 +23,9 @@ interface PaymentMethodProps {
   isSelected?: boolean;
 }
 
-const PaymentMethod: React.FC<PaymentMethodProps> = ({
-  icon,
-  title,
-  subtitle,
-  amount,
-  onPress,
-}) => {
+const PaymentMethod: React.FC<PaymentMethodProps> = ({ icon, title, subtitle, amount }) => {
   return (
     <TouchableOpacity
-      onPress={onPress}
       className={`h-[68px] flex-row items-center justify-between rounded-[16px] bg-[#0F0F0F] px-4`}
       activeOpacity={0.7}>
       <View className="flex-1 flex-row items-center">
@@ -61,9 +46,7 @@ const PaymentMethod: React.FC<PaymentMethodProps> = ({
   );
 };
 
-export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModalProps) {
-  const slideAnim = React.useRef(new Animated.Value(screenHeight)).current;
-  const opacityAnim = React.useRef(new Animated.Value(0)).current;
+export function PaymentModal({ visible, onClose, onPay }: PaymentModalProps) {
   const [selectedPayment, setSelectedPayment] = useState<string>('usd');
 
   const fiatMethods = [
@@ -100,110 +83,20 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
     },
   ];
 
-  const handleAnimatedClose = () => {
-    Animated.parallel([
-      Animated.timing(slideAnim, {
-        toValue: screenHeight,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 0,
-        duration: 250,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      onClose();
-    });
-  };
-
-  const panResponder = React.useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: (_, gestureState) => {
-        return gestureState.dy > 5 && Math.abs(gestureState.dy) > Math.abs(gestureState.dx);
-      },
-      onPanResponderMove: (_, gestureState) => {
-        if (gestureState.dy > 0) {
-          const dragValue = Math.min(gestureState.dy, screenHeight * 0.5);
-          slideAnim.setValue(dragValue);
-          const opacity = Math.max(0.3, 1 - gestureState.dy / (screenHeight * 0.4));
-          opacityAnim.setValue(opacity);
-        }
-      },
-      onPanResponderRelease: (_, gestureState) => {
-        if (gestureState.dy > 80 || gestureState.vy > 0.8) {
-          handleAnimatedClose();
-        } else {
-          Animated.parallel([
-            Animated.spring(slideAnim, {
-              toValue: 0,
-              useNativeDriver: true,
-              tension: 100,
-              friction: 8,
-            }),
-            Animated.timing(opacityAnim, {
-              toValue: 1,
-              duration: 200,
-              useNativeDriver: true,
-            }),
-          ]).start();
-        }
-      },
-    })
-  ).current;
-
-  React.useEffect(() => {
-    if (visible) {
-      slideAnim.setValue(screenHeight);
-      opacityAnim.setValue(0);
-
-      Animated.parallel([
-        Animated.spring(slideAnim, {
-          toValue: 0,
-          useNativeDriver: true,
-          tension: 60,
-          friction: 10,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: 1,
-          duration: 400,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    }
-  }, [visible]);
-
   const handlePayment = () => {
-    handleAnimatedClose();
+    onClose();
     setTimeout(() => {
       onPay();
     }, 300);
   };
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="none"
-      statusBarTranslucent
-      onRequestClose={handleAnimatedClose}>
-      <Animated.View
-        style={{
-          flex: 1,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          opacity: opacityAnim,
-        }}>
-        <TouchableOpacity style={{ flex: 1 }} activeOpacity={1} onPress={handleAnimatedClose} />
-        <Animated.View
-          style={{
-            backgroundColor: '#000000',
-            borderTopLeftRadius: 24,
-            borderTopRightRadius: 24,
-            minHeight: screenHeight * 0.58,
-            transform: [{ translateY: slideAnim }],
-            flex: 1,
-          }}
-          {...panResponder.panHandlers}>
+    <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
+      {/* Background overlay */}
+      <View className="flex-1 bg-black/50">
+        <TouchableOpacity className="flex-1" activeOpacity={1} onPress={onClose} />
+
+        <View className="overflow-hidden rounded-t-[24px] bg-black" style={{ height: 658 }}>
           <View className="flex-1 px-[16px]">
             <View className="items-center">
               <View className="mb-[6px] mt-[13px] items-center">
@@ -218,7 +111,7 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
               {/* Close Button */}
               <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={handleAnimatedClose}
+                onPress={onClose}
                 className="absolute right-0 top-6">
                 <CircleCrossIcon />
               </TouchableOpacity>
@@ -278,8 +171,8 @@ export function PaymentModal({ visible, onClose, onPay, cardName }: PaymentModal
               />
             </View>
           </View>
-        </Animated.View>
-      </Animated.View>
+        </View>
+      </View>
     </Modal>
   );
 }

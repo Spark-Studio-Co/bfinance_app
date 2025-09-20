@@ -1,27 +1,31 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Animated, Easing } from 'react-native';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated';
 
 export const MiniLoader = ({ size = 35, strokeWidth = 5 }) => {
-  const rotation = useRef(new Animated.Value(0)).current;
+  const rotation = useSharedValue(0);
 
   useEffect(() => {
-    rotation.setValue(0); // сброс перед анимацией
-
-    Animated.loop(
-      Animated.timing(rotation, {
-        toValue: 1,
+    rotation.value = withRepeat(
+      withTiming(360, {
         duration: 1200,
         easing: Easing.linear,
-        useNativeDriver: true,
       }),
-      { iterations: -1 } // бесконечно
-    ).start();
+      -1 // infinite
+    );
   }, [rotation]);
 
-  const spin = rotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: `${rotation.value}deg` }],
+    };
   });
 
   const radius = (size - strokeWidth) / 2;
@@ -43,10 +47,12 @@ export const MiniLoader = ({ size = 35, strokeWidth = 5 }) => {
 
       {/* Белая дуга поверх — крутится */}
       <Animated.View
-        style={{
-          position: 'absolute',
-          transform: [{ rotate: spin }],
-        }}>
+        style={[
+          {
+            position: 'absolute',
+          },
+          animatedStyle,
+        ]}>
         <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
           <Circle
             stroke="#fff"
