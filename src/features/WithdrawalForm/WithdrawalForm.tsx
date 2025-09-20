@@ -50,6 +50,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
           AMOUNT
         </Text>
         <Input
+          returnKeyType="done"
           placeholder="100"
           value={amount}
           onChangeText={handleAmountChange}

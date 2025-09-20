@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { AuthLayout } from '~/app/layouts/AuthLayout';
 import LogoIcon from '~/shared/icons/LogoIcon';
 import GoogleIcon from '~/shared/icons/GoogleIcon';
@@ -27,16 +27,61 @@ export const StartPage = () => {
   const { sendEmailAuth, isSendingEmail } = useAuth();
   const { showError } = useErrorHandler();
   const [email, setEmail] = useState('');
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   // Create video player instance
   const player = useVideoPlayer(heroVideo, (player) => {
     player.loop = true;
     player.muted = true;
-    player.play();
+    player.playbackRate = 1.0;
+    // Предзагружаем видео для более быстрого старта
+    player.replace(heroVideo);
   });
 
   // Используем hook для отслеживания клавиатуры только на iOS
   const keyboard = useAnimatedKeyboard();
+
+  // Запускаем видео когда компонент готов
+  useEffect(() => {
+    const startVideo = async () => {
+      if (player) {
+        try {
+          // Минимальная задержка для инициализации
+          await new Promise((resolve) => setTimeout(resolve, 10));
+          player.play();
+          setIsVideoReady(true);
+        } catch (error) {
+          console.log('Video play error:', error);
+          // Повторная попытка через короткое время
+          setTimeout(() => {
+            try {
+              player.play();
+            } catch (retryError) {
+              console.error('Video retry play error:', retryError);
+            }
+          }, 100);
+        }
+      }
+    };
+
+    startVideo();
+  }, [player]);
+
+  // Используем useFocusEffect для перезапуска видео при фокусе на экране
+  useFocusEffect(
+    useCallback(() => {
+      if (player && isVideoReady) {
+        player.play();
+      }
+
+      return () => {
+        // Пауза при уходе с экрана для экономии ресурсов
+        if (player) {
+          player.pause();
+        }
+      };
+    }, [player, isVideoReady])
+  );
 
   // Функция для пропуска авторизации и перехода на главный экран
   const handleSkipAuth = () => {
@@ -98,17 +143,23 @@ export const StartPage = () => {
   return (
     <AuthLayout isNoPadding isBottomShown={true} enableKeyboardAvoiding={false}>
       <View className="flex-1" style={{ backgroundColor: 'black' }}>
+        {/* Показываем VideoView только когда он готов */}
         <VideoView
           player={player}
           style={[
             StyleSheet.absoluteFillObject,
-            { transform: [{ translateY: -hp(5) }] }, // move video 5% screen height upward
+            {
+              transform: [{ translateY: -hp(5) }], // move video 5% screen height upward
+              opacity: isVideoReady ? 1 : 0.7, // Небольшая прозрачность до готовности
+            },
           ]}
           contentFit="cover"
           allowsFullscreen={false}
           allowsPictureInPicture={false}
+          nativeControls={false}
         />
 
+        {/* Фоновый оверлей */}
         <View style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0,0,0,0.35)' }]} />
 
         {/* Skip Button */}
