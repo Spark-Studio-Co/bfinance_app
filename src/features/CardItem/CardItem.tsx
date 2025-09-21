@@ -26,16 +26,16 @@ export const CardItem = ({ cardName, cardNumber, balance, currency, onPress }: C
     fontSize: 15,
   };
 
-  const formatCardNumber = (number: string) => {
-    return number.replace(/(\d{4})(?=\d)/g, '$1 ');
-  };
-
   return (
     <Pressable
       onPress={onPress}
       style={cardStyle}
       className="flex w-full flex-row items-center justify-between bg-[#0F0F0F]">
-      <Image source={require('../../../assets/bfinance_card.png')} className="h-[34px] w-[54px]" />
+      <Image
+        source={require('../../../assets/bfinance_card.png')}
+        className="h-[34px] w-[54px]"
+        resizeMode="contain"
+      />
       <View className="ml-3 flex flex-1 flex-col items-start gap-[2px]">
         <Text className="text-white" style={textStyle} weight="medium">
           {cardName}

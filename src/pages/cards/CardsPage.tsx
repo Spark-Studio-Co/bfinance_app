@@ -14,9 +14,6 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export function CardsPage({}: CardsPageProps) {
   const navigation = useNavigation<NavigationProp>();
 
-  // Mock data for cards - set to empty array to show empty state
-  // const cards: any[] = [];
-  // /*
   const cards = [
     {
       id: 1,
