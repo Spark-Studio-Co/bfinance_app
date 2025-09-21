@@ -87,7 +87,7 @@ export function CardsPage({}: CardsPageProps) {
         />
       ) : (
         <ScrollView
-          className="flex-1 pt-[12px]"
+          className="flex-1 "
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ gap: 12 }}>
           {cards.map((card) => (
