@@ -63,6 +63,10 @@ export const CardDetailsPage: React.FC = () => {
     navigation.navigate('CardSettings', { cardNumber: cardNumber.slice(-4) });
   };
 
+  const handleTransactionPress = (transactionId: number) => {
+    navigation.navigate('TransactionDetails', { transactionId: transactionId.toString() });
+  };
+
   return (
     <MainLayout
       isTitle
@@ -212,14 +216,14 @@ export const CardDetailsPage: React.FC = () => {
             }}>
             today
           </Text>
-
-          {/* Transaction List */}
           <View style={{ gap: 8 }}>
             {transactions.map((transaction) => (
-              <View
+              <TouchableOpacity
                 key={transaction.id}
+                onPress={() => handleTransactionPress(transaction.id)}
                 className="rounded-[16px] bg-[#0F0F0F]"
-                style={{ padding: 16 }}>
+                style={{ padding: 16 }}
+                activeOpacity={0.7}>
                 <View className="flex-row items-center" style={{ gap: 16 }}>
                   <View className="relative">
                     <View
@@ -286,7 +290,7 @@ export const CardDetailsPage: React.FC = () => {
                     )}
                   </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </View>

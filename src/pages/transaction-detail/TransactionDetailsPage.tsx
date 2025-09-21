@@ -49,7 +49,7 @@ export const TransactionDetailsScreen: React.FC = () => {
         </View>
         <View className="">
           <Button
-            className="pb-[12px] pt-[12px]"
+            className="h-[48px] pb-[12px] pt-[12px]"
             variant="light"
             weight="semibold"
             label="Contact support"
