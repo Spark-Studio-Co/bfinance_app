@@ -116,7 +116,7 @@ export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto })
   return (
     <View className="flex flex-col">
       {title && (
-        <Text className="mb-[8px] mt-[16px] px-4 text-[#AAAAAA]" style={titleContainer}>
+        <Text className="mb-[8px] mt-[16px] text-[#AAAAAA]" weight="regular" style={titleContainer}>
           {title}
         </Text>
       )}

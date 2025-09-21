@@ -17,7 +17,7 @@ export const TotalBalanceTab = () => {
   };
 
   const buttonStyle = {
-    height: 40,
+    height: 42,
     fontSize: 15,
     flex: 1,
   };
@@ -31,7 +31,7 @@ export const TotalBalanceTab = () => {
 
   return (
     <View className="mt-[16px]  flex w-full flex-col">
-      <Text weight="medium" style={totalBalanceStyle} className="font-[510] text-[#484848]">
+      <Text weight="regular" style={totalBalanceStyle} className=" text-[#484848]">
         Total balance
       </Text>
       <View className=" flex flex-row font-bold">
@@ -46,7 +46,7 @@ export const TotalBalanceTab = () => {
         <Button
           variant="neon"
           label="Top-up"
-          weight="bold"
+          weight="medium"
           style={buttonStyle}
           className="text-black"
           icon={<ArrowDown color="black" size={13} />}
@@ -54,7 +54,7 @@ export const TotalBalanceTab = () => {
         />
         <Button
           variant="outline"
-          weight="bold"
+          weight="medium"
           label="Withdraw"
           labelClassName="text-white"
           style={buttonStyle}

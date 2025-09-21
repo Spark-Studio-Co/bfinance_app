@@ -46,17 +46,15 @@ export const MainLayout = ({
     <View className="flex-1">
       {isTitle && (
         <View
-          className={`mb-[12px] mt-[24px] flex w-full flex-row items-center gap-x-[24px] ${isNoPadding ? 'px-[24px]' : ''}`}>
+          className={`mb-[12px] mt-[24px] flex w-full flex-row items-center gap-x-[24px]  ${isNoPadding ? 'px-[24px]' : ''}`}>
           {isBack && (
             <View className={isBack && isNoPadding ? '' : 'pl-[24px]'}>
               <BackButton onPress={onPrevStep?.onPress ?? (() => navigation.goBack())} />
             </View>
           )}
-
           {isIcon && icon && iconPosition === 'before' && (
             <View className="flex-row items-center">{icon}</View>
           )}
-
           <TouchableOpacity
             onPress={isBack ? (onPrevStep?.onPress ?? (() => navigation.goBack())) : undefined}
             disabled={!isBack}
@@ -71,7 +69,6 @@ export const MainLayout = ({
               {title}
             </Text>
           </TouchableOpacity>
-
           {isIcon && icon && iconPosition === 'after' && (
             <View className="ml-auto flex-row items-center pr-[24px]">{icon}</View>
           )}
@@ -102,7 +99,7 @@ export const MainLayout = ({
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-[#000000]" edges={['top', 'left', 'right']}>
+    <SafeAreaView className="flex-1  bg-[#000000]" edges={['top', 'left', 'right']}>
       {isScroll ? (
         <ScrollView
           contentContainerStyle={{ paddingBottom: 16 }}

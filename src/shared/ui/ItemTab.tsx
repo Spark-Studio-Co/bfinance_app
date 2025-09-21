@@ -52,7 +52,7 @@ export const ItemTab: React.FC<ItemTabProps> = ({
   return (
     <View
       style={containerStyle}
-      className="flex w-full flex-row items-center justify-between bg-[#0F0F0F]">
+      className="flex w-full flex-row items-center justify-between bg-[#131313]">
       <View className="flex flex-row items-center gap-[16px]">
         {isFiat ? (
           <View

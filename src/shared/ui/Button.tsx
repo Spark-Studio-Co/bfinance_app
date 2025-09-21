@@ -59,7 +59,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   const combinedStyle = {
     borderRadius: variant === 'neon' ? 10 : 12,
-    gap: 8,
+    gap: 6,
     ...style,
   };
 

@@ -29,7 +29,7 @@ export const BannerSwiper = () => {
 
   const handleScroll = (event: any) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const cardWidth = screenWidth; // Full screen width for proper centering
+    const cardWidth = screenWidth - 48 + 16; // Banner width + gap
     const index = Math.round(contentOffsetX / cardWidth);
     setCurrentIndex(index);
   };
@@ -39,18 +39,18 @@ export const BannerSwiper = () => {
       <ScrollView
         ref={scrollViewRef}
         horizontal
-        pagingEnabled
+        pagingEnabled={false}
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={handleScroll}
         decelerationRate="fast"
-        snapToInterval={screenWidth}
-        snapToAlignment="center">
-        {banners.map((banner) => (
+        snapToInterval={screenWidth - 48 + 16}
+        snapToAlignment="start">
+        {banners.map((banner, index) => (
           <View
             key={banner.id}
             style={{
-              width: screenWidth,
-              paddingHorizontal: 24, // Move padding to individual items
+              width: screenWidth - 48, // Subtract 24px padding from each side
+              marginRight: index < banners.length - 1 ? 16 : 0, // Add gap between banners except last
             }}>
             <Banner title={banner.title} subtitle={banner.subtitle} />
           </View>

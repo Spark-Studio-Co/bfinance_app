@@ -26,7 +26,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   const textStyle = {
-    fontSize: 15,
+    fontSize: 16,
     lineHeight: 22,
   };
 
@@ -40,7 +40,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
   };
 
   return (
-    <View className="flex w-full flex-row items-center justify-between">
+    <View className="mt-[24px] flex w-full flex-row items-center justify-between">
       <TouchableOpacity
         className="flex flex-row items-center"
         style={containerStyle}
