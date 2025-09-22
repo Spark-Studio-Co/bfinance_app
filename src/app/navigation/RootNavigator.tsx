@@ -52,7 +52,7 @@ export const RootNavigator = () => {
           name="TransactionDetails"
           component={TransactionDetailsScreen}
           options={{
-            animation: 'slide_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
@@ -94,7 +94,7 @@ export const RootNavigator = () => {
           name="QRDeposit"
           component={QRDepositPage}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
@@ -129,7 +129,7 @@ export const RootNavigator = () => {
           name="WithdrawalSuccess"
           component={WithdrawalSuccessPage}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
@@ -143,14 +143,14 @@ export const RootNavigator = () => {
           name="CardWithdrawalSuccess"
           component={CardWithdrawalSuccessPage}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
           name="CardDetails"
           component={CardDetailsPage}
           options={{
-            animation: 'slide_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
@@ -178,14 +178,14 @@ export const RootNavigator = () => {
           name="CardSuccess"
           component={CardSuccessPage}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
           name="Support"
           component={SupportPage}
           options={{
-            animation: 'slide_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
@@ -213,21 +213,21 @@ export const RootNavigator = () => {
           name="PinCodeSuccess"
           component={PinCodeSuccessPage}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
           name="CardSettings"
           component={CardSettingsPage}
           options={{
-            animation: 'slide_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
         <Stack.Screen
           name="CardTopupSuccess"
           component={CardTopupSuccess}
           options={{
-            animation: 'fade_from_bottom',
+            animation: 'slide_from_right',
           }}
         />
       </Stack.Navigator>

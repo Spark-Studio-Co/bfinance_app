@@ -24,7 +24,7 @@ export const TransactionDetailsScreen: React.FC = () => {
   };
 
   const handleContactSupport = () => {
-    console.log('Contact support pressed');
+    navigation.navigate('Support');
   };
 
   if (loading || !transaction) {
