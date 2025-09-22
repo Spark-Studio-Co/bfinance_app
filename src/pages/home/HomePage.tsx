@@ -14,7 +14,6 @@ type HomePageProps = TabScreenProps<'Home'>;
 
 export function HomePage({}: HomePageProps) {
   const { isAuthenticated } = useAuth();
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   // Загружаем данные только если пользователь авторизован
   const { data: user, isLoading: isUserLoading, error: userError } = useUser(isAuthenticated);

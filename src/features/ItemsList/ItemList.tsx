@@ -121,7 +121,7 @@ export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto })
         </Text>
       )}
       {itemsToShow.map((item) => (
-        <View key={item.id} className="mb-[10px]">
+        <View key={item.id} className="mb-[13px]">
           <ItemTab
             isFiat={item.isFiat}
             currency={'currency' in item ? item.currency : undefined}

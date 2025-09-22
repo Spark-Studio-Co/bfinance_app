@@ -10,10 +10,14 @@ export const SuccessStep: React.FC = () => {
   const { reset } = useWithdrawalStore();
 
   useEffect(() => {
-    // Устанавливаем таймер на 3 секунды для навигации на Home
+    // Устанавливаем таймер на 3 секунды для возврата на главную
     const timer = setTimeout(() => {
       reset();
-      navigation.navigate('Main', { initialTab: 'Home' });
+      // Используем reset для возврата к корневому экрану
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Main' }],
+      });
     }, 3000);
 
     // Очищаем таймер при размонтировании компонента

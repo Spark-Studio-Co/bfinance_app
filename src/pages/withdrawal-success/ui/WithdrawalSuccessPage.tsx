@@ -11,10 +11,14 @@ export const WithdrawalSuccessPage: React.FC = () => {
   const { reset } = useWithdrawalStore();
 
   useEffect(() => {
-    // Устанавливаем таймер на 3 секунды для навигации на Home
+    // Устанавливаем таймер на 3 секунды для возврата на главную
     const timer = setTimeout(() => {
       reset();
-      navigation.navigate('Main', { initialTab: 'Home' });
+      // Возвращаемся на несколько экранов назад
+      navigation.goBack();
+      navigation.goBack();
+      navigation.goBack();
+      navigation.goBack();
     }, 3000);
 
     // Очищаем таймер при размонтировании компонента
@@ -23,7 +27,10 @@ export const WithdrawalSuccessPage: React.FC = () => {
 
   const handleBack = () => {
     reset();
-    navigation.navigate('Main', { initialTab: 'Home' });
+    navigation.goBack();
+    navigation.goBack();
+    navigation.goBack();
+    navigation.goBack();
   };
 
   return (

@@ -58,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
             : `bg-transparent text-zinc-900 border-0 hover:bg-zinc-50`;
 
   const combinedStyle = {
-    borderRadius: variant === 'neon' ? 10 : 12,
+    borderRadius: variant === 'neon' ? 10 : 11,
     gap: 6,
     ...style,
   };
