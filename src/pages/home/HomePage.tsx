@@ -65,8 +65,12 @@ export function HomePage({}: HomePageProps) {
         </View>
       ) : (
         <>
-          <ItemsList title="FIAT" isFiat />
-          <ItemsList title="CRYPTO" isCrypto />
+          <View className="mt-[16px] flex w-full flex-col">
+            <ItemsList title="FIAT" isFiat />
+          </View>
+          <View className="mt-[12px] flex w-full flex-col">
+            <ItemsList title="CRYPTO" isCrypto />
+          </View>
         </>
       )}
     </MainLayout>

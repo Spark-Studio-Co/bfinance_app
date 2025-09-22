@@ -18,7 +18,7 @@ export const TotalBalanceTab = () => {
 
   const buttonStyle = {
     height: 42,
-    fontSize: 15,
+    fontSize: 18,
     flex: 1,
   };
 

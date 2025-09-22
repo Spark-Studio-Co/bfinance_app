@@ -52,7 +52,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ name, imageSrc }) 
           className="rounded-full"
         />
         <Text style={textStyle} weight="semibold" className=" text-white">
-          Timur
+          Ruslan Makhmatov
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={buttonStyle} onPress={handleHistoryPress}>

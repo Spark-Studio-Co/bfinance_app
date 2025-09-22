@@ -108,7 +108,6 @@ export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto })
     itemsToShow.push(...cryptoItems);
   }
 
-  // If no specific type is requested, show fiat items by default
   if (!isFiat && !isCrypto) {
     itemsToShow.push(...fiatItems);
   }
@@ -116,12 +115,12 @@ export const ItemsList: React.FC<ItemsListProps> = ({ title, isFiat, isCrypto })
   return (
     <View className="flex flex-col">
       {title && (
-        <Text className="mb-[8px] mt-[16px] text-[#AAAAAA]" weight="regular" style={titleContainer}>
+        <Text className="mb-[8px]  text-[#AAAAAA]" weight="regular" style={titleContainer}>
           {title}
         </Text>
       )}
       {itemsToShow.map((item) => (
-        <View key={item.id} className="mb-[13px]">
+        <View key={item.id} className="mb-[13px] ">
           <ItemTab
             isFiat={item.isFiat}
             currency={'currency' in item ? item.currency : undefined}
