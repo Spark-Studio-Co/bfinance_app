@@ -74,8 +74,12 @@ export function CardIssuanceDetailsPage() {
 
         {/* Payment Icons */}
         <View className="mt-3 flex flex-row gap-x-[7px]">
-          <AppleIcon />
-          <GoogleCircleIcon />
+          <View className="rounded-full  bg-[#0F0F0F]">
+            <AppleIcon />
+          </View>
+          <View className="rounded-full  bg-[#0F0F0F]">
+            <GoogleCircleIcon />
+          </View>
         </View>
       </View>
 
