@@ -41,36 +41,195 @@ export const RootNavigator = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
         <Stack.Screen name="Auth" component={AuthStack} />
         <Stack.Screen name="Main" component={TabNavigatorWrapper} />
-        <Stack.Screen name="History" component={TransactionHistoryScreen} />
-        <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="TopUp" component={TopUpPage} />
-        <Stack.Screen name="CardTopup" component={CardTopupPage} />
-        <Stack.Screen name="TopUpNetwork" component={TopUpNetworkPage} />
-        <Stack.Screen name="TopUpDetail" component={TopUpDetailPage} />
-        <Stack.Screen name="QRDeposit" component={QRDepositPage} />
-        <Stack.Screen name="WithdrawalCryptoSelection" component={WithdrawalCryptoSelectionPage} />
+        <Stack.Screen
+          name="History"
+          component={TransactionHistoryScreen}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="TransactionDetails"
+          component={TransactionDetailsScreen}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="TopUp"
+          component={TopUpPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="CardTopup"
+          component={CardTopupPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="TopUpNetwork"
+          component={TopUpNetworkPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="TopUpDetail"
+          component={TopUpDetailPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="QRDeposit"
+          component={QRDepositPage}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="WithdrawalCryptoSelection"
+          component={WithdrawalCryptoSelectionPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
         <Stack.Screen
           name="WithdrawalNetworkSelection"
           component={WithdrawalNetworkSelectionPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
         />
-        <Stack.Screen name="WithdrawalForm" component={WithdrawalFormPage} />
-        <Stack.Screen name="WithdrawalConfirmation" component={WithdrawalConfirmationPage} />
-        <Stack.Screen name="WithdrawalSuccess" component={WithdrawalSuccessPage} />
-        <Stack.Screen name="CardWithdrawal" component={CardWithdrawalPage} />
-        <Stack.Screen name="CardWithdrawalSuccess" component={CardWithdrawalSuccessPage} />
-        <Stack.Screen name="CardDetails" component={CardDetailsPage} />
-        <Stack.Screen name="CardIssuanceDetails" component={CardIssuanceDetailsPage} />
-        <Stack.Screen name="CardIssuance" component={CardIssuancePage} />
-        <Stack.Screen name="CardPayment" component={CardPaymentPage} />
-        <Stack.Screen name="CardSuccess" component={CardSuccessPage} />
-        <Stack.Screen name="Support" component={SupportPage} />
-        <Stack.Screen name="IdentityVerification" component={IdentityVerificationPage} />
-        <Stack.Screen name="PinCodeEnter" component={PinCodeEnterPage} />
-        <Stack.Screen name="PinCodeReEnter" component={PinCodeReEnterPage} />
-        <Stack.Screen name="PinCodeSuccess" component={PinCodeSuccessPage} />
-        <Stack.Screen name="CardSettings" component={CardSettingsPage} />
-        <Stack.Screen name="CardTopupSuccess" component={CardTopupSuccess} />
+        <Stack.Screen
+          name="WithdrawalForm"
+          component={WithdrawalFormPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="WithdrawalConfirmation"
+          component={WithdrawalConfirmationPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="WithdrawalSuccess"
+          component={WithdrawalSuccessPage}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="CardWithdrawal"
+          component={CardWithdrawalPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="CardWithdrawalSuccess"
+          component={CardWithdrawalSuccessPage}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="CardDetails"
+          component={CardDetailsPage}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="CardIssuanceDetails"
+          component={CardIssuanceDetailsPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="CardIssuance"
+          component={CardIssuancePage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="CardPayment"
+          component={CardPaymentPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="CardSuccess"
+          component={CardSuccessPage}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="Support"
+          component={SupportPage}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="IdentityVerification"
+          component={IdentityVerificationPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="PinCodeEnter"
+          component={PinCodeEnterPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="PinCodeReEnter"
+          component={PinCodeReEnterPage}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
+          name="PinCodeSuccess"
+          component={PinCodeSuccessPage}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="CardSettings"
+          component={CardSettingsPage}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="CardTopupSuccess"
+          component={CardTopupSuccess}
+          options={{
+            animation: 'fade_from_bottom',
+          }}
+        />
       </Stack.Navigator>
     </>
   );
