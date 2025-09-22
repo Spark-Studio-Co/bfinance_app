@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Modal, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
-import { Text, Button } from '~/shared/ui';
+import { Text } from './Text';
+import { Button } from './Button';
 import BitcoinIcon from '~/shared/icons/BitcoinIcon';
 import CircleCrossIcon from '../icons/CircleCrossIcon';
 import CircleDollarIcon from '../icons/CircleDollarIcon';

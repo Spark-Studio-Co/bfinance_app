@@ -59,7 +59,7 @@ export const TotalBalanceTab = () => {
           labelClassName="text-white"
           style={buttonStyle}
           icon={<ArrowUp color="white" size={13} />}
-          onPress={() => navigation.navigate('Withdrawal' as never)}
+          onPress={() => navigation.navigate('WithdrawalCryptoSelection' as never)}
         />
       </View>
     </View>

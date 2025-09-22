@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Text } from '.';
+import { Text } from './Text';
 
 type Variant = 'light' | 'dark' | 'ghost' | 'neon' | 'outline';
 

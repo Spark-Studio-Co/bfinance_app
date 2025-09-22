@@ -9,7 +9,6 @@ import { ProfileScreen } from '~/pages/profile/ProfilePage';
 import { TopUpPage } from '~/pages/topup/TopUpPage';
 import { TopUpNetworkPage } from '~/pages/topup-network/TopUpNetworkPage';
 import { TopUpDetailPage } from '~/pages/topup-detail/TopUpDetailPage';
-import { WithdrawalPage } from '~/pages/withdrawal/ui/WithdrawalPage';
 import { CardWithdrawalPage, CardWithdrawalSuccessPage } from '~/pages/card-withdrawal';
 import { QRDepositPage } from '~/pages/qr-deposit';
 import { CardDetailsPage } from '~/pages/card-details';
@@ -25,6 +24,13 @@ import { CardTopupSuccess } from '~/pages/card-topup-success/CardTopupSuccess';
 import { PinCodeEnterPage } from '~/pages/pin-code-enter';
 import { PinCodeReEnterPage } from '~/pages/pin-code-re-enter';
 import { PinCodeSuccessPage } from '~/pages/pin-code-success';
+import {
+  WithdrawalCryptoSelectionPage,
+  WithdrawalNetworkSelectionPage,
+  WithdrawalFormPage,
+  WithdrawalConfirmationPage,
+  WithdrawalSuccessPage,
+} from '~/pages/withdrawal-pages';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -43,7 +49,14 @@ export const RootNavigator = () => {
         <Stack.Screen name="TopUpNetwork" component={TopUpNetworkPage} />
         <Stack.Screen name="TopUpDetail" component={TopUpDetailPage} />
         <Stack.Screen name="QRDeposit" component={QRDepositPage} />
-        <Stack.Screen name="Withdrawal" component={WithdrawalPage} />
+        <Stack.Screen name="WithdrawalCryptoSelection" component={WithdrawalCryptoSelectionPage} />
+        <Stack.Screen
+          name="WithdrawalNetworkSelection"
+          component={WithdrawalNetworkSelectionPage}
+        />
+        <Stack.Screen name="WithdrawalForm" component={WithdrawalFormPage} />
+        <Stack.Screen name="WithdrawalConfirmation" component={WithdrawalConfirmationPage} />
+        <Stack.Screen name="WithdrawalSuccess" component={WithdrawalSuccessPage} />
         <Stack.Screen name="CardWithdrawal" component={CardWithdrawalPage} />
         <Stack.Screen name="CardWithdrawalSuccess" component={CardWithdrawalSuccessPage} />
         <Stack.Screen name="CardDetails" component={CardDetailsPage} />

@@ -21,6 +21,11 @@ export type RootStackParamList = {
       }
     | undefined;
   Withdrawal: undefined;
+  WithdrawalCryptoSelection: undefined;
+  WithdrawalNetworkSelection: undefined;
+  WithdrawalForm: undefined;
+  WithdrawalConfirmation: undefined;
+  WithdrawalSuccess: undefined;
   CardWithdrawal: undefined;
   CardWithdrawalSuccess: undefined;
   CardDetails: {

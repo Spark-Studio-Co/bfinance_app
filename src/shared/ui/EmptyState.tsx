@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Text, Button } from '~/shared/ui';
+import { Text } from './Text';
+import { Button } from './Button';
 import SadFaceIcon from '~/shared/icons/SadFaceIcon';
 
 interface EmptyStateProps {
