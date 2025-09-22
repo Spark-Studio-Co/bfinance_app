@@ -77,7 +77,7 @@ export const NetworkSelectionStep: React.FC = () => {
   const networks = getNetworksForCrypto();
 
   return (
-    <View>
+    <View className="border-2 border-red-500">
       <Text className="mb-2 mt-[24px] text-[#AAAAAA]" style={{ fontSize: 13 }}>
         SELECT NETWORK
       </Text>

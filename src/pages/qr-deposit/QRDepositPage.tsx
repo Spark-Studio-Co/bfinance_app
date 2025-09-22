@@ -39,40 +39,39 @@ export const QRDepositPage: React.FC<QRDepositPageProps> = ({ route }) => {
 
   return (
     <MainLayout isTitle isBack title={`${currency} (${network})`}>
-      <View className="flex-1 items-center" style={{ padding: s(24) }}>
+      <View className="flex-1 items-center" style={{ padding: 24 }}>
         {/* QR Code Container */}
         <View
           className="rounded-[12px] bg-[#0F0F0F]"
           style={{
-            padding: s(24),
-            marginBottom: s(24),
-            width: s(340),
+            padding: 24,
+            marginBottom: 24,
+            width: 340,
           }}>
-          {/* QR Code */}
           <View
             className="items-center justify-center overflow-hidden rounded-[20px] bg-white"
             style={{
-              height: s(292),
-              marginBottom: s(24),
+              height: 292,
+              marginBottom: 24,
             }}>
             <Image
               source={require('../../../assets/qr.png')}
               style={{
-                width: s(293),
-                height: s(293),
+                width: 293,
+                height: 293,
               }}
               resizeMode="cover"
             />
           </View>
 
           {/* Address Section */}
-          <View style={{ gap: s(12) }}>
+          <View style={{ gap: 12 }}>
             <Text
               weight="medium"
               className="text-center text-white"
               style={{
-                fontSize: s(16),
-                lineHeight: s(22),
+                fontSize: 16,
+                lineHeight: 22,
                 letterSpacing: 0.06,
               }}>
               {address}
@@ -82,17 +81,16 @@ export const QRDepositPage: React.FC<QRDepositPageProps> = ({ route }) => {
               onPress={handleCopyAddress}
               className="items-center justify-center "
               style={{
-                height: s(36),
-                paddingHorizontal: s(12),
-                paddingVertical: s(8),
+                height: 36,
+                paddingHorizontal: 12,
+                paddingVertical: 8,
               }}>
               <Text
                 weight="semibold"
                 className="text-[#2990FF]"
                 style={{
-                  fontSize: s(15),
-                  lineHeight: s(20),
-                  letterSpacing: -0.23,
+                  fontSize: 15,
+                  lineHeight: 20,
                 }}>
                 Copy address
               </Text>
