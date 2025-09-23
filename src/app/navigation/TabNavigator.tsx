@@ -101,9 +101,9 @@ export function TabNavigator() {
           tabBarStyle: {
             borderTopWidth: 0,
             backgroundColor: '#0F0F0F',
-            paddingTop: 16.5,
+            paddingTop: 10.5,
             paddingBottom: 20,
-            height: 90,
+            height: 75,
             elevation: 10,
             shadowColor: '#000',
             shadowOffset: {
