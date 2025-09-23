@@ -103,7 +103,7 @@ export function TabNavigator() {
             backgroundColor: '#0F0F0F',
             paddingTop: 10.5,
             paddingBottom: 20,
-            height: 75,
+            height: 65,
             elevation: 10,
             shadowColor: '#000',
             shadowOffset: {
