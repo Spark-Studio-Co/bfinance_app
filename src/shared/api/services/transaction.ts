@@ -1,5 +1,6 @@
 import { apiClient } from '../client';
 import { TransactionsResponse, Transaction } from '../types';
+import { getMockTransactions, getMockTransaction, delay } from '../mocks/transactions';
 
 interface GetTransactionsParams {
   page?: number;
@@ -25,6 +26,12 @@ class TransactionService {
    * Получение списка транзакций с фильтрацией и пагинацией
    */
   async getTransactions(params: GetTransactionsParams = {}): Promise<TransactionsResponse> {
+    // В режиме разработки используем mock данные
+    if (__DEV__) {
+      await delay(600); // Имитируем задержку сети
+      return getMockTransactions(params);
+    }
+
     const queryParams = new URLSearchParams();
 
     Object.entries(params).forEach(([key, value]) => {
@@ -34,7 +41,7 @@ class TransactionService {
     });
 
     const queryString = queryParams.toString();
-    const endpoint = queryString ? `/transactions?${queryString}` : '/transactions';
+    const endpoint = queryString ? `/user/transactions?${queryString}` : '/user/transactions';
 
     const response: TransactionsResponse = await apiClient.get(endpoint, true);
     return response;
@@ -44,7 +51,17 @@ class TransactionService {
    * Получение информации о конкретной транзакции
    */
   async getTransaction(transactionId: string): Promise<Transaction> {
-    const response: Transaction = await apiClient.get(`/transactions/${transactionId}`, true);
+    // В режиме разработки используем mock данные
+    if (__DEV__) {
+      await delay(400);
+      const transaction = getMockTransaction(transactionId);
+      if (!transaction) {
+        throw new Error(`Transaction with id ${transactionId} not found`);
+      }
+      return transaction;
+    }
+
+    const response: Transaction = await apiClient.get(`/user/transactions/${transactionId}`, true);
     return response;
   }
 

@@ -6,6 +6,8 @@ export { default as API_CONFIG } from './config';
 export { authService } from './services/auth';
 export { walletService } from './services/wallet';
 export { transactionService } from './services/transaction';
+export { topUpService } from './services/topup';
+export { cardService } from './services/card';
 
 // Экспорт утилит для работы с хранилищем
 export {
@@ -26,10 +28,18 @@ export type {
   RegistrationRequest,
   RegistrationResponse,
   User,
+  UserBalance,
+  UserBalanceResponse,
   Wallet,
   WalletsResponse,
   Transaction,
   TransactionsResponse,
+  TopUpCurrency,
+  TopUpNetwork,
+  TopUpCurrenciesResponse,
+  Card,
+  CardType,
+  CardsResponse,
   ApiError,
   ApiResponse,
 } from './types';

@@ -6,6 +6,7 @@ import { Button } from '~/shared/ui/Button';
 import { TransactionAmount } from '~/features/Transactions/ui/TransactionAmount';
 import { TransactionDetailsList } from '~/widgets/ui/TransactionDetailsList';
 import { useTransactionDetails } from '~/entities/transaction/model/detail-hook';
+import { LoadingState, ErrorState } from '~/shared/ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type TransactionDetailsRouteParams = {
@@ -17,7 +18,7 @@ export const TransactionDetailsScreen: React.FC = () => {
   const navigation = useNavigation();
   const { transactionId } = route.params as TransactionDetailsRouteParams;
 
-  const { transaction, loading } = useTransactionDetails(transactionId);
+  const { transaction, loading, error } = useTransactionDetails(transactionId);
 
   const handleBackPress = () => {
     navigation.goBack();
@@ -27,11 +28,25 @@ export const TransactionDetailsScreen: React.FC = () => {
     navigation.navigate('Support');
   };
 
-  if (loading || !transaction) {
+  if (loading) {
     return (
-      <View className="flex-1 items-center justify-center bg-black">
-        <ActivityIndicator size="large" color="#ffffff" />
-      </View>
+      <SafeAreaView className="flex-1 bg-[#000000]">
+        <Header title="Transaction" showTitle={true} onBackPress={handleBackPress} />
+        <LoadingState message="Loading transaction details..." className="mt-20" />
+      </SafeAreaView>
+    );
+  }
+
+  if (error || !transaction) {
+    return (
+      <SafeAreaView className="flex-1 bg-[#000000]">
+        <Header title="Transaction" showTitle={true} onBackPress={handleBackPress} />
+        <ErrorState
+          title="Failed to load transaction"
+          message="Please check your connection and try again"
+          className="mt-20"
+        />
+      </SafeAreaView>
     );
   }
 

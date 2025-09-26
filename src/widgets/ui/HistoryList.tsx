@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, ActivityIndicator, View } from 'react-native';
 import { TransactionGroup } from '~/entities/transaction/ui/TransactionGroup';
 import { useTransactionHistory } from '~/entities/transaction/model/hooks';
+import { LoadingState, ErrorState } from '~/shared/ui';
 
 interface TransactionHistoryListProps {
   onTransactionPress: (transactionId: string) => void;
@@ -10,13 +11,19 @@ interface TransactionHistoryListProps {
 export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
   onTransactionPress,
 }) => {
-  const { transactions, loading } = useTransactionHistory();
+  const { transactions, loading, error } = useTransactionHistory();
 
   if (loading) {
+    return <LoadingState message="Loading transactions..." className="mt-20" />;
+  }
+
+  if (error) {
     return (
-      <View className="flex-1 items-center justify-center bg-black">
-        <ActivityIndicator size="large" color="#ffffff" />
-      </View>
+      <ErrorState
+        title="Failed to load transactions"
+        message="Please check your connection and try again"
+        className="mt-20"
+      />
     );
   }
 

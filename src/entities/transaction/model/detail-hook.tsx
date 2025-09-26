@@ -1,68 +1,63 @@
 import { useState, useEffect } from 'react';
 import { Transaction } from './types';
+import { useTransaction } from '~/shared/hooks/useApi';
+import type { Transaction as ApiTransaction } from '~/shared/api/types';
 
-// В реальном приложении это будут те же данные из TransactionHistory
-const mockTransactions: Transaction[] = [
-  {
-    id: '1',
-    merchant: 'APPLE.COM/BILL',
-    amount: 1239,
-    time: '19:20',
-    cardNumber: '1234',
-    type: 'expense',
-    status: 'success',
-    billedAmount: 10,
-    fee: 0.5,
-    transactionId: 'tid_enJsnLL837',
-  },
-  {
-    id: '2',
-    merchant: 'ALIEXPRESS.COM',
-    amount: 1239,
-    time: '19:20',
-    cardNumber: '1234',
-    type: 'expense',
-    status: 'failed',
-    billedAmount: 10,
-    fee: 0.5,
-    transactionId: 'tid_enJsnLL837',
-    declineReason: 'Insufficient funds',
-  },
-  {
-    id: '3',
-    merchant: 'ALIEXPRESS.COM',
-    amount: 100,
-    time: '19:20',
-    cardNumber: '1234',
-    type: 'income',
-    status: 'received',
-    billedAmount: 10,
-    fee: 0.5,
-    transactionId: 'tid_enJsnLL837',
-  },
-];
+// Функция для преобразования API транзакции в локальный формат (та же, что в hooks.ts)
+const adaptApiTransaction = (apiTransaction: ApiTransaction): Transaction => {
+  const date = new Date(apiTransaction.createdAt);
+  const time = date.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+
+  let status: 'success' | 'failed' | 'received';
+  switch (apiTransaction.status) {
+    case 'completed':
+      status = apiTransaction.type === 'income' ? 'received' : 'success';
+      break;
+    case 'failed':
+      status = 'failed';
+      break;
+    case 'pending':
+      status = 'success';
+      break;
+    default:
+      status = 'success';
+  }
+
+  return {
+    id: apiTransaction.id,
+    merchant: apiTransaction.description || 'Unknown merchant',
+    amount: apiTransaction.amount,
+    time,
+    cardNumber: '****',
+    type: apiTransaction.type === 'transfer' ? 'expense' : apiTransaction.type,
+    status,
+    billedAmount: apiTransaction.amount,
+    fee: 0,
+    transactionId: apiTransaction.id,
+    declineReason: apiTransaction.status === 'failed' ? 'Transaction failed' : undefined,
+  };
+};
 
 export const useTransactionDetails = (transactionId: string) => {
   const [transaction, setTransaction] = useState<Transaction | null>(null);
-  const [loading, setLoading] = useState(true);
+
+  // Используем общий API хук
+  const { data: apiTransaction, isLoading, error } = useTransaction(transactionId);
 
   useEffect(() => {
-    const loadTransaction = () => {
-      setLoading(true);
-
-      // Имитируем загрузку данных
-      setTimeout(() => {
-        const foundTransaction = mockTransactions.find((t) => t.id === transactionId);
-        setTransaction(foundTransaction || null);
-        setLoading(false);
-      }, 200);
-    };
-
-    loadTransaction();
-  }, [transactionId]);
+    if (apiTransaction) {
+      const adaptedTransaction = adaptApiTransaction(apiTransaction);
+      setTransaction(adaptedTransaction);
+    }
+  }, [apiTransaction]);
 
   return {
     transaction,
-    loading,
+    loading: isLoading,
+    error,
   };
 };

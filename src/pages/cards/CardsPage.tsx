@@ -1,12 +1,14 @@
 import type { TabScreenProps } from '../../shared/types/navigation';
 import { MainLayout } from '~/app/layouts/MainLayout';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { CardItem } from '~/features/CardItem/CardItem';
 import { EmptyState } from '~/shared/ui/EmptyState';
+import { Text } from '~/shared/ui';
 import PlusIcon from '~/shared/icons/PlusIcon';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '~/shared/types/navigation';
+import { useCards } from '~/shared/hooks/useApi';
 
 type CardsPageProps = TabScreenProps<'Cards'>;
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -14,46 +16,16 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export function CardsPage({}: CardsPageProps) {
   const navigation = useNavigation<NavigationProp>();
 
-  const cards = [
-    {
-      id: 1,
-      cardName: 'Business Card',
-      cardNumber: '4532123456789012',
-      cardHolder: 'John Doe',
-      cardType: 'visa' as const,
-      balance: '2,450.00',
-      currency: 'USD',
-      isActive: true,
-    },
-    {
-      id: 2,
-      cardName: 'Personal Card',
-      cardNumber: '5555123456789012',
-      cardHolder: 'John Doe',
-      cardType: 'mastercard' as const,
-      balance: '1,230.50',
-      currency: 'EUR',
-      isActive: false,
-    },
-    {
-      id: 3,
-      cardName: 'Travel Card',
-      cardNumber: '4000123456789012',
-      cardHolder: 'John Doe',
-      cardType: 'visa' as const,
-      balance: '850.25',
-      currency: 'GBP',
-      isActive: false,
-    },
-  ];
+  // Fetch cards from API
+  const { data: cards = [], isLoading, error } = useCards();
 
-  const handleCardPress = (cardId: number) => {
+  const handleCardPress = (cardId: string) => {
     const card = cards.find((c) => c.id === cardId);
     if (card) {
       navigation.navigate('CardDetails', {
-        cardId: card.id,
+        cardId: parseInt(card.id), // Convert string to number for navigation
         cardNumber: card.cardNumber,
-        balance: card.balance,
+        balance: typeof card.balance === 'string' ? card.balance : card.balance.toString(),
         currency: card.currency,
       });
     }
@@ -62,6 +34,36 @@ export function CardsPage({}: CardsPageProps) {
   const handleIssueCard = () => {
     navigation.navigate('CardIssuance');
   };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <MainLayout isTitle title="Cards">
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator size="large" color="#00E675" />
+          <Text className="mt-4 text-[#AAAAAA]">Loading cards...</Text>
+        </View>
+      </MainLayout>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <MainLayout isTitle title="Cards">
+        <View className="flex-1 items-center justify-center">
+          <Text className="mb-4 text-center text-red-500">
+            Failed to load cards: {error.message}
+          </Text>
+          <TouchableOpacity
+            onPress={() => window.location.reload()}
+            className="rounded-lg bg-[#00E675] px-4 py-2">
+            <Text className="font-semibold text-black">Retry</Text>
+          </TouchableOpacity>
+        </View>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout
@@ -93,7 +95,7 @@ export function CardsPage({}: CardsPageProps) {
               cardName={card.cardName}
               cardNumber={card.cardNumber}
               cardType={card.cardType}
-              balance={card.balance}
+              balance={typeof card.balance === 'string' ? card.balance : card.balance.toString()}
               currency={card.currency}
               isActive={card.isActive}
               onPress={() => handleCardPress(card.id)}

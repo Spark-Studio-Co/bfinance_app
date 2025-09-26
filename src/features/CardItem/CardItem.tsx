@@ -4,7 +4,7 @@ import { Text } from '~/shared/ui';
 export interface CardItemProps {
   cardName: string;
   cardNumber: string;
-  cardType: 'visa' | 'mastercard';
+  cardType: 'visa' | 'mastercard' | 'amex';
   balance: string;
   currency: string;
   isActive?: boolean;

@@ -10,7 +10,7 @@ export type RootStackParamList = {
   Profile: undefined;
   TopUp: undefined;
   CardTopup: undefined;
-  TopUpNetwork: { title?: string } | undefined;
+  TopUpNetwork: { title?: string; currencyId?: string } | undefined;
   TopUpDetail: { title?: string; details?: TopUpDetails } | undefined;
   QRDeposit:
     | {

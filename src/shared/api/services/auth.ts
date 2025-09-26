@@ -7,6 +7,8 @@ import {
   RegistrationRequest,
   RegistrationResponse,
   User,
+  UserBalance,
+  UserBalanceResponse,
 } from '../types';
 
 class AuthService {
@@ -75,6 +77,21 @@ class AuthService {
       await clearAllData();
       return false;
     }
+  }
+
+  /**
+   * Получение общего баланса пользователя
+   */
+  async getUserBalance(): Promise<UserBalance> {
+    // В режиме разработки используем mock данные
+    if (__DEV__) {
+      const { delay, getMockUserBalance } = await import('../mocks/balance');
+      await delay(500); // Имитируем задержку сети
+      return getMockUserBalance();
+    }
+
+    const response: UserBalanceResponse = await apiClient.get('/user/total', true);
+    return response.balance;
   }
 }
 

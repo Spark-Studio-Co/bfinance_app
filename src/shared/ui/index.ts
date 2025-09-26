@@ -24,3 +24,5 @@ export {
 } from './TransactionDetails';
 export { ErrorTab } from './ErrorTab';
 export { GlobalErrorDisplay } from './GlobalErrorDisplay';
+export { LoadingState } from './LoadingState';
+export { ErrorState } from './ErrorState';

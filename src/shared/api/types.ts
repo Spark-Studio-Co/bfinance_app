@@ -34,6 +34,17 @@ export interface User {
   updatedAt: string;
 }
 
+// Типы для общего баланса пользователя
+export interface UserBalance {
+  totalBalance: number;
+  currency: string;
+  lastUpdated: string;
+}
+
+export interface UserBalanceResponse {
+  balance: UserBalance;
+}
+
 // Типы для кошельков
 export interface Wallet {
   id: string;
@@ -69,6 +80,67 @@ export interface TransactionsResponse {
     total: number;
     totalPages: number;
   };
+}
+
+// Типы для валют пополнения
+export interface TopUpCurrency {
+  id: string;
+  name: string;
+  code: string;
+  type: 'fiat' | 'crypto';
+  icon?: string;
+  isActive: boolean;
+  networks?: TopUpNetwork[];
+}
+
+export interface TopUpNetwork {
+  id: string;
+  name: string;
+  code: string;
+  isActive: boolean;
+  minAmount?: number;
+  maxAmount?: number;
+  fee?: number;
+}
+
+export interface TopUpCurrenciesResponse {
+  fiat: TopUpCurrency[];
+  crypto: TopUpCurrency[];
+}
+
+// Типы для карт
+export interface Card {
+  id: string;
+  cardName: string;
+  cardNumber: string;
+  cardHolder: string;
+  cardType: 'visa' | 'mastercard' | 'amex';
+  balance: string | number;
+  currency: string;
+  isActive: boolean;
+  isBlocked?: boolean;
+  expiryDate?: string;
+  cvv?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CardType {
+  id: string;
+  name: string;
+  code: string;
+  description?: string;
+  isActive: boolean;
+  fees?: {
+    issuance?: number;
+    monthly?: number;
+    transaction?: number;
+    atm?: number;
+  };
+}
+
+export interface CardsResponse {
+  cards: Card[];
 }
 
 // Общие типы для ответов API
